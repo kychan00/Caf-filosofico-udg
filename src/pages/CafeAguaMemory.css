@@ -1,0 +1,109 @@
+.water-memory{color:#173a46;overflow-wrap:anywhere}
+.water-memory *{box-sizing:border-box}
+.water-memory-header,.water-memory-chapters,.water-memory-end{width:min(1280px,88vw);margin:0 auto}
+.water-memory-header{padding:96px 0 52px}
+.water-memory-header>span{font:900 11px Arial,sans-serif;letter-spacing:.16em;color:#0d7285}
+.water-memory-header h2{max-width:970px;font:800 clamp(45px,6vw,87px)/1.03 Georgia,serif;letter-spacing:-.05em;margin:20px 0}
+.water-memory-header h2 em{color:#09748c}
+.water-memory-header>p{max-width:950px;font:400 clamp(20px,2vw,27px)/1.5 Georgia,serif}
+.water-memory-header nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.water-memory-header nav a{padding:10px 13px;max-width:100%;color:#f9efd7;background:#0e4f65;border:1px solid #0e4f65;text-decoration:none;font:800 12px/1.3 Arial,sans-serif}
+.water-memory-header nav a:hover,.water-memory-header nav a:focus-visible{background:#e6c27d;color:#123844;outline:2px solid #0e4f65}
+.water-memory-chapter{display:grid;grid-template-columns:120px minmax(0,1fr);gap:30px;border-top:2px solid #205365;padding:45px 0 58px;scroll-margin-top:24px}
+.water-memory-number strong{display:block;color:#0c7388;font:900 49px Georgia,serif}
+.water-memory-number small{font:900 10px Arial,sans-serif;letter-spacing:.12em}
+.water-memory-copy{max-width:1030px;min-width:0}
+.water-memory-copy>h2{margin:0 0 28px;font:800 clamp(29px,4.2vw,54px)/1.09 Georgia,serif;letter-spacing:-.035em}
+.water-memory-copy h3{margin:30px 0 12px;font:800 clamp(21px,2.4vw,29px)/1.22 Georgia,serif;color:#0a657d}
+.water-memory-copy p,.water-memory-copy li{font:400 16.5px/1.77 Arial,sans-serif}
+.water-memory-copy p{margin:11px 0 17px}
+.water-memory-copy li{margin-bottom:8px}
+.water-memory-copy ul,.water-memory-copy ol{padding-left:28px;margin:15px 0 27px}
+.water-memory-copy a{color:#076b81;text-underline-offset:4px}
+.water-memory-note{border-left:5px solid #ad792d;background:#f3e2bd;padding:14px 22px;margin:25px 0}
+.water-memory-note p{margin:7px 0}
+.water-memory-copy strong{font-weight:800}
+.water-memory-table{max-width:100%;overflow:auto;margin:20px 0}
+.water-memory-table table{border-collapse:collapse;min-width:600px;width:100%;background:#e5e5d7}
+.water-memory-table th,.water-memory-table td{text-align:left;vertical-align:top;padding:15px;border:1px solid #8badb1;font:400 15px/1.55 Arial,sans-serif}
+.water-memory-table th{background:#0e4f65;color:#fff4db;font-weight:800}
+.water-memory-map{padding:24px;background:#efe1be;border:1px solid #1a4757;margin:24px 0}
+.water-memory-map-root{padding:25px 15px;background:#123f52;color:#fdf2d5;text-align:center;font:900 clamp(16px,2.4vw,25px)/1.3 Arial,sans-serif}
+.water-memory-map-root.is-result{background:#096d80}
+.water-memory-map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:17px 0}
+.water-memory-map-grid article{padding:20px;min-width:0;background:#c5dede}
+.water-memory-map-grid article:nth-child(2){background:#bcd8e7}
+.water-memory-map-grid article:nth-child(3){background:#f0d299}
+.water-memory-map-grid article>span{font:900 10px Arial,sans-serif;letter-spacing:.1em;color:#0c6176}
+.water-memory-map-grid h4{margin:13px 0;font:800 22px/1.15 Georgia,serif}
+.water-memory-map-grid p{margin:0;font:400 15px/1.6 Arial,sans-serif}
+.water-memory-map-down{text-align:center;padding:10px;color:#0b6479;font:900 12px Arial,sans-serif}
+.water-memory-map-ends{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.water-memory-map-ends span{text-align:center;background:#275465;color:#ffefd3;padding:15px 8px;font:800 13px/1.3 Arial,sans-serif}
+.water-memory-end{border-top:3px solid #15485d;margin-top:30px;margin-bottom:84px;padding:28px 0}
+.water-memory-end strong{font:800 27px Georgia,serif}
+.water-memory-end p{font:400 18px/1.6 Arial,sans-serif}
+@media(max-width:960px){.water-memory-map-grid{grid-template-columns:1fr}.water-memory-chapter{grid-template-columns:72px minmax(0,1fr);gap:18px}}
+@media(max-width:760px){.water-memory-header,.water-memory-chapters,.water-memory-end{width:calc(100% - 36px)}.water-memory-header{padding:56px 0 34px}.water-memory-chapter{grid-template-columns:1fr;gap:6px;padding:30px 0 40px}.water-memory-number{display:flex;align-items:center;gap:12px}.water-memory-number strong{font-size:27px}.water-memory-header nav a{flex:1 1 auto;text-align:center}.water-memory-map{padding:12px}.water-memory-map-ends{grid-template-columns:repeat(2,minmax(0,1fr))}.water-memory-copy p,.water-memory-copy li{font-size:15.5px}}
+
+/* La memoria como cuadernillo interior del periódico, sin recortar el corpus académico. */
+.water-memory{color:#173946}
+.water-memory-header{width:min(1370px,calc(100% - 6vw));padding:90px 0 56px;border-top:5px double #173946}
+.water-memory-header>span{display:inline-block;padding:8px 12px;color:#f3e4c4;background:#0d5068;font:900 11px Arial,sans-serif}
+.water-memory-header h2{max-width:1120px;letter-spacing:-.075em;font-size:clamp(55px,7.4vw,113px)}
+.water-memory-header>p{font:italic 400 clamp(20px,2.3vw,31px)/1.48 Georgia,serif;max-width:1000px}
+.water-memory-header nav{border-top:3px double #173946;border-bottom:1px solid #173946;padding:14px 0;gap:7px}
+.water-memory-header nav a{background:transparent;color:#0d5068;border:1px solid #0d5068;font:900 11px/1.3 Arial,sans-serif}
+.water-memory-header nav a:hover{background:#0d5068;color:#f3e4c4}
+.water-news-midline{width:min(1370px,calc(100% - 6vw));margin:0 auto 20px;display:flex;justify-content:space-between;gap:15px;align-items:center;padding:12px 0;border-top:4px double #173946;border-bottom:1px solid #173946;color:#173946}
+.water-news-midline span{font:900 10px/1.3 Arial,sans-serif;letter-spacing:.1em}
+.water-news-midline strong{font:italic 600 20px Georgia,serif;text-align:center}
+.water-memory-chapters{width:min(1370px,calc(100% - 6vw))}
+.water-memory-chapter{grid-template-columns:110px minmax(0,1fr);gap:35px;border-top:1px solid #466b77;padding:38px 0 54px}
+.water-memory-number strong{font:900 60px/1 Georgia,serif;color:#0b5d78}
+.water-memory-copy{max-width:none}
+.water-memory-copy>h2{font:900 clamp(33px,4.2vw,66px)/1.07 Georgia,serif;letter-spacing:-.055em;margin:0 0 24px;max-width:1050px}
+.water-memory-copy p,.water-memory-copy li{font:400 17px/1.78 Georgia,serif}
+.water-memory-chapter:nth-child(3n+2) .water-memory-copy{column-count:2;column-gap:40px;column-rule:1px solid #91a5a7}
+.water-memory-chapter:nth-child(3n+2) .water-memory-copy>h2{column-span:all}
+.water-memory-chapter:nth-child(3n+2) .water-memory-copy h3{break-after:avoid-column}
+.water-memory-chapter:nth-child(3n+2) .water-memory-copy p{break-inside:avoid-column}
+.water-memory-chapter:first-child .water-memory-copy>p:first-of-type::first-letter{float:left;font:900 67px/.85 Georgia,serif;padding:0 8px 0 0;color:#0d5b76}
+.water-memory-copy>h2::after{content:"";display:block;width:95px;height:6px;background:#0b637b;margin-top:20px}
+.water-memory-copy h3{break-after:avoid;letter-spacing:-.02em;color:#145267}
+.water-memory-note{background:#efdcaf;border-left:5px solid #a97829;padding:20px}
+.water-memory-table{column-span:all}
+.water-memory-end{width:min(1370px,calc(100% - 6vw));border-top:6px double #173946}
+@media(max-width:960px){.water-memory-chapter:nth-child(3n+2) .water-memory-copy{column-count:1}.water-news-midline{flex-wrap:wrap}.water-news-midline strong{text-align:left}}
+@media(max-width:760px){.water-memory-header,.water-memory-chapters,.water-memory-end,.water-news-midline{width:calc(100% - 36px)}.water-memory-chapter{grid-template-columns:1fr;gap:8px}.water-memory-number strong{font-size:30px}.water-memory-header h2{font-size:clamp(47px,10vw,74px)}.water-memory-copy p,.water-memory-copy li{font-size:16px}.water-memory-header nav a{flex:1 1 46%}}
+
+/* Evitar diagramas en una columna estrecha y no alterar el hash del enrutador. */
+.water-memory-chapter.has-diagram .water-memory-copy{column-count:1}
+.water-memory-header nav button{cursor:pointer;display:inline-block;padding:10px 13px;max-width:100%;color:#0d5068;background:transparent;border:1px solid #0d5068;font:900 11px/1.3 Arial,sans-serif;text-align:left}
+.water-memory-header nav button:hover,.water-memory-header nav button:focus-visible{background:#0d5068;color:#f3e4c4;outline:2px solid #b88e44;outline-offset:2px}
+@media(max-width:760px){.water-memory-header nav button{flex:1 1 46%}}
+
+/* Archivo de lectura progresiva. Respetar la memoria íntegra, sin sobrecargar la portada. */
+.water-memory-accordion{background:transparent;padding:0 0 40px}
+.water-memory-accordion .water-memory-header{width:min(1060px,calc(100% - 36px));padding:45px 0 24px;border-top:0}
+.water-memory-accordion .water-memory-header h2{font:800 clamp(35px,4.6vw,58px)/1.06 Georgia,serif;letter-spacing:-.04em}
+.water-memory-accordion .water-memory-header>p{font:400 17px/1.6 Georgia,serif}
+.water-memory-accordion .water-memory-chapters{width:min(1060px,calc(100% - 36px));margin:0 auto}
+.water-memory-accordion .water-memory-chapter{display:block;padding:0;margin:0;border-top:1px solid #4d737e;scroll-margin-top:22px}
+.water-memory-accordion .water-memory-chapter:last-child{border-bottom:1px solid #4d737e}
+.water-memory-accordion .water-memory-chapter-summary{display:grid;grid-template-columns:65px minmax(0,1fr) auto;align-items:center;gap:17px;min-height:95px;padding:15px 13px;cursor:pointer;list-style:none;background:#f5e7c9}
+.water-memory-accordion .water-memory-chapter-summary::-webkit-details-marker{display:none}
+.water-memory-accordion .water-memory-chapter:nth-child(2n) .water-memory-chapter-summary{background:#e5e8dd}
+.water-memory-accordion .water-memory-chapter-summary:hover,.water-memory-accordion .water-memory-chapter-summary:focus-visible{background:#d7e3de;outline:2px solid #0d5d76;outline-offset:-3px}
+.water-memory-accordion .water-memory-chapter-index{font:800 30px Georgia,serif;color:#0b6e87}
+.water-memory-accordion .water-memory-chapter-summary strong{font:800 clamp(17px,2.2vw,25px)/1.2 Georgia,serif;letter-spacing:-.015em}
+.water-memory-accordion .water-memory-chapter-action{font:900 10px Arial,sans-serif;letter-spacing:.08em;color:#0d5973}
+.water-memory-accordion .water-memory-chapter[open] .water-memory-chapter-action{font-size:0}
+.water-memory-accordion .water-memory-chapter[open] .water-memory-chapter-action::after{content:'CERRAR −';font-size:10px}
+.water-memory-accordion .water-memory-copy{padding:22px 27px 34px;max-width:none;column-count:1!important;column-rule:none!important;background:#f9efdc}
+.water-memory-accordion .water-memory-copy p,.water-memory-accordion .water-memory-copy li{font:400 16px/1.75 Georgia,serif}
+.water-memory-accordion .water-memory-copy h3{font-size:25px}
+.water-memory-accordion .water-memory-end{width:min(1060px,calc(100% - 36px));border-top:0;padding:20px 0;margin:0 auto}
+.water-memory-accordion .water-memory-end strong{font-size:23px}
+.water-memory-accordion .water-memory-end p{font-size:15px}
+@media(max-width:620px){.water-memory-accordion .water-memory-chapter-summary{grid-template-columns:42px minmax(0,1fr);gap:9px;padding:15px 11px}.water-memory-accordion .water-memory-chapter-summary strong{font-size:18px}.water-memory-accordion .water-memory-chapter-action{grid-column:2}.water-memory-accordion .water-memory-chapter-index{font-size:24px}.water-memory-accordion .water-memory-copy{padding:18px 15px 25px}}

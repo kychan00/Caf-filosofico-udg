@@ -1,0 +1,2857 @@
+.cafe-paper {
+  --paper: #f1eadb;
+  --paper-shadow: #ded2bf;
+  --ink: #161612;
+  --muted: #746b60;
+  --line: #b9ac97;
+  --accent: #b1482f;
+  min-height: 100vh;
+  padding: 26px clamp(18px, 4.5vw, 66px) 34px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 78% 4%, rgba(255,255,255,.5), transparent 19%),
+    repeating-linear-gradient(90deg, rgba(20,16,12,.012) 0 1px, transparent 1px 5px),
+    var(--paper);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.cafe-paper a {
+  color: inherit;
+}
+
+.cafe-paper-topline,
+.cafe-paper-masthead,
+.cafe-paper-heavy-rule,
+.cafe-paper-lead,
+.cafe-paper-headline,
+.cafe-paper-opening,
+.cafe-paper-tensions,
+.cafe-paper-next,
+.cafe-paper-footer {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cafe-paper-topline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.cafe-paper-topline a {
+  text-decoration: none;
+}
+
+.cafe-paper-topline span:last-child {
+  text-align: right;
+}
+
+.cafe-paper-masthead {
+  display: grid;
+  grid-template-columns: 150px 1fr 190px;
+  align-items: center;
+  gap: 26px;
+  padding: 16px 0 18px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-masthead > div:nth-child(2) {
+  text-align: center;
+}
+
+.cafe-paper-masthead p {
+  margin: 0 0 5px;
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .26em;
+}
+
+.cafe-paper-masthead h1 {
+  margin: 0;
+  font-size: clamp(3.5rem, 8vw, 8.2rem);
+  font-weight: 600;
+  line-height: .82;
+  letter-spacing: -.06em;
+}
+
+.cafe-paper-sideword {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-masthead blockquote {
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+  font-size: .8rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.cafe-paper-heavy-rule {
+  height: 8px;
+  border-bottom: 4px solid var(--ink);
+}
+
+.cafe-paper-lead {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(260px, .72fr);
+  gap: 0;
+  margin-top: 14px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-concept {
+  position: relative;
+  min-height: 450px;
+  overflow: hidden;
+  border-right: 1px solid var(--ink);
+  background:
+    linear-gradient(160deg, transparent 0 48%, rgba(0,0,0,.04) 48% 51%, transparent 51%),
+    #d8d0c0;
+}
+
+.cafe-paper-concept::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 7px, rgba(0,0,0,.025) 7px 8px),
+    radial-gradient(circle at 75% 20%, rgba(177,72,47,.95) 0 90px, transparent 91px);
+  mix-blend-mode: multiply;
+}
+
+.cafe-paper-world {
+  position: absolute;
+  left: 8%;
+  top: 13%;
+  width: min(44vw, 420px);
+  aspect-ratio: 1;
+  border: 8px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: inset -30px -20px 0 rgba(0,0,0,.07);
+}
+
+.cafe-paper-world::before,
+.cafe-paper-world::after {
+  content: '';
+  position: absolute;
+  border: 4px solid var(--ink);
+  border-radius: 50%;
+}
+
+.cafe-paper-world::before {
+  width: 34%;
+  height: 72%;
+  left: 31%;
+  top: 11%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.cafe-paper-world::after {
+  width: 82%;
+  height: 30%;
+  left: 7%;
+  top: 34%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.cafe-paper-orbit {
+  position: absolute;
+  border: 1px solid rgba(22,22,18,.25);
+  border-radius: 50%;
+}
+
+.orbit-a {
+  width: 510px;
+  height: 510px;
+  left: -55px;
+  top: 20px;
+}
+
+.orbit-b {
+  width: 340px;
+  height: 180px;
+  left: 90px;
+  top: 145px;
+  transform: rotate(-18deg);
+}
+
+.crack {
+  position: absolute;
+  width: 3px;
+  background: var(--ink);
+  transform-origin: top;
+}
+
+.crack-a {
+  height: 120px;
+  left: 54%;
+  top: 8%;
+  transform: rotate(17deg);
+}
+
+.crack-b {
+  height: 85px;
+  left: 49%;
+  top: 35%;
+  transform: rotate(-28deg);
+}
+
+.crack-c {
+  height: 110px;
+  left: 60%;
+  top: 52%;
+  transform: rotate(36deg);
+}
+
+.cafe-paper-skyline {
+  position: absolute;
+  left: 34%;
+  right: 8%;
+  bottom: 0;
+  display: flex;
+  align-items: end;
+  gap: 5px;
+  height: 58%;
+}
+
+.cafe-paper-skyline i {
+  display: block;
+  flex: 1;
+  background: var(--ink);
+  border-top: 3px solid var(--paper);
+}
+
+.cafe-paper-skyline i:nth-child(1) { height: 34%; }
+.cafe-paper-skyline i:nth-child(2) { height: 48%; }
+.cafe-paper-skyline i:nth-child(3) { height: 64%; }
+.cafe-paper-skyline i:nth-child(4) { height: 82%; }
+.cafe-paper-skyline i:nth-child(5) { height: 54%; }
+.cafe-paper-skyline i:nth-child(6) { height: 71%; }
+.cafe-paper-skyline i:nth-child(7) { height: 42%; }
+
+.cafe-paper-concept > p {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  z-index: 2;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  line-height: 1.4;
+}
+
+.cafe-paper-quote {
+  padding: clamp(24px, 3vw, 44px);
+}
+
+.cafe-paper-quote > span,
+.cafe-paper-section-label,
+.cafe-paper-tensions header > span,
+.cafe-paper-next span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-quote blockquote {
+  margin: 18px 0;
+  color: var(--accent);
+  font-size: clamp(1.8rem, 3.2vw, 3.2rem);
+  font-style: italic;
+  line-height: 1.03;
+}
+
+.cafe-paper-quote p {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.cafe-paper-headline {
+  padding: 24px 0 16px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-headline h2 {
+  max-width: 1320px;
+  margin: 0;
+  font-size: clamp(3.5rem, 7.4vw, 8rem);
+  font-weight: 500;
+  line-height: .88;
+  letter-spacing: -.055em;
+}
+
+.cafe-paper-headline > p {
+  margin: 22px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: clamp(.9rem, 1.4vw, 1.05rem);
+}
+
+.cafe-paper-opening {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(260px, .65fr);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-copy {
+  padding: 40px clamp(26px, 5vw, 72px) 50px 0;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-opening h3,
+.cafe-paper-tensions h3,
+.cafe-paper-next h3 {
+  margin: 8px 0 20px;
+  font-size: clamp(2.2rem, 4vw, 4.4rem);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+
+.cafe-paper-opening-copy p {
+  max-width: 900px;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.cafe-paper-dropcap::first-letter {
+  float: left;
+  margin: .03em .1em 0 0;
+  color: var(--accent);
+  font-size: 5.2rem;
+  line-height: .72;
+}
+
+.cafe-paper-participants {
+  padding: 40px 0 50px clamp(24px, 3vw, 48px);
+}
+
+.cafe-paper-participants > span {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-participants > div {
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+}
+
+.cafe-paper-participants small {
+  display: block;
+  margin-top: 20px;
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: .68rem;
+  line-height: 1.45;
+}
+
+.cafe-paper-tensions {
+  padding: 46px 0 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-tensions header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  align-items: start;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-tensions h3 {
+  margin-top: 0;
+}
+
+.cafe-paper-tension-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-tension-grid article {
+  min-height: 250px;
+  padding: 24px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-tension-grid article:nth-child(3n) {
+  border-right: 0;
+}
+
+.cafe-paper-tension-grid article:nth-last-child(-n + 3) {
+  border-bottom: 0;
+}
+
+.cafe-paper-tension-grid article > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.cafe-paper-tension-grid h4 {
+  margin: 28px 0 12px;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.cafe-paper-tension-grid p {
+  margin: 0;
+  color: #3f392f;
+  line-height: 1.55;
+}
+
+.cafe-paper-next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 48px 0;
+  border-bottom: 4px double var(--ink);
+}
+
+.cafe-paper-next h3 {
+  margin-bottom: 0;
+}
+
+.cafe-paper-next > p {
+  margin: 26px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.cafe-paper-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 15px;
+  font-family: Arial, sans-serif;
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+@media (max-width: 900px) {
+  .cafe-paper-topline {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cafe-paper-topline span:nth-child(2) {
+    display: none;
+  }
+
+  .cafe-paper-masthead {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cafe-paper-sideword,
+  .cafe-paper-masthead blockquote {
+    display: none;
+  }
+
+  .cafe-paper-lead,
+  .cafe-paper-opening {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-concept,
+  .cafe-paper-opening-copy {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-participants {
+    padding-left: 0;
+  }
+
+  .cafe-paper-tensions header,
+  .cafe-paper-next {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-tension-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cafe-paper-tension-grid article:nth-child(3n) {
+    border-right: 1px solid var(--ink);
+  }
+
+  .cafe-paper-tension-grid article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-tension-grid article:nth-last-child(-n + 3) {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-tension-grid article:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .cafe-paper {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .cafe-paper-concept {
+    min-height: 330px;
+  }
+
+  .cafe-paper-world {
+    width: 250px;
+  }
+
+  .cafe-paper-tension-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-tension-grid article,
+  .cafe-paper-tension-grid article:nth-child(3n),
+  .cafe-paper-tension-grid article:nth-child(2n) {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-tension-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .cafe-paper-footer {
+    flex-direction: column;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - PHASE 2
+   ============================================================ */
+
+.cafe-paper-opening-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 28px;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-points p {
+  margin: 0;
+  padding: 14px 16px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: Arial, sans-serif;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.cafe-paper-dialogue {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 46px 0 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-dialogue > header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  align-items: start;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-dialogue > header > span,
+.cafe-paper-breakout span,
+.cafe-paper-historical aside > span,
+.cafe-paper-questions header > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-dialogue > header h3,
+.cafe-paper-breakout h3,
+.cafe-paper-historical h3,
+.cafe-paper-questions h3 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+
+.cafe-paper-dialogue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-dialogue-grid article {
+  min-height: 340px;
+  padding: 22px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-dialogue-grid article:nth-child(4n) {
+  border-right: 0;
+}
+
+.cafe-paper-dialogue-grid article:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.cafe-paper-dialogue-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-family: Arial, sans-serif;
+}
+
+.cafe-paper-dialogue-meta span {
+  color: var(--accent);
+  font-size: .65rem;
+  font-weight: 900;
+}
+
+.cafe-paper-dialogue-meta small {
+  color: var(--muted);
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cafe-paper-dialogue-kicker {
+  margin: 20px 0 9px;
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.cafe-paper-dialogue-grid h4 {
+  margin: 0 0 16px;
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.02;
+}
+
+.cafe-paper-dialogue-grid article > p:last-child {
+  margin: 0;
+  color: #403a31;
+  font-size: .96rem;
+  line-height: 1.55;
+}
+
+.cafe-paper-breakout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 28px;
+  align-items: center;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 42px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-breakout-number {
+  color: var(--accent);
+  font-size: clamp(5rem, 10vw, 10rem);
+  line-height: .7;
+  letter-spacing: -.07em;
+}
+
+.cafe-paper-framework {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1480px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-framework article {
+  min-height: 250px;
+  padding: 24px;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-framework article:last-child {
+  border-right: 0;
+}
+
+.cafe-paper-framework article > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .65rem;
+  font-weight: 900;
+}
+
+.cafe-paper-framework h4 {
+  margin: 28px 0 12px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.cafe-paper-framework p {
+  margin: 0;
+  color: #403a31;
+  line-height: 1.55;
+}
+
+.cafe-paper-historical {
+  display: grid;
+  grid-template-columns: 1.55fr .8fr;
+  max-width: 1480px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-historical > article {
+  padding: 46px clamp(28px, 5vw, 70px) 50px 0;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-historical > article p {
+  max-width: 900px;
+  font-size: 1.05rem;
+  line-height: 1.68;
+}
+
+.cafe-paper-historical aside {
+  padding: 46px 0 50px clamp(24px, 3vw, 46px);
+}
+
+.cafe-paper-historical aside h4 {
+  margin: 8px 0 18px;
+  color: var(--accent);
+  font-size: clamp(2rem, 3vw, 3.4rem);
+  font-weight: 500;
+}
+
+.cafe-paper-historical aside p {
+  line-height: 1.6;
+}
+
+.cafe-paper-questions {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 48px 0 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-questions header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-questions > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-questions article {
+  min-height: 150px;
+  padding: 20px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-questions article:nth-child(4n) {
+  border-right: 0;
+}
+
+.cafe-paper-questions article:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.cafe-paper-questions article > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 900;
+}
+
+.cafe-paper-questions article p {
+  margin: 26px 0 0;
+  font-size: 1rem;
+  line-height: 1.42;
+}
+
+@media (max-width: 1020px) {
+  .cafe-paper-dialogue-grid,
+  .cafe-paper-framework,
+  .cafe-paper-questions > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cafe-paper-dialogue-grid article:nth-child(4n),
+  .cafe-paper-framework article:last-child,
+  .cafe-paper-questions article:nth-child(4n) {
+    border-right: 1px solid var(--ink);
+  }
+
+  .cafe-paper-dialogue-grid article:nth-child(2n),
+  .cafe-paper-framework article:nth-child(2n),
+  .cafe-paper-questions article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-dialogue-grid article:nth-last-child(-n + 4),
+  .cafe-paper-questions article:nth-last-child(-n + 4) {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-dialogue-grid article:nth-last-child(-n + 2),
+  .cafe-paper-questions article:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .cafe-paper-framework article:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ink);
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-opening-points,
+  .cafe-paper-dialogue-grid,
+  .cafe-paper-framework,
+  .cafe-paper-questions > div,
+  .cafe-paper-historical,
+  .cafe-paper-breakout,
+  .cafe-paper-dialogue > header,
+  .cafe-paper-questions header {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-dialogue-grid article,
+  .cafe-paper-dialogue-grid article:nth-child(2n),
+  .cafe-paper-framework article,
+  .cafe-paper-framework article:nth-child(2n),
+  .cafe-paper-questions article,
+  .cafe-paper-questions article:nth-child(2n) {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-dialogue-grid article:last-child,
+  .cafe-paper-framework article:last-child,
+  .cafe-paper-questions article:last-child {
+    border-bottom: 0;
+  }
+
+  .cafe-paper-historical > article {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-historical aside {
+    padding-left: 0;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - PHASE 3
+   ============================================================ */
+
+.cafe-paper-global,
+.cafe-paper-naturalized,
+.cafe-paper-market,
+.cafe-paper-values,
+.cafe-paper-after,
+.cafe-paper-close {
+  max-width: 1480px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-global,
+.cafe-paper-naturalized,
+.cafe-paper-values,
+.cafe-paper-after {
+  padding-top: 48px;
+}
+
+.cafe-paper-global > header,
+.cafe-paper-values > header,
+.cafe-paper-after > header {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 30px;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-global > header > span,
+.cafe-paper-naturalized-head > span,
+.cafe-paper-values > header > span,
+.cafe-paper-after > header > span,
+.cafe-paper-market > article > span,
+.cafe-paper-market > aside > span,
+.cafe-paper-close span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-global h3,
+.cafe-paper-naturalized h3,
+.cafe-paper-values h3,
+.cafe-paper-after h3,
+.cafe-paper-market h3,
+.cafe-paper-close h3 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+
+.cafe-paper-global-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr .75fr;
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-global-grid > * {
+  min-height: 260px;
+  padding: 24px;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-global-grid > *:last-child {
+  border-right: 0;
+}
+
+.cafe-paper-global-grid small,
+.cafe-paper-values-grid small {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.cafe-paper-global-grid h4,
+.cafe-paper-values-grid h4,
+.cafe-paper-after-grid h4,
+.cafe-paper-naturalized-grid h4 {
+  margin: 26px 0 13px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.cafe-paper-global-grid p,
+.cafe-paper-values-grid p,
+.cafe-paper-after-grid p,
+.cafe-paper-naturalized-grid p,
+.cafe-paper-market p,
+.cafe-paper-close p {
+  margin: 0;
+  color: #403a31;
+  line-height: 1.58;
+}
+
+.cafe-paper-global-grid aside {
+  background: rgba(177,72,47,.08);
+}
+
+.cafe-paper-global-grid aside > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-global-grid blockquote {
+  margin: 28px 0 0;
+  color: var(--accent);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-style: italic;
+  line-height: 1.02;
+}
+
+.cafe-paper-naturalized-head {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-naturalized-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-naturalized-grid article {
+  min-height: 280px;
+  padding: 24px;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-naturalized-grid article:last-child {
+  border-right: 0;
+}
+
+.cafe-paper-naturalized-grid article > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .65rem;
+  font-weight: 900;
+}
+
+.cafe-paper-market {
+  display: grid;
+  grid-template-columns: 1.45fr .75fr;
+}
+
+.cafe-paper-market > article {
+  padding: 46px clamp(28px, 5vw, 70px) 50px 0;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-market > article p {
+  max-width: 900px;
+  margin-top: 18px;
+  font-size: 1.04rem;
+}
+
+.cafe-paper-market > aside {
+  padding: 46px 0 50px clamp(24px, 3vw, 46px);
+}
+
+.cafe-paper-market > aside p {
+  margin-top: 24px;
+  color: var(--accent);
+  font-size: 1.65rem;
+  font-style: italic;
+  line-height: 1.15;
+}
+
+.cafe-paper-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-values-grid article {
+  min-height: 260px;
+  padding: 24px;
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-values-grid article:last-child {
+  border-right: 0;
+}
+
+.cafe-paper-after > header {
+  grid-template-columns: 180px minmax(0, 1fr) minmax(250px, .6fr);
+}
+
+.cafe-paper-after > header > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+.cafe-paper-after-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-after-grid article {
+  min-height: 285px;
+  padding: 22px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-after-grid article:nth-child(4n) {
+  border-right: 0;
+}
+
+.cafe-paper-after-grid article:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.cafe-paper-after-grid article > span {
+  color: var(--accent);
+  font-family: Arial, sans-serif;
+  font-size: .58rem;
+  font-weight: 900;
+  letter-spacing: .11em;
+}
+
+.cafe-paper-close {
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 40px;
+  align-items: end;
+  padding: 42px 0;
+  border-bottom: 4px double var(--ink);
+}
+
+.cafe-paper-close p {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 1000px) {
+  .cafe-paper-global-grid,
+  .cafe-paper-naturalized-grid,
+  .cafe-paper-after-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cafe-paper-global-grid > *:nth-child(2),
+  .cafe-paper-naturalized-grid article:nth-child(2n),
+  .cafe-paper-after-grid article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-global-grid > *:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--ink);
+  }
+
+  .cafe-paper-values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-values-grid article {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-values-grid article:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-global > header,
+  .cafe-paper-naturalized-head,
+  .cafe-paper-after > header,
+  .cafe-paper-global-grid,
+  .cafe-paper-naturalized-grid,
+  .cafe-paper-after-grid,
+  .cafe-paper-market,
+  .cafe-paper-close {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-global-grid > *,
+  .cafe-paper-naturalized-grid article,
+  .cafe-paper-after-grid article,
+  .cafe-paper-after-grid article:nth-child(2n),
+  .cafe-paper-global-grid > *:nth-child(2) {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-global-grid > *:last-child,
+  .cafe-paper-naturalized-grid article:last-child,
+  .cafe-paper-after-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .cafe-paper-global-grid > *:last-child {
+    grid-column: auto;
+  }
+
+  .cafe-paper-market > article {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-market > aside {
+    padding-left: 0;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - PHASE 4 EDITORIAL POLISH
+   ============================================================ */
+
+.cafe-paper {
+  --measure: 72ch;
+  --display-serif: Georgia, 'Times New Roman', serif;
+  --utility-sans: Arial, Helvetica, sans-serif;
+}
+
+.cafe-paper::selection,
+.cafe-paper *::selection {
+  color: #fffaf0;
+  background: #a64932;
+}
+
+.cafe-paper-topline,
+.cafe-paper-masthead,
+.cafe-paper-index {
+  position: relative;
+  z-index: 2;
+}
+
+.cafe-paper-index {
+  display: grid;
+  grid-template-columns: auto repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  max-width: 1480px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--ink);
+  background: rgba(241, 234, 219, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.cafe-paper-index > span,
+.cafe-paper-index button {
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  color: var(--ink);
+  background: transparent;
+  font-family: var(--utility-sans);
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.cafe-paper-index > span {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+}
+
+.cafe-paper-index button {
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    background 120ms ease;
+}
+
+.cafe-paper-index button:last-child {
+  border-right: 0;
+}
+
+.cafe-paper-index button:hover {
+  color: #fff9ef;
+  background: var(--ink);
+}
+
+.cafe-paper-index button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.cafe-paper-headline h2 {
+  text-wrap: balance;
+}
+
+.cafe-paper-headline > p {
+  max-width: 1080px;
+  line-height: 1.45;
+}
+
+.cafe-paper-opening-copy > p,
+.cafe-paper-historical > article p,
+.cafe-paper-market > article p,
+.cafe-paper-next > p,
+.cafe-paper-close > p {
+  max-width: var(--measure);
+}
+
+.cafe-paper-dialogue-grid article,
+.cafe-paper-framework article,
+.cafe-paper-naturalized-grid article,
+.cafe-paper-values-grid article,
+.cafe-paper-after-grid article,
+.cafe-paper-questions article {
+  position: relative;
+  isolation: isolate;
+}
+
+.cafe-paper-dialogue-grid article::after,
+.cafe-paper-framework article::after,
+.cafe-paper-naturalized-grid article::after,
+.cafe-paper-values-grid article::after,
+.cafe-paper-after-grid article::after {
+  content: '';
+  position: absolute;
+  inset: auto 18px 12px auto;
+  width: 34px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .4;
+}
+
+.cafe-paper-dialogue-grid article:nth-child(even),
+.cafe-paper-naturalized-grid article:nth-child(even),
+.cafe-paper-after-grid article:nth-child(even) {
+  background: rgba(255, 255, 255, .12);
+}
+
+.cafe-paper-dialogue-grid h4,
+.cafe-paper-naturalized-grid h4,
+.cafe-paper-values-grid h4,
+.cafe-paper-after-grid h4,
+.cafe-paper-framework h4 {
+  text-wrap: balance;
+}
+
+.cafe-paper-dialogue-grid article > p:last-child,
+.cafe-paper-naturalized-grid p,
+.cafe-paper-values-grid p,
+.cafe-paper-after-grid p,
+.cafe-paper-framework p,
+.cafe-paper-global-grid p {
+  text-wrap: pretty;
+}
+
+.cafe-paper-quote {
+  position: relative;
+}
+
+.cafe-paper-quote::before {
+  content: '“';
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  color: rgba(177, 72, 47, .14);
+  font-family: var(--display-serif);
+  font-size: 8rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.cafe-paper-quote blockquote {
+  position: relative;
+  z-index: 1;
+}
+
+.cafe-paper-breakout {
+  position: relative;
+  overflow: hidden;
+}
+
+.cafe-paper-breakout::after {
+  content: 'CAFÉ';
+  position: absolute;
+  right: -1.8rem;
+  bottom: -2.5rem;
+  color: rgba(22, 22, 18, .035);
+  font-family: var(--utility-sans);
+  font-size: clamp(6rem, 18vw, 18rem);
+  font-weight: 900;
+  letter-spacing: -.08em;
+  pointer-events: none;
+}
+
+.cafe-paper-breakout > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cafe-paper-global-grid aside,
+.cafe-paper-market > aside {
+  position: relative;
+  overflow: hidden;
+}
+
+.cafe-paper-global-grid aside::after,
+.cafe-paper-market > aside::after {
+  content: '';
+  position: absolute;
+  right: -55px;
+  bottom: -55px;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgba(177, 72, 47, .25);
+  border-radius: 50%;
+}
+
+.cafe-paper-questions article {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.cafe-paper-questions article:nth-child(odd) {
+  background: rgba(177, 72, 47, .045);
+}
+
+.cafe-paper-questions article p {
+  align-self: end;
+  font-size: 1.06rem;
+}
+
+.cafe-paper-after {
+  position: relative;
+}
+
+.cafe-paper-after > header {
+  border-top: 4px double var(--ink);
+  padding-top: 28px;
+}
+
+.cafe-paper-after-grid article > span {
+  display: inline-block;
+  padding: 4px 6px;
+  border: 1px solid rgba(177, 72, 47, .24);
+}
+
+.cafe-paper-close {
+  position: relative;
+}
+
+.cafe-paper-close::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 68px;
+  height: 5px;
+  background: var(--accent);
+}
+
+.cafe-paper-footer {
+  padding-bottom: 10px;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-index {
+    position: sticky;
+    top: 0;
+  }
+}
+
+@media (max-width: 1099px) {
+  .cafe-paper-index {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cafe-paper-index > span {
+    grid-column: 1 / -1;
+    min-height: 34px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cafe-paper-index button:nth-of-type(3n) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-index {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .cafe-paper-index > span {
+    display: none;
+  }
+
+  .cafe-paper-index button {
+    flex: 0 0 auto;
+    min-width: 132px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+
+  .cafe-paper-index button:nth-of-type(3n) {
+    border-right: 1px solid var(--line);
+  }
+
+  .cafe-paper-index button:last-child {
+    border-right: 0;
+  }
+
+  .cafe-paper-headline h2 {
+    font-size: clamp(2.85rem, 13vw, 4.5rem);
+  }
+
+  .cafe-paper-dialogue-grid article,
+  .cafe-paper-naturalized-grid article,
+  .cafe-paper-values-grid article,
+  .cafe-paper-after-grid article,
+  .cafe-paper-framework article {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .cafe-paper-quote::before {
+    font-size: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cafe-paper-index button,
+  .calendar-cafe-event {
+    transition: none;
+  }
+
+  html:has(.cafe-paper) {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - PHASE 5 SOURCE AUDIT
+   ============================================================ */
+
+.cafe-paper-open-issues,
+.cafe-paper-source-note {
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cafe-paper-open-issues {
+  padding-top: 48px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-open-issues > header {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 30px;
+  padding-bottom: 28px;
+}
+
+.cafe-paper-open-issues > header > span,
+.cafe-paper-source-note > span {
+  color: var(--accent);
+  font-family: var(--utility-sans);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-open-issues h3 {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+
+.cafe-paper-open-issues-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.cafe-paper-open-issues-grid article {
+  min-height: 230px;
+  padding: 22px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-open-issues-grid article:nth-child(4n) {
+  border-right: 0;
+}
+
+.cafe-paper-open-issues-grid article:nth-last-child(-n + 4) {
+  border-bottom: 0;
+}
+
+.cafe-paper-open-issues-grid article > span {
+  color: var(--accent);
+  font-family: var(--utility-sans);
+  font-size: .64rem;
+  font-weight: 900;
+}
+
+.cafe-paper-open-issues-grid h4 {
+  margin: 26px 0 12px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.cafe-paper-open-issues-grid p {
+  margin: 0;
+  color: #403a31;
+  line-height: 1.56;
+}
+
+.cafe-paper-source-note {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 30px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-source-note p {
+  max-width: 78ch;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--utility-sans);
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 1000px) {
+  .cafe-paper-open-issues-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cafe-paper-open-issues-grid article:nth-child(4n) {
+    border-right: 1px solid var(--ink);
+  }
+
+  .cafe-paper-open-issues-grid article:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-open-issues-grid article:nth-last-child(-n + 4) {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-open-issues-grid article:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-open-issues > header,
+  .cafe-paper-source-note,
+  .cafe-paper-open-issues-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-open-issues-grid article,
+  .cafe-paper-open-issues-grid article:nth-child(2n),
+  .cafe-paper-open-issues-grid article:nth-child(4n) {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-open-issues-grid article:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 01
+   ============================================================ */
+
+.cafe-paper-opening-image {
+  grid-column: 1 / -1;
+  margin: 0 0 34px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: saturate(.9) contrast(1.02);
+}
+
+.cafe-paper-opening-image figcaption {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  min-height: 44px;
+  border-top: 1px solid var(--ink);
+  font-family: var(--utility-sans);
+}
+
+.cafe-paper-opening-image figcaption span {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-opening-image figcaption p {
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-opening-image {
+    position: relative;
+  }
+
+  .cafe-paper-opening-image::after {
+    content: '01';
+    position: absolute;
+    right: 22px;
+    top: 18px;
+    color: rgba(245, 239, 226, .86);
+    font-family: var(--utility-sans);
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -.06em;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .18);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-opening-image {
+    margin-bottom: 24px;
+  }
+
+  .cafe-paper-opening-image img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 01 FRAME FIX
+   ============================================================ */
+
+.cafe-paper-opening-image {
+  grid-column: auto;
+  width: min(100%, 520px);
+  margin: 0 auto 30px;
+  padding: 10px;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(rgba(22, 22, 18, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 22, 18, .025) 1px, transparent 1px),
+    #eee5d3;
+  background-size: 7px 7px;
+  box-shadow:
+    inset 0 0 0 4px #f5eedf,
+    inset 0 0 0 5px var(--ink);
+}
+
+.cafe-paper-opening-image-mat {
+  padding: 8px;
+  border: 1px solid rgba(22, 22, 18, .5);
+  background: #d9cfbb;
+}
+
+.cafe-paper-opening-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border: 1px solid var(--ink);
+  filter: saturate(.9) contrast(1.02);
+}
+
+.cafe-paper-opening-image figcaption {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  min-height: 40px;
+  margin-top: 8px;
+  border: 1px solid var(--ink);
+  background: #f3ecdc;
+}
+
+.cafe-paper-opening-image figcaption span {
+  border-right: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-image figcaption p {
+  padding: 9px 12px;
+  font-size: .58rem;
+}
+
+@media (min-width: 900px) {
+  .cafe-paper-opening {
+    align-items: start;
+  }
+
+  .cafe-paper-opening-image {
+    width: min(100%, 460px);
+    justify-self: start;
+  }
+
+  .cafe-paper-opening-image::after {
+    right: 20px;
+    top: 16px;
+    font-size: 3.6rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-opening-image {
+    width: min(100%, 380px);
+    padding: 8px;
+  }
+
+  .cafe-paper-opening-image img {
+    aspect-ratio: auto;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - APERTURA LAYOUT RECOMPOSITION
+   ============================================================ */
+
+.cafe-paper-opening {
+  display: grid;
+  grid-template-columns: minmax(320px, .9fr) minmax(420px, 1.1fr);
+  grid-template-areas:
+    "figure copy"
+    "voices voices";
+  column-gap: clamp(42px, 6vw, 88px);
+  row-gap: 34px;
+  align-items: start;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 34px 0 42px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-image {
+  grid-area: figure;
+  width: min(100%, 500px);
+  margin: 0;
+  justify-self: end;
+  align-self: start;
+}
+
+.cafe-paper-opening-copy {
+  grid-area: copy;
+  width: 100%;
+  max-width: 650px;
+  padding: 0;
+  border: 0;
+}
+
+.cafe-paper-opening-copy .cafe-paper-section-label {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.cafe-paper-opening-copy h3 {
+  max-width: 9.2ch;
+  margin: 0 0 18px;
+  font-size: clamp(3rem, 4.7vw, 5.35rem);
+  font-weight: 500;
+  line-height: .88;
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+
+.cafe-paper-opening-copy .cafe-paper-dropcap {
+  max-width: 34em;
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.cafe-paper-opening-points {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 22px;
+}
+
+.cafe-paper-opening-points p {
+  min-height: 92px;
+  padding: 13px 14px;
+  font-size: .72rem;
+  line-height: 1.38;
+}
+
+.cafe-paper-participants {
+  grid-area: voices;
+  display: grid;
+  grid-template-columns: 180px repeat(4, minmax(0, 1fr));
+  gap: 0;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-participants > span {
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-family: var(--utility-sans);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .15em;
+  line-height: 1.2;
+}
+
+.cafe-paper-participants > div {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--utility-sans);
+  font-size: .67rem;
+  font-weight: 750;
+  letter-spacing: .035em;
+}
+
+.cafe-paper-participants > div:nth-of-type(4n) {
+  border-right: 0;
+}
+
+.cafe-paper-participants > div:nth-of-type(n + 5) {
+  border-bottom: 0;
+}
+
+.cafe-paper-participants > small {
+  grid-column: 2 / -1;
+  padding: 10px 12px;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  font-family: var(--utility-sans);
+  font-size: .58rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1000px) {
+  .cafe-paper-opening {
+    grid-template-columns: minmax(280px, .85fr) minmax(360px, 1.15fr);
+    column-gap: 34px;
+  }
+
+  .cafe-paper-opening-copy h3 {
+    font-size: clamp(2.7rem, 6vw, 4.4rem);
+  }
+
+  .cafe-paper-participants {
+    grid-template-columns: 150px repeat(2, minmax(0, 1fr));
+  }
+
+  .cafe-paper-participants > span {
+    grid-row: 1 / span 4;
+  }
+
+  .cafe-paper-participants > div:nth-of-type(4n) {
+    border-right: 1px solid var(--line);
+  }
+
+  .cafe-paper-participants > div:nth-of-type(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-participants > div:nth-of-type(n + 5) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cafe-paper-participants > div:nth-last-of-type(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-opening {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "figure"
+      "copy"
+      "voices";
+    row-gap: 28px;
+    padding-top: 24px;
+  }
+
+  .cafe-paper-opening-image {
+    width: min(100%, 440px);
+    justify-self: center;
+  }
+
+  .cafe-paper-opening-copy {
+    max-width: none;
+  }
+
+  .cafe-paper-opening-copy h3 {
+    max-width: 11ch;
+    font-size: clamp(3rem, 13vw, 4.4rem);
+  }
+
+  .cafe-paper-opening-points {
+    grid-template-columns: 1fr;
+  }
+
+  .cafe-paper-opening-points p {
+    min-height: auto;
+  }
+
+  .cafe-paper-participants {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cafe-paper-participants > span {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 38px;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .cafe-paper-participants > div {
+    min-height: 36px;
+  }
+
+  .cafe-paper-participants > div:nth-of-type(2n) {
+    border-right: 0;
+  }
+
+  .cafe-paper-participants > small {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - APERTURA V2
+   ============================================================ */
+
+.cafe-paper-opening {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
+  grid-template-areas:
+    "figure copy"
+    "voices copy";
+  column-gap: clamp(36px, 5vw, 72px);
+  row-gap: 22px;
+  align-items: start;
+  padding: 34px 0 44px;
+}
+
+.cafe-paper-opening-image {
+  grid-area: figure;
+  width: min(100%, 430px);
+  margin: 0;
+  justify-self: start;
+}
+
+.cafe-paper-opening-copy {
+  grid-area: copy;
+  max-width: 760px;
+  padding: 0 0 0 clamp(18px, 2vw, 28px);
+  border-left: 1px solid var(--ink);
+}
+
+.cafe-paper-opening-copy h3 {
+  max-width: 13ch;
+  margin: 0 0 20px;
+  font-size: clamp(3.2rem, 5.2vw, 5.7rem);
+  line-height: .92;
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+
+.cafe-paper-opening-copy .cafe-paper-dropcap {
+  max-width: 48em;
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.cafe-paper-opening-points {
+  margin-top: 24px;
+  border-top: 1px solid var(--ink);
+  border-left: 0;
+}
+
+.cafe-paper-opening-points p {
+  min-height: 78px;
+  padding: 13px 14px;
+  border-left: 1px solid var(--ink);
+}
+
+.cafe-paper-participants {
+  grid-area: voices;
+  display: block;
+  width: min(100%, 430px);
+  margin: 0;
+  border: 1px solid var(--ink);
+  background: rgba(255,255,255,.08);
+}
+
+.cafe-paper-participants > span {
+  display: block;
+  padding: 10px 12px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  color: var(--accent);
+  font-family: var(--utility-sans);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+}
+
+.cafe-paper-participants > div {
+  display: inline-flex;
+  width: 50%;
+  min-height: 34px;
+  padding: 8px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--utility-sans);
+  font-size: .64rem;
+  font-weight: 700;
+}
+
+.cafe-paper-participants > div:nth-of-type(odd) {
+  border-right: 1px solid var(--line);
+}
+
+.cafe-paper-participants > div:nth-last-of-type(-n + 2) {
+  border-bottom: 0;
+}
+
+.cafe-paper-participants > small {
+  display: block;
+  padding: 9px 10px;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  font-family: var(--utility-sans);
+  font-size: .55rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 1180px) {
+  .cafe-paper-opening-image {
+    transform: translateY(8px);
+  }
+
+  .cafe-paper-opening-copy h3 {
+    font-size: clamp(3.8rem, 5.5vw, 6.2rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .cafe-paper-opening {
+    grid-template-columns: minmax(250px, .85fr) minmax(0, 1.15fr);
+    column-gap: 28px;
+  }
+
+  .cafe-paper-opening-copy {
+    padding-left: 18px;
+  }
+
+  .cafe-paper-opening-copy h3 {
+    font-size: clamp(3rem, 7vw, 4.6rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-opening {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "figure"
+      "copy"
+      "voices";
+    row-gap: 26px;
+  }
+
+  .cafe-paper-opening-image,
+  .cafe-paper-participants {
+    width: min(100%, 460px);
+    justify-self: center;
+  }
+
+  .cafe-paper-opening-copy {
+    max-width: none;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .cafe-paper-opening-copy h3 {
+    max-width: 12ch;
+    font-size: clamp(3rem, 13vw, 4.8rem);
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 02 INTERVENCIONES
+   ============================================================ */
+
+.cafe-paper-dialogue-image {
+  width: min(100%, 1120px);
+  margin: 0 auto 34px;
+  padding: 10px;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(rgba(22, 22, 18, .028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 22, 18, .022) 1px, transparent 1px),
+    #eee5d3;
+  background-size: 8px 8px;
+  box-shadow:
+    inset 0 0 0 4px #f5eedf,
+    inset 0 0 0 5px var(--ink);
+}
+
+.cafe-paper-dialogue-image-frame {
+  padding: 7px;
+  border: 1px solid rgba(22, 22, 18, .5);
+  background: #d9cfbb;
+}
+
+.cafe-paper-dialogue-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--ink);
+  filter: saturate(.92) contrast(1.02);
+}
+
+.cafe-paper-dialogue-image figcaption {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  min-height: 40px;
+  margin-top: 8px;
+  border: 1px solid var(--ink);
+  background: #f3ecdc;
+  font-family: var(--utility-sans);
+}
+
+.cafe-paper-dialogue-image figcaption span {
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-size: .65rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-dialogue-image figcaption p {
+  margin: 0;
+  padding: 9px 12px;
+  color: var(--muted);
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-dialogue-image {
+    width: min(100%, 1180px);
+  }
+
+  .cafe-paper-dialogue-image img {
+    aspect-ratio: 16 / 8.8;
+  }
+}
+
+@media (max-width: 720px) {
+  .cafe-paper-dialogue-image {
+    width: min(100%, 520px);
+    margin-bottom: 26px;
+    padding: 8px;
+  }
+
+  .cafe-paper-dialogue-image img {
+    max-height: none;
+    aspect-ratio: auto;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 03 CUATRO EJES
+   ============================================================ */
+
+.cafe-paper-axes-image {
+  position: relative;
+  max-width: 1480px;
+  margin: -1px auto 0;
+  padding: 0 0 42px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.cafe-paper-axes-image-shell {
+  position: relative;
+  padding: 12px;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(rgba(22, 22, 18, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 22, 18, .02) 1px, transparent 1px),
+    #eee5d3;
+  background-size: 9px 9px;
+  box-shadow:
+    inset 0 0 0 4px #f5eedf,
+    inset 0 0 0 5px var(--ink);
+}
+
+.cafe-paper-axes-image-mat {
+  padding: 7px;
+  border: 1px solid rgba(22, 22, 18, .52);
+  background: #d7cdb8;
+}
+
+.cafe-paper-axes-image-mat img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.18 / 1;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--ink);
+  filter: saturate(.9) contrast(1.035);
+}
+
+.cafe-paper-axes-image-rule {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  left: 26px;
+  display: grid;
+  grid-template-columns: repeat(4, 44px);
+  border: 1px solid rgba(244, 237, 221, .72);
+  background: rgba(22, 22, 18, .76);
+  backdrop-filter: blur(4px);
+}
+
+.cafe-paper-axes-image-rule span {
+  display: grid;
+  place-items: center;
+  min-height: 34px;
+  border-right: 1px solid rgba(244, 237, 221, .34);
+  color: #f4eddd;
+  font-family: var(--utility-sans);
+  font-size: .57rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.cafe-paper-axes-image-rule span:last-child {
+  border-right: 0;
+  color: #e26f50;
+}
+
+.cafe-paper-axes-image figcaption {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 46px;
+  margin-top: 8px;
+  border: 1px solid var(--ink);
+  background: #f3ecdc;
+  font-family: var(--utility-sans);
+}
+
+.cafe-paper-axes-image-number {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-axes-image figcaption p {
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--ink);
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cafe-paper-axes-image figcaption small {
+  max-width: 420px;
+  padding: 10px 14px;
+  border-left: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: .56rem;
+  line-height: 1.35;
+  text-align: right;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-axes-image {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+
+  .cafe-paper-axes-image-shell::after {
+    content: '04';
+    position: absolute;
+    right: 28px;
+    bottom: 58px;
+    z-index: 2;
+    color: rgba(244, 237, 221, .82);
+    font-family: var(--utility-sans);
+    font-size: clamp(3.5rem, 6vw, 6.6rem);
+    font-weight: 900;
+    letter-spacing: -.08em;
+    line-height: .8;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .2);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .cafe-paper-axes-image {
+    padding-bottom: 28px;
+  }
+
+  .cafe-paper-axes-image-shell {
+    padding: 8px;
+  }
+
+  .cafe-paper-axes-image-mat {
+    padding: 5px;
+  }
+
+  .cafe-paper-axes-image-mat img {
+    aspect-ratio: 4 / 3;
+    object-position: center;
+  }
+
+  .cafe-paper-axes-image-rule {
+    top: 18px;
+    left: 18px;
+    grid-template-columns: repeat(4, 34px);
+  }
+
+  .cafe-paper-axes-image-rule span {
+    min-height: 28px;
+    font-size: .5rem;
+  }
+
+  .cafe-paper-axes-image figcaption {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .cafe-paper-axes-image figcaption small {
+    grid-column: 1 / -1;
+    max-width: none;
+    border-top: 1px solid var(--ink);
+    border-left: 0;
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 04 GLOBALIZACION
+   ============================================================ */
+
+.cafe-paper-global-image {
+  position: relative;
+  width: min(100%, 1480px);
+  margin: 0 auto 30px;
+}
+
+.cafe-paper-global-image-shell {
+  position: relative;
+  padding: 12px;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(rgba(22, 22, 18, .024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 22, 18, .018) 1px, transparent 1px),
+    #eee5d3;
+  background-size: 10px 10px;
+  box-shadow:
+    inset 0 0 0 4px #f5eedf,
+    inset 0 0 0 5px var(--ink);
+}
+
+.cafe-paper-global-image-mat {
+  position: relative;
+  padding: 7px;
+  overflow: hidden;
+  border: 1px solid rgba(22, 22, 18, .5);
+  background: #d8ceba;
+}
+
+.cafe-paper-global-image-mat::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(244, 237, 221, .18);
+  pointer-events: none;
+}
+
+.cafe-paper-global-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.18 / 1;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--ink);
+  filter: saturate(.92) contrast(1.03);
+}
+
+.cafe-paper-global-image-kicker {
+  position: absolute;
+  z-index: 3;
+  top: 28px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 142px;
+  padding: 8px 10px;
+  border: 1px solid rgba(244, 237, 221, .7);
+  background: rgba(22, 22, 18, .76);
+  backdrop-filter: blur(4px);
+}
+
+.cafe-paper-global-image-kicker span {
+  color: #f4eddd;
+  font-family: var(--utility-sans);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.cafe-paper-global-image-kicker i {
+  display: block;
+  width: 58px;
+  height: 1px;
+  background: #e26f50;
+}
+
+.cafe-paper-global-image figcaption {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  border: 1px solid var(--ink);
+  background: #f3ecdc;
+  font-family: var(--utility-sans);
+}
+
+.cafe-paper-global-image-number {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-global-image figcaption p {
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--ink);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-global-image {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+
+  .cafe-paper-global-image-shell::after {
+    content: 'GLOBAL';
+    position: absolute;
+    right: 30px;
+    bottom: 60px;
+    z-index: 2;
+    color: rgba(244, 237, 221, .72);
+    font-family: var(--utility-sans);
+    font-size: clamp(2.8rem, 5.6vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -.07em;
+    line-height: .8;
+    pointer-events: none;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .18);
+  }
+}
+
+@media (max-width: 760px) {
+  .cafe-paper-global-image {
+    margin-bottom: 24px;
+  }
+
+  .cafe-paper-global-image-shell {
+    padding: 8px;
+  }
+
+  .cafe-paper-global-image-mat {
+    padding: 5px;
+  }
+
+  .cafe-paper-global-image-mat::after {
+    inset: 5px;
+  }
+
+  .cafe-paper-global-image img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .cafe-paper-global-image-kicker {
+    top: 18px;
+    left: 18px;
+    min-width: 116px;
+    padding: 7px 9px;
+  }
+
+  .cafe-paper-global-image-kicker i {
+    width: 42px;
+  }
+
+  .cafe-paper-global-image figcaption {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .cafe-paper-global-image figcaption p {
+    font-size: .55rem;
+    line-height: 1.35;
+  }
+}
+
+/* ============================================================
+   CAFE FILOSOFICO - IMAGE 05 NATURALIZACION
+   ============================================================ */
+
+.cafe-paper-natural-image {
+  position: relative;
+  width: min(100%, 1480px);
+  margin: 0 auto 30px;
+}
+
+.cafe-paper-natural-image-shell {
+  position: relative;
+  padding: 12px;
+  border: 1px solid var(--ink);
+  background:
+    linear-gradient(rgba(22, 22, 18, .024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 22, 18, .018) 1px, transparent 1px),
+    #eee5d3;
+  background-size: 10px 10px;
+  box-shadow:
+    inset 0 0 0 4px #f5eedf,
+    inset 0 0 0 5px var(--ink);
+}
+
+.cafe-paper-natural-image-mat {
+  position: relative;
+  padding: 7px;
+  overflow: hidden;
+  border: 1px solid rgba(22, 22, 18, .5);
+  background: #d8ceba;
+}
+
+.cafe-paper-natural-image-mat::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(244, 237, 221, .16);
+  pointer-events: none;
+}
+
+.cafe-paper-natural-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.18 / 1;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--ink);
+  filter: saturate(.9) contrast(1.035);
+}
+
+.cafe-paper-natural-image-index {
+  position: absolute;
+  z-index: 3;
+  top: 28px;
+  left: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 42px);
+  border: 1px solid rgba(244, 237, 221, .72);
+  background: rgba(22, 22, 18, .76);
+  backdrop-filter: blur(4px);
+}
+
+.cafe-paper-natural-image-index span {
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+  border-right: 1px solid rgba(244, 237, 221, .3);
+  color: #f4eddd;
+  font-family: var(--utility-sans);
+  font-size: .56rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.cafe-paper-natural-image-index span:last-child {
+  border-right: 0;
+  color: #e26f50;
+}
+
+.cafe-paper-natural-image figcaption {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  min-height: 44px;
+  margin-top: 8px;
+  border: 1px solid var(--ink);
+  background: #f3ecdc;
+  font-family: var(--utility-sans);
+}
+
+.cafe-paper-natural-image-number {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink);
+  color: var(--accent);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.cafe-paper-natural-image figcaption p {
+  margin: 0;
+  padding: 10px 14px;
+  color: var(--ink);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .cafe-paper-natural-image {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+
+  .cafe-paper-natural-image-shell::after {
+    content: '05';
+    position: absolute;
+    right: 30px;
+    bottom: 58px;
+    z-index: 2;
+    color: rgba(244, 237, 221, .78);
+    font-family: var(--utility-sans);
+    font-size: clamp(3.6rem, 6vw, 6.8rem);
+    font-weight: 900;
+    letter-spacing: -.08em;
+    line-height: .8;
+    pointer-events: none;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, .18);
+  }
+}
+
+@media (max-width: 760px) {
+  .cafe-paper-natural-image {
+    margin-bottom: 24px;
+  }
+
+  .cafe-paper-natural-image-shell {
+    padding: 8px;
+  }
+
+  .cafe-paper-natural-image-mat {
+    padding: 5px;
+  }
+
+  .cafe-paper-natural-image-mat::after {
+    inset: 5px;
+  }
+
+  .cafe-paper-natural-image img {
+    aspect-ratio: 4 / 3;
+    object-position: center;
+  }
+
+  .cafe-paper-natural-image-index {
+    top: 18px;
+    left: 18px;
+    grid-template-columns: repeat(4, 34px);
+  }
+
+  .cafe-paper-natural-image-index span {
+    min-height: 28px;
+    font-size: .5rem;
+  }
+
+  .cafe-paper-natural-image figcaption {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .cafe-paper-natural-image figcaption p {
+    font-size: .55rem;
+    line-height: 1.35;
+  }
+}

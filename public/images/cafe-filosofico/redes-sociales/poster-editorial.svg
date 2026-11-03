@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="900" viewBox="0 0 720 900" role="img" aria-labelledby="title desc">
+<title id="title">Café Filosófico · Redes sociales · 3 de noviembre de 2026</title>
+<desc id="desc">Cartel editorial de la edición cinco: fondo azul oscuro, letras color lima, pantalla de perfil, preguntas sobre identidad, privacidad y reconocimiento.</desc>
+<defs>
+  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#91b5af" stroke-opacity=".13" stroke-width="1"/></pattern>
+  <filter id="shadow"><feDropShadow dx="16" dy="18" stdDeviation="2" flood-color="#000" flood-opacity=".3"/></filter>
+</defs>
+<rect width="720" height="900" fill="#101b25"/><rect width="720" height="900" fill="url(#grid)"/>
+<path d="M0 0H720V14H0Z" fill="#e6ff62"/>
+<text x="46" y="66" font-family="Arial,sans-serif" font-size="20" letter-spacing="3" fill="#5fd5c9" font-weight="800">CAFÉ FILOSÓFICO / INTERDISCIPLINARIO</text>
+<text x="670" y="66" font-family="Arial,sans-serif" font-size="17" text-anchor="end" fill="#e6ff62" font-weight="800">005</text>
+<text x="42" y="220" font-family="Impact,Arial Black,Arial,sans-serif" font-weight="900" font-size="150" letter-spacing="-9" fill="#f4f1e8">REDES</text>
+<text x="35" y="347" font-family="Impact,Arial Black,Arial,sans-serif" font-weight="900" font-size="118" letter-spacing="-8" fill="#e6ff62">SOCIALES.</text>
+<path d="M46 378H673" stroke="#5fd5c9" stroke-width="2"/>
+<text x="46" y="416" font-family="Arial,sans-serif" font-size="19" fill="#f4f1e8" font-weight="800">¿QUIÉN ES EL YO QUE APARECE EN PANTALLA?</text>
+<g filter="url(#shadow)" transform="translate(236 452) rotate(5)">
+<rect x="0" y="0" width="250" height="305" fill="#f4f1e8" stroke="#5fd5c9" stroke-width="4"/>
+<rect x="0" y="0" width="250" height="42" fill="#e6ff62"/>
+<circle cx="23" cy="22" r="7" fill="#ff674c"/>
+<text x="52" y="29" font-family="Arial,sans-serif" font-weight="800" font-size="16" fill="#101b25">TU PERFIL</text>
+<circle cx="125" cy="135" r="66" fill="#5fd5c9" stroke="#121b24" stroke-width="7"/>
+<ellipse cx="125" cy="123" rx="30" ry="36" fill="#121b24"/>
+<path d="M55 196Q60 150 125 152Q190 150 195 196Z" fill="#121b24"/>
+<text x="125" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="800" fill="#121b24">@yo_en_la_red</text>
+<path d="M22 257H228" stroke="#7c9697"/>
+<text x="28" y="287" font-family="Arial,sans-serif" font-size="21" font-weight="900" fill="#121b24">♡ 0</text>
+<text x="110" y="287" font-family="Arial,sans-serif" font-size="21" font-weight="900" fill="#121b24">◎ 0</text>
+<text x="183" y="287" font-family="Arial,sans-serif" font-size="21" font-weight="900" fill="#121b24">◌ 0</text>
+</g>
+<g transform="translate(65 525) rotate(-9)">
+<rect width="195" height="79" fill="#ff674c"/>
+<text x="17" y="33" font-family="Impact,Arial Black,Arial,sans-serif" font-size="33" font-weight="900" fill="#121b24">¿QUIÉN</text>
+<text x="17" y="64" font-family="Impact,Arial Black,Arial,sans-serif" font-size="37" font-weight="900" fill="#121b24">SOY?</text>
+</g>
+<g transform="translate(455 676) rotate(-5)">
+<rect width="230" height="76" fill="#e6ff62"/>
+<text x="13" y="30" font-family="Impact,Arial Black,Arial,sans-serif" font-size="29" font-weight="900" fill="#121b24">VISTO ≠</text>
+<text x="13" y="61" font-family="Impact,Arial Black,Arial,sans-serif" font-size="31" font-weight="900" fill="#121b24">CONOCIDO</text>
+</g>
+<path d="M0 803H720V900H0Z" fill="#e6ff62"/>
+<text x="40" y="840" font-family="Arial,sans-serif" font-weight="900" font-size="23" fill="#121b24">MARTES 03 NOV · 2:00 P. M.</text>
+<text x="40" y="874" font-family="Arial,sans-serif" font-weight="800" font-size="20" fill="#121b24">EDIFICIO C · AULA 5</text>
+<text x="676" y="840" text-anchor="end" font-family="Arial,sans-serif" font-weight="900" font-size="20" fill="#121b24">CAFÉ</text>
+<text x="676" y="868" text-anchor="end" font-family="Arial,sans-serif" font-weight="900" font-size="25" fill="#121b24">GRATIS</text>
+</svg>

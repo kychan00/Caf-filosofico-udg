@@ -1,0 +1,406 @@
+@import '../system2d/System2DTheme.css';
+
+.animated-concept-schema{
+  --concept-schema-paper:var(--ph2d-paper);
+  --concept-schema-ink:var(--ph2d-ink);
+  --concept-schema-muted:var(--ph2d-muted);
+  --concept-schema-line:rgba(var(--ph2d-line-rgb),.34);
+  --concept-schema-accent:var(--ph2d-red);
+  --concept-schema-gold:var(--ph2d-gold);
+  width:100%;
+  margin-top:.55rem;
+  padding:.55rem .45rem;
+  border-top:1px solid rgba(var(--ph2d-line-rgb),.12);
+  border-bottom:1px solid rgba(var(--ph2d-line-rgb),.12);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.24),transparent 68%),
+    rgba(247,240,228,.2);
+}
+
+.animated-concept-schema__svg{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:440px;
+  overflow:visible;
+}
+
+.concept-schema-node__shape{
+  fill:rgba(var(--ph2d-paper-rgb),.72);
+  stroke:var(--concept-schema-line);
+  stroke-width:1.15;
+  vector-effect:non-scaling-stroke;
+}
+
+.concept-schema-node.is-emphasis .concept-schema-node__shape{
+  stroke:var(--concept-schema-accent);
+  stroke-width:1.35;
+}
+
+.concept-schema-node.is-tone-accent .concept-schema-node__shape{
+  fill:rgba(var(--ph2d-red-rgb),.028);
+  stroke:rgba(var(--ph2d-red-rgb),.72);
+}
+
+.concept-schema-node.is-tone-muted .concept-schema-node__shape{
+  fill:rgba(var(--ph2d-muted-rgb),.02);
+  stroke:rgba(var(--ph2d-muted-rgb),.32);
+}
+
+.concept-schema-node__label{
+  fill:var(--concept-schema-ink);
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.006em;
+}
+
+.concept-schema-node__caption{
+  fill:var(--concept-schema-muted);
+  font-family:inherit;
+  font-size:8px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.concept-schema-edge{
+  fill:none;
+  stroke:rgba(var(--ph2d-red-rgb),.9);
+  stroke-width:1.1;
+  vector-effect:non-scaling-stroke;
+}
+
+.concept-schema-edge-group.is-line-dashed .concept-schema-edge{
+  stroke-dasharray:4.5 4.5;
+}
+
+.concept-schema-edge-group.is-kind-secondary .concept-schema-edge{
+  stroke:rgba(var(--ph2d-gold-rgb),.86);
+}
+
+.concept-schema-edge-group.is-kind-contrast .concept-schema-edge{
+  stroke:rgba(var(--ph2d-line-rgb),.58);
+}
+
+.concept-schema-arrowhead{
+  fill:var(--concept-schema-accent);
+}
+
+.concept-schema-arrowhead.is-inner{
+  fill:var(--concept-schema-paper);
+}
+
+.concept-schema-edge-group.is-kind-secondary .concept-schema-arrowhead{
+  fill:var(--concept-schema-gold);
+}
+
+.concept-schema-edge__label-plate{
+  fill:rgba(var(--ph2d-paper-rgb),.96);
+  stroke:rgba(var(--ph2d-line-rgb),.1);
+  stroke-width:.65;
+}
+
+.concept-schema-edge__label{
+  fill:var(--concept-schema-muted);
+  font-family:inherit;
+  font-size:8.5px;
+  letter-spacing:.02em;
+}
+
+.animated-concept-schema.is-layout-radial,
+.animated-concept-schema.is-layout-constellation{
+  padding-top:.65rem;
+  padding-bottom:.65rem;
+}
+
+@media(max-width:620px){
+  .animated-concept-schema{
+    padding:.4rem .1rem;
+  }
+
+  .animated-concept-schema__svg{
+    max-height:380px;
+  }
+
+  .concept-schema-node__label{
+    font-size:12px;
+  }
+
+  .concept-schema-edge__label{
+    font-size:8px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .animated-concept-schema *,
+  .animated-concept-schema *::before,
+  .animated-concept-schema *::after{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+
+/* PHILOSOPHIA · SCHEMA AUTOFIT / LARGE PANEL */
+.animated-concept-schema{
+  min-height:var(--concept-schema-min-height,380px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+}
+
+.animated-concept-schema__svg{
+  width:100%;
+  height:var(--concept-schema-min-height,380px);
+  min-height:var(--concept-schema-min-height,380px);
+  max-height:none;
+  overflow:visible;
+}
+
+.animated-concept-schema__content{
+  transform-box:fill-box;
+}
+
+@media(max-width:780px){
+  .animated-concept-schema{
+    min-height:min(var(--concept-schema-min-height,380px),460px);
+  }
+
+  .animated-concept-schema__svg{
+    height:min(var(--concept-schema-min-height,380px),460px);
+    min-height:min(var(--concept-schema-min-height,380px),460px);
+    max-height:none;
+  }
+}
+
+/* PHILOSOPHIA · EDGE CLEARANCE / VISIBLE ARROWS */
+.concept-schema-edge{
+  stroke-width:1.35;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.concept-schema-edge__label-group{
+  pointer-events:none;
+}
+
+.concept-schema-edge__label-plate{
+  fill:rgba(var(--ph2d-paper-rgb),.975);
+  stroke:rgba(var(--ph2d-line-rgb),.14);
+  stroke-width:.7;
+}
+
+.concept-schema-edge__label{
+  font-size:9px;
+  font-weight:500;
+}
+
+.concept-schema-arrowhead{
+  fill:var(--concept-schema-accent);
+  stroke:none;
+}
+
+.concept-schema-edge-group.is-kind-secondary .concept-schema-arrowhead{
+  fill:var(--concept-schema-gold);
+}
+
+/* PHILOSOPHIA · SEMANTIC VISUAL GRAMMAR */
+.concept-schema-node.is-role-concept .concept-schema-node__shape{
+  stroke:rgba(var(--ph2d-red-rgb),.78);
+}
+
+.concept-schema-node.is-role-structure .concept-schema-node__shape{
+  stroke:rgba(var(--ph2d-red-rgb),.56);
+}
+
+.concept-schema-node.is-role-mediation .concept-schema-node__shape{
+  stroke:rgba(var(--ph2d-red-rgb),.68);
+}
+
+.concept-schema-node.is-role-term .concept-schema-node__shape{
+  stroke:rgba(var(--ph2d-line-rgb),.34);
+}
+
+.concept-schema-node.is-role-result .concept-schema-node__shape{
+  stroke:rgba(102,91,79,.5);
+}
+
+.concept-schema-edge-group.is-relation-secondary .concept-schema-edge{
+  stroke:var(--concept-schema-gold);
+  stroke-dasharray:5 5;
+}
+
+.concept-schema-edge-group.is-relation-constitutes .concept-schema-edge{
+  stroke:var(--concept-schema-accent);
+  stroke-width:1.55;
+}
+
+.concept-schema-edge-group.is-relation-reciprocal .concept-schema-edge{
+  stroke:rgba(109,76,127,.86);
+}
+
+.concept-schema-edge-group.is-relation-transversal .concept-schema-edge{
+  stroke:rgba(var(--ph2d-purple-rgb),.78);
+}
+
+.concept-schema-edge-group.is-relation-hierarchical .concept-schema-edge{
+  stroke:rgba(var(--ph2d-red-rgb),.82);
+}
+
+.animated-concept-schema__legend{
+  width:100%;
+  margin:.35rem 0 0;
+  padding:.7rem .15rem .1rem;
+  border-top:1px solid rgba(var(--ph2d-line-rgb),.12);
+}
+
+.animated-concept-schema__legend-title{
+  display:block;
+  margin-bottom:.45rem;
+  color:var(--concept-schema-muted);
+  font-size:.54rem;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+
+.animated-concept-schema__legend-items{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.38rem .8rem;
+}
+
+.animated-concept-schema__legend-item{
+  display:inline-flex;
+  align-items:center;
+  gap:.32rem;
+  color:var(--concept-schema-muted);
+  font-size:.62rem;
+  line-height:1.25;
+}
+
+.animated-concept-schema__legend-item b{
+  display:inline-grid;
+  min-width:1.1rem;
+  place-items:center;
+  color:var(--concept-schema-accent);
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:.92rem;
+  font-weight:500;
+}
+
+.animated-concept-schema__legend-item.is-relation b{
+  min-width:1.45rem;
+  color:var(--ph2d-purple);
+}
+
+@media(max-width:780px){
+  .animated-concept-schema__legend-items{
+    gap:.35rem .6rem;
+  }
+
+  .animated-concept-schema__legend-item{
+    font-size:.58rem;
+  }
+}
+
+/* PHILOSOPHIA · LEGEND BELOW SCHEMA */
+.animated-concept-schema{
+  flex-direction:column;
+}
+
+.animated-concept-schema__svg{
+  flex:0 0 auto;
+}
+
+.animated-concept-schema__legend{
+  width:100%;
+  margin:.85rem 0 0;
+  padding:.7rem 0 .05rem;
+  border-top:1px solid rgba(var(--ph2d-line-rgb),.12);
+}
+
+.animated-concept-schema__legend-items{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.42rem 1rem;
+}
+
+.animated-concept-schema__legend-item{
+  white-space:nowrap;
+}
+
+@media(max-width:780px){
+  .animated-concept-schema__legend-item{
+    white-space:normal;
+  }
+}
+
+
+/* PHILOSOPHIA · REGLA GEOMÉTRICA GLOBAL DE ESQUEMAS */
+.concept-schema-node__label{
+  font-size:13.5px;
+  font-weight:650;
+}
+
+.concept-schema-node__caption{
+  font-size:8.5px;
+  font-weight:550;
+  letter-spacing:.07em;
+}
+
+.concept-schema-edge__label-plate{
+  fill:var(--concept-schema-paper);
+  stroke:rgba(var(--ph2d-line-rgb),.18);
+  stroke-width:.75;
+}
+
+.concept-schema-edge__label{
+  font-size:9.2px;
+  font-weight:600;
+}
+
+.concept-schema-edge{
+  stroke-width:1.45;
+}
+
+.animated-concept-schema__edges{
+  pointer-events:none;
+}
+
+.animated-concept-schema__nodes{
+  pointer-events:none;
+}
+
+
+/* Folios de lectura densos: el esquema ocupa su altura real, también en iPad.
+   No altera los esquemas de otras páginas ni la geometría del mapa 2D. */
+.animated-concept-schema.is-reading-vertical{
+  min-height:var(--concept-schema-min-height,640px);
+  align-items:stretch;
+  justify-content:flex-start;
+  overflow:visible;
+}
+
+.animated-concept-schema.is-reading-vertical .animated-concept-schema__svg{
+  display:block;
+  width:100%;
+  height:var(--concept-schema-min-height,640px);
+  min-height:var(--concept-schema-min-height,640px);
+  max-height:none;
+  flex:0 0 auto;
+  overflow:visible;
+}
+
+/* En ventanas telefónicas no se comprime el árbol hasta volverlo ilegible:
+   sólo el esquema obtiene desplazamiento lateral local cuando lo exige el ancho. */
+@media(max-width:620px){
+  .animated-concept-schema.is-reading-vertical{
+    overflow-x:auto;
+    max-width:100%;
+  }
+
+  .animated-concept-schema.is-reading-vertical .animated-concept-schema__svg{
+    min-width:720px;
+  }
+}
