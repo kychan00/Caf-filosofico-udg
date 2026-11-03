@@ -1,0 +1,82 @@
+{
+  "event": "Café Filosófico · La meritocracia",
+  "date": "2026-09-22",
+  "status": "reference-assets-only",
+  "notes": [
+    "Estos recursos son referencias visuales/recortes para la composición del evento.",
+    "La página no debe inventar contenido filosófico previo al encuentro.",
+    "Aplicar grano, sepia, contraste y mezcla mediante CSS cuando convenga."
+  ],
+  "assets": [
+    {
+      "file": "01-aristotle-bust.png",
+      "dest": "aristotle-bust.png",
+      "role": "Busto clásico principal / recorte editorial",
+      "source": "https://commons.wikimedia.org/wiki/File:Aristotle_transparent.png",
+      "license": "CC0 1.0 / Public Domain Dedication"
+    },
+    {
+      "file": "02-reach-for-clouds.png",
+      "dest": "reach-for-clouds.png",
+      "role": "Figura de ascenso / mérito / movilidad",
+      "source": "https://openclipart.org/detail/300596/reach-for-the-clouds",
+      "license": "OpenClipart; la página identifica la fuente como public domain."
+    },
+    {
+      "file": "03-crowd-silhouettes.png",
+      "dest": "crowd-silhouettes.png",
+      "role": "Multitud inferior / contraste individuo-estructura",
+      "source": "https://openclipart.org/detail/334410/silhouettes-of-various-people",
+      "license": "OpenClipart"
+    },
+    {
+      "file": "04-balance-scale.png",
+      "dest": "balance-scale.png",
+      "role": "Balanza / desigualdad / distribución",
+      "source": "https://openclipart.org/detail/260486/balance",
+      "license": "OpenClipart; origen indicado como dibujo de dominio público de Wikimedia Commons."
+    },
+    {
+      "file": "05-books-stack.png",
+      "dest": "books-stack.png",
+      "role": "Educación / capital cultural",
+      "source": "https://openclipart.org/detail/343896/book",
+      "license": "OpenClipart"
+    },
+    {
+      "file": "06-coins-stack.png",
+      "dest": "coins-stack.png",
+      "role": "Dinero / capital económico",
+      "source": "https://openclipart.org/detail/341495/coins",
+      "license": "OpenClipart"
+    },
+    {
+      "file": "07-coffee-cup.png",
+      "dest": "coffee-cup.png",
+      "role": "Café / identidad del encuentro",
+      "source": "https://openclipart.org/detail/340257/coffee-cup",
+      "license": "OpenClipart"
+    },
+    {
+      "file": "08-torn-paper.png",
+      "dest": "torn-paper.png",
+      "role": "Papel rasgado / etiquetas y preguntas",
+      "source": "https://openclipart.org/detail/16900/torn-paper-01",
+      "license": "OpenClipart"
+    },
+    {
+      "file": "09-trophy.png",
+      "dest": "trophy.png",
+      "role": "Trofeo / éxito meritocrático",
+      "source": "https://openclipart.org/detail/228226/trophy",
+      "license": "OpenClipart; fuente indicada: Handbook to Oxford, 1898."
+    },
+    {
+      "file": "10-career-ladder.png",
+      "dest": "career-ladder.png",
+      "role": "Escalera de carrera / ascenso",
+      "source": "https://openclipart.org/detail/352376/career-ladder",
+      "license": "OpenClipart"
+    }
+  ]
+}

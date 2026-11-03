@@ -1,0 +1,165 @@
+.marketing-memory-intro{
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr);
+  gap:26px;
+  padding:22px 24px;
+  border:2px solid var(--ink);
+  background:#efe1c6;
+}
+.marketing-memory-intro strong{
+  color:var(--red);
+  font:700 10px Arial,sans-serif;
+  letter-spacing:.12em;
+}
+.marketing-memory-intro p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.55;
+}
+.marketing-memory-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+.marketing-memory-card{
+  min-width:0;
+  padding:22px;
+  border:1px solid var(--ink);
+  background:rgba(255,255,255,.16);
+}
+.marketing-memory-card.kind-problema-abierto{
+  background:var(--ink);
+  color:var(--paper-light);
+}
+.marketing-memory-card.kind-autor{
+  background:#d6c09a;
+}
+.marketing-memory-card.kind-objecion{
+  border-left:5px solid var(--red);
+}
+.marketing-memory-card header{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+}
+.marketing-memory-card header>span{
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border:1px solid currentColor;
+  color:var(--red);
+  font:700 9px Arial,sans-serif;
+}
+.marketing-memory-card header>div{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding-top:3px;
+}
+.marketing-memory-card header small{
+  color:var(--red);
+  font:700 9px Arial,sans-serif;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.marketing-memory-card header b{
+  color:var(--muted);
+  font:700 8px Arial,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.marketing-memory-card.kind-problema-abierto header b{
+  color:#d4c5b1;
+}
+.marketing-memory-card h3{
+  margin:30px 0 0;
+  font-size:clamp(24px,2.4vw,34px);
+  line-height:1.02;
+}
+.marketing-memory-card>p{
+  margin:12px 0 0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.55;
+}
+.marketing-memory-card.kind-problema-abierto>p{
+  color:#d7c8b5;
+}
+.marketing-memory-card blockquote{
+  margin:22px 0 0;
+  padding-top:15px;
+  border-top:1px solid rgba(17,17,15,.25);
+  font:700 italic 18px/1.35 Georgia,serif;
+}
+.marketing-memory-card.kind-problema-abierto blockquote{
+  border-top-color:rgba(242,232,212,.25);
+}
+.marketing-open-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border:2px solid var(--ink);
+}
+.marketing-open-list li{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr);
+  gap:18px;
+  align-items:center;
+  min-height:88px;
+  padding:16px 20px;
+  border-bottom:1px solid var(--ink);
+  background:rgba(255,255,255,.1);
+}
+.marketing-open-list li:last-child{
+  border-bottom:0;
+}
+.marketing-open-list span{
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:1px solid var(--ink);
+  color:var(--red);
+  font:700 9px Arial,sans-serif;
+}
+.marketing-open-list p{
+  margin:0;
+  font:700 clamp(18px,2vw,26px)/1.18 Georgia,serif;
+}
+
+@media(max-width:760px){
+  .marketing-memory-intro{
+    grid-template-columns:1fr;
+    padding:18px;
+  }
+  .marketing-memory-grid{
+    grid-template-columns:1fr;
+  }
+  .marketing-memory-card{
+    padding:18px;
+  }
+  .marketing-memory-card h3{
+    margin-top:22px;
+    font-size:28px;
+  }
+  .marketing-memory-card header>div{
+    flex-direction:column;
+    gap:4px;
+  }
+  .marketing-open-list li{
+    grid-template-columns:46px minmax(0,1fr);
+    gap:12px;
+    padding:14px 12px;
+  }
+  .marketing-open-list span{
+    width:38px;
+    height:38px;
+  }
+  .marketing-open-list p{
+    font-size:18px;
+  }
+}

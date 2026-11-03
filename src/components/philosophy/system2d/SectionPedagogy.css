@@ -1,0 +1,92 @@
+.ph2d-pedagogy {
+  color: var(--ph2d-ink, #211d18); background: var(--ph2d-paper, #f7f0e4);
+  border: 1px solid var(--ph2d-line, rgba(55,45,36,.2)); border-radius: 10px;
+  padding: 14px; margin: 12px 0 20px;
+  font: 13px/1.5 system-ui, -apple-system, sans-serif; text-align: left;
+}
+.ph2d-pedagogy * { box-sizing: border-box; }
+.ph2d-pedagogy-head { display: grid; gap: 2px; padding-bottom: 10px; border-bottom: 1px solid var(--ph2d-line, rgba(55,45,36,.2)); }
+.ph2d-pedagogy-head span, .ph2d-pedagogy small, .ph2d-pedagogy-select span, .ph2d-pedagogy-work > span {
+  color: var(--ph2d-muted, #70675e); display: block;
+  font: 700 10px/1.5 ui-monospace, SFMono-Regular, monospace; letter-spacing: .06em;
+}
+.ph2d-pedagogy-head strong { font-size: 15px; }
+.ph2d-pedagogy-select { display: grid; gap: 5px; margin: 12px 0; }
+.ph2d-pedagogy-select select {
+  width: 100%; max-width: 100%; padding: 10px 8px; border-radius: 5px;
+  border: 1px solid var(--ph2d-line, rgba(55,45,36,.2));
+  background: var(--ph2d-node-surface, #faf6ee); color: inherit; font: inherit;
+}
+.ph2d-pedagogy-arc { display: grid; gap: 8px; }
+.ph2d-pedagogy-arc > div { padding: 10px; border-left: 3px solid var(--ph2d-green, #526c59); background: var(--ph2d-paper2, #f1e8d9); }
+.ph2d-pedagogy-arc > div:nth-child(2) { border-left-color: var(--ph2d-red, #8b3d34); }
+.ph2d-pedagogy-arc > div:nth-child(3) { border-left-color: var(--ph2d-gold, #9c7434); }
+.ph2d-pedagogy-arc p { margin: 5px 0 0; overflow-wrap: anywhere; }
+.ph2d-pedagogy-arc ul { margin: 5px 0 0; padding-left: 19px; }
+.ph2d-pedagogy-arc li { overflow-wrap: anywhere; }
+.ph2d-pedagogy-arc em { display: block; font-size: 11px; color: var(--ph2d-muted, #70675e); font-style: normal; margin-top: 5px; }
+.ph2d-pedagogy-actions, .ph2d-pedagogy-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.ph2d-pedagogy button {
+  cursor: pointer; min-width: 0; min-height: 34px; padding: 7px 9px;
+  border: 1px solid var(--ph2d-line, rgba(55,45,36,.2));
+  background: var(--ph2d-node-surface, #faf6ee);
+  color: inherit; font: 650 12px/1.4 system-ui, sans-serif;
+  border-radius: 5px; white-space: normal;
+}
+.ph2d-pedagogy button.is-active { background: var(--ph2d-green, #526c59); color: #fff; border-color: var(--ph2d-green, #526c59); }
+.ph2d-pedagogy button:disabled { cursor: default; opacity: .42; }
+.ph2d-pedagogy button:focus-visible, .ph2d-pedagogy select:focus-visible { outline: 3px solid var(--ph2d-gold, #9c7434); outline-offset: 2px; }
+.ph2d-pedagogy-work { display: grid; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ph2d-line, rgba(55,45,36,.2)); }
+.ph2d-pedagogy-work > strong { font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.ph2d-pedagogy-work p { margin: 0; overflow-wrap: anywhere; }
+.ph2d-pedagogy-work blockquote { margin: 0; padding: 8px; border-left: 2px solid var(--ph2d-gold, #9c7434); }
+.ph2d-pedagogy-work progress { display: block; width: 100%; height: 7px; accent-color: var(--ph2d-green, #526c59); }
+.ph2d-pedagogy-answer { display: grid; gap: 6px; padding: 9px; background: var(--ph2d-paper2, #f1e8d9); border-radius: 5px; }
+.ph2d-pedagogy-reset { justify-self: start; }
+@media (max-width: 640px) {
+  .ph2d-pedagogy { padding: 10px; }
+  .ph2d-pedagogy-actions > button { flex: 1 1 140px; }
+  .ph2d-pedagogy-nav > button { flex: 1 1 80px; }
+}
+
+/* Reusable Hacker-inspired reading rail; colors remain shared PHILOSOPHIA tokens. */
+.ph2d-pedagogy-rail {
+  display:flex;gap:7px;min-width:0;overflow-x:auto;overscroll-behavior-inline:contain;
+  padding:6px 2px 12px;scrollbar-width:thin;
+}
+.ph2d-pedagogy .ph2d-pedagogy-rail button {
+  display:grid;gap:4px;flex:0 0 146px;max-width:146px;padding:10px;
+  text-align:left;align-content:start;white-space:normal;
+}
+.ph2d-pedagogy-rail button > span {
+  font:750 10px/1.3 ui-monospace,SFMono-Regular,monospace;color:var(--ph2d-gold);
+}
+.ph2d-pedagogy-rail button > strong {
+  font:650 12px/1.35 system-ui,sans-serif;overflow-wrap:anywhere;
+}
+.ph2d-pedagogy .ph2d-pedagogy-rail button.is-current {
+  border:2px solid var(--ph2d-green);box-shadow:inset 0 0 0 1px var(--ph2d-green);
+  background:var(--ph2d-paper2);
+}
+.ph2d-pedagogy-rail button[aria-current="step"] > span { color:var(--ph2d-green); }
+
+/* Shared tablet contract: readable type, scroll contained to the topic rail,
+   and no hidden dependencies in the before/after academic outline. */
+.ph2d-pedagogy-arc ul {
+  max-height: 11rem;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+.ph2d-pedagogy button { min-height: 44px; }
+.ph2d-pedagogy-head strong { line-height: 1.35; }
+.ph2d-pedagogy-arc p,
+.ph2d-pedagogy-arc li,
+.ph2d-pedagogy-work p { font-size: max(14px, 0.92rem); }
+@media (max-width: 1180px) {
+  .ph2d-pedagogy { width: 100%; max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
+  .ph2d-pedagogy-work,
+  .ph2d-pedagogy-arc { min-width: 0; }
+  .ph2d-pedagogy-rail { max-width: 100%; scroll-padding-inline: 12px; }
+  .ph2d-pedagogy .ph2d-pedagogy-rail button { flex-basis: min(148px, 48vw); }
+  .ph2d-pedagogy-select select { min-height: 44px; font-size: 16px; }
+}

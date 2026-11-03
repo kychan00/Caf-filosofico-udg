@@ -1,0 +1,6 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;min-height:100vh;background:#eee6d7;color:#171713}
+button,input,textarea,select{font:inherit}
+a{color:inherit}
+img,video{max-width:100%}
