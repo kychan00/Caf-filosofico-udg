@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import './CafeRedesSocialesEvent.css'
+import CafeRedesSocialesMemory from './CafeRedesSocialesMemory'
 
 const questions = [
   {
@@ -48,8 +49,8 @@ export default function CafeRedesSocialesEvent() {
     <main className="rs-page">
       <nav className="rs-nav" aria-label="Navegación del Café Filosófico">
         <Link to="/cafe-filosofico" className="rs-back">← Archivo del Café</Link>
-        <span>PHILOSOPHIA <b aria-hidden="true">/</b> 05</span>
-        <span className="rs-nav-status"><i aria-hidden="true" /> PRÓXIMO ENCUENTRO</span>
+        <span>CAFÉ FILOSÓFICO <b aria-hidden="true">/</b> 05</span>
+        <span className="rs-nav-status"><i aria-hidden="true" /> MEMORIA PUBLICADA</span>
       </nav>
 
       <header className="rs-hero">
@@ -64,7 +65,7 @@ export default function CafeRedesSocialesEvent() {
           </p>
           <div className="rs-hero-actions">
             <button type="button" onClick={() => document.getElementById('rs-preguntas')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-              EXPLORAR LAS PREGUNTAS <span aria-hidden="true">↘</span>
+              VOLVER A LAS PREGUNTAS <span aria-hidden="true">↘</span>
             </button>
             <span>ENTRADA LIBRE · CAFÉ GRATIS</span>
           </div>
@@ -140,7 +141,7 @@ export default function CafeRedesSocialesEvent() {
           <div className="rs-map-copy">
             <span className="rs-section-index">02 — CARTOGRAFÍA DE APERTURA</span>
             <h2 id="rs-map-heading">El yo no cabe en <em>un contador.</em></h2>
-            <p>Un esquema editorial previo al encuentro: tres problemas conectados por una pregunta central. No representa intervenciones, acuerdos ni conclusiones de participantes.</p>
+            <p>El mapa de apertura que orientó el encuentro: tres problemas conectados por una pregunta central. Se conserva como capa preparatoria y no sustituye la memoria argumental posterior.</p>
             <p className="rs-map-instruction">Toque cada eje para llevarlo al centro de la lectura.</p>
           </div>
           <div className="rs-map" role="group" aria-label="Mapa de tres interrogantes filosóficos">
@@ -153,13 +154,15 @@ export default function CafeRedesSocialesEvent() {
                 </button>
               ))}
             </div>
-            <span className="rs-map-note">CONEXIONES HIPOTÉTICAS · MAPA DE PREPARACIÓN</span>
+            <span className="rs-map-note">CONEXIONES HIPOTÉTICAS · MAPA DE APERTURA</span>
           </div>
         </div>
       </section>
 
+      <CafeRedesSocialesMemory />
+
       <section className="rs-info rs-container" aria-labelledby="rs-info-heading">
-        <div className="rs-info-heading"><span className="rs-section-index">03 — LA CITA</span><h2 id="rs-info-heading">Desconéctate un rato.<br /><em>Conversemos.</em></h2></div>
+        <div className="rs-info-heading"><span className="rs-section-index">08 — DATOS DEL ENCUENTRO</span><h2 id="rs-info-heading">Desconéctate un rato.<br /><em>Conversemos.</em></h2></div>
         <div className="rs-info-grid">
           <div className="rs-info-tile rs-info-date"><small>MARTES</small><strong>03</strong><span>NOVIEMBRE / 2026</span></div>
           <div className="rs-info-tile"><small>HORA</small><strong>2:00 <span>P. M.</span></strong><p>Edificio C · Aula 5</p></div>
@@ -173,8 +176,8 @@ export default function CafeRedesSocialesEvent() {
       </section>
 
       <section className="rs-rules rs-container" aria-labelledby="rs-rules-heading">
-        <div><span className="rs-section-index">04 — CÓMO DIALOGAMOS</span><h2 id="rs-rules-heading">Las ideas se discuten.<br /><em>Las personas se respetan.</em></h2></div>
-        <p>Protocolo habitual del Café: turnos de 3 minutos, 30 segundos para cerrar, sin interrupciones y con críticas dirigidas a los argumentos, no a las personas. Estas son reglas de referencia; el encuentro puede precisar su dinámica.</p>
+        <div><span className="rs-section-index">09 — CÓMO DIALOGAMOS</span><h2 id="rs-rules-heading">Las ideas se discuten.<br /><em>Las personas se respetan.</em></h2></div>
+        <p>Protocolo confirmado al inicio de esta edición: levantar la mano, turnos de 3 minutos, señal de cierre y 30 segundos adicionales; no interrumpir y dirigir las críticas a las ideas, nunca a las personas, manteniendo respeto entre participantes.</p>
       </section>
 
       <footer className="rs-footer"><div><span>CF / 05</span><strong>El diálogo comienza con una pregunta.</strong></div><Link to="/cafe-filosofico">← VOLVER AL ARCHIVO</Link></footer>
