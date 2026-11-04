@@ -67,7 +67,7 @@ test('el sistema contiene esquemas conceptuales trazables', () => {
 test('evidencia fotográfica queda separada de las tesis', () => {
   assert.equal(redesEvidence.length, 2)
   for (const photo of redesEvidence) {
-    assert.match(photo.src, /redes-sociales\/sesion-05\/0[12]\.jpg$/)
+    assert.match(photo.src, /redes-sociales\/sesion-05\/0[12]\.webp$/)
     assert.ok(photo.alt)
     assert.ok(photo.title)
     assert.ok(photo.caption)
