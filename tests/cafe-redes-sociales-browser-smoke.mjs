@@ -59,11 +59,12 @@ try{
   for(const [w,h] of [[390,844],[768,1024],[1024,768],[1440,900]]){
     await send('Emulation.setDeviceMetricsOverride',{width:w,height:h,deviceScaleFactor:2,mobile:w<769})
     await send('Page.navigate',{url})
-    await until("document.querySelectorAll('.rs-question-card').length === 3 && !!document.querySelector('.rs-phone')",'page at '+w)
-    const data=await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,questions:document.querySelectorAll('.rs-question-card').length,selected:document.querySelectorAll('.rs-question-card[aria-pressed=true]').length,heading:document.querySelector('.rs-hero h1')?.textContent,footer:!!document.querySelector('.rs-footer')})")
+    await until("document.querySelectorAll('.rs-question-card').length === 3 && !!document.querySelector('.rs-phone') && document.querySelectorAll('.rsm-chapter').length === 8",'page at '+w)
+    const data=await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,questions:document.querySelectorAll('.rs-question-card').length,selected:document.querySelectorAll('.rs-question-card[aria-pressed=true]').length,memory:document.querySelectorAll('.rsm-chapter').length,heading:document.querySelector('.rs-hero h1')?.textContent,footer:!!document.querySelector('.rs-footer')})")
     assert.ok(data.scroll<=data.inner+3,'Horizontal overflow at '+w+'x'+h+': '+JSON.stringify(data))
     assert.equal(data.questions,3)
     assert.equal(data.selected,1)
+    assert.equal(data.memory,8)
     assert.ok(data.heading.includes('Redes')&&data.footer)
     console.log('OK redes sociales',w,h)
   }
