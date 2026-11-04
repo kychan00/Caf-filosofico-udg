@@ -82,10 +82,10 @@ export const cafeEvents: CafeEvent[] = [
     slug: 'redes-sociales',
     eyebrow: 'Café filosófico · interdisciplinario',
     title: 'Redes sociales',
-    deck: 'Próximo diálogo sobre identidad digital, privacidad, exposición pública y reconocimiento medido en likes y seguidores.',
+    deck: 'Memoria del diálogo sobre identidad digital, atención, reconocimiento cuantificado, realidad de lo virtual, algoritmos, capitalismo, responsabilidad e inteligencia artificial.',
     route: '/cafe-filosofico/2026/11/03/redes-sociales',
-    status: 'proximo',
-    themes: ['redes sociales', 'identidad', 'privacidad', 'reconocimiento', 'validación'],
+    status: 'publicado',
+    themes: ['redes sociales', 'identidad', 'atención', 'algoritmos', 'virtualidad', 'responsabilidad', 'inteligencia artificial'],
   },
 
 ]
