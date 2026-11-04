@@ -30,11 +30,11 @@ test('convocatoria, memoria y datos constatables de la edición 05', () => {
   assert.match(memory,/Lo digital no deja de ser real por ser virtual/)
   assert.match(memory,/proletariado digital/)
   assert.match(memory,/IA · TRANSHUMANISMO · FUTURO/)
-  assert.match(memory,/Afirmaciones empíricas|afirmaciones empíricas/i)
+  assert.match(memoryPage,/Afirmaciones empíricas mencionadas durante el diálogo/)
   assert.match(editorialRules,/Primero fidelidad; después claridad; después diseño/)
   assert.doesNotMatch(page + memoryPage + memory,/transcripci[oó]n|grabaci[oó]n/i)
 })
-test('ruta única y convocatoria vinculada desde ambos catálogos', () => {
+test('ruta única y memoria vinculada desde ambos catálogos', () => {
   const route='/cafe-filosofico/2026/11/03/redes-sociales'
   assert.ok(router.includes('CafeRedesSocialesEvent'))
   assert.ok(router.includes('path="'+route+'"'))
