@@ -565,7 +565,12 @@ function RedesWorkspace({ embedded = false }) {
         <div className="redes2d-evidence-grid">
           {redesEvidence.map((photo) => (
             <figure key={photo.id}>
-              <img src={import.meta.env.BASE_URL + photo.src} alt={photo.alt} loading="lazy" />
+              {photo.src
+                ? <img src={import.meta.env.BASE_URL + photo.src} alt={photo.alt} loading="lazy" />
+                : <div className="redes2d-evidence-pending" role="note" data-evidence-pending={photo.id}>
+                    <strong>Fotografía pendiente de recuperación</strong>
+                    <p>La copia disponible está incompleta. La imagen original debe recuperarse antes de su publicación, sin reconstruir ni inventar contenido.</p>
+                  </div>}
               <figcaption>
                 <strong>{photo.title}</strong>
                 <p>{photo.caption}</p>
