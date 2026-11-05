@@ -62,7 +62,12 @@ try{
     await send('Page.navigate',{url})
     await until("document.querySelectorAll('.rs-question-card').length === 3 && !!document.querySelector('.rs-phone') && document.querySelectorAll('.rsm-chapter').length === 8 && document.querySelectorAll('.redes2d-routes button').length === 5 && document.querySelectorAll('.redes2d-evidence img').length === 2",'page at '+w)
     await evaluate("document.querySelector('.redes2d-evidence')?.scrollIntoView({block:'center'})")
-    await until("[...document.querySelectorAll('.redes2d-evidence img')].every(img=>img.complete&&img.naturalWidth>0)",'evidence images at '+w)
+    try {
+      await until("[...document.querySelectorAll('.redes2d-evidence img')].every(img=>img.complete&&img.naturalWidth>0)",'evidence images at '+w)
+    } catch (error) {
+      console.error('Evidence image diagnostics:', await evaluate("JSON.stringify([...document.querySelectorAll('.redes2d-evidence img')].map(img=>({src:img.currentSrc,complete:img.complete,naturalWidth:img.naturalWidth,outerHTML:img.outerHTML})))"))
+      throw error
+    }
     const data=await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,questions:document.querySelectorAll('.rs-question-card').length,selected:document.querySelectorAll('.rs-question-card[aria-pressed=true]').length,memory:document.querySelectorAll('.rsm-chapter').length,routes:document.querySelectorAll('.redes2d-routes button').length,evidence:document.querySelectorAll('.redes2d-evidence img').length,heading:document.querySelector('.rs-hero h1')?.textContent,footer:!!document.querySelector('.rs-footer')})")
     assert.ok(data.scroll<=data.inner+3,'Horizontal overflow at '+w+'x'+h+': '+JSON.stringify(data))
     assert.equal(data.questions,3)
