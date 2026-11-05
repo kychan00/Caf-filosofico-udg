@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import './CafeRedesSocialesEvent.css'
 import CafeRedesSocialesMemory from './CafeRedesSocialesMemory'
+import CafeRedesSocialesSystem2D from './CafeRedesSocialesSystem2D'
 
 const questions = [
   {
@@ -161,8 +162,10 @@ export default function CafeRedesSocialesEvent() {
 
       <CafeRedesSocialesMemory />
 
+      <CafeRedesSocialesSystem2D embedded />
+
       <section className="rs-info rs-container" aria-labelledby="rs-info-heading">
-        <div className="rs-info-heading"><span className="rs-section-index">08 — DATOS DEL ENCUENTRO</span><h2 id="rs-info-heading">Desconéctate un rato.<br /><em>Conversemos.</em></h2></div>
+        <div className="rs-info-heading"><span className="rs-section-index">10 — DATOS DEL ENCUENTRO</span><h2 id="rs-info-heading">Desconéctate un rato.<br /><em>Conversemos.</em></h2></div>
         <div className="rs-info-grid">
           <div className="rs-info-tile rs-info-date"><small>MARTES</small><strong>03</strong><span>NOVIEMBRE / 2026</span></div>
           <div className="rs-info-tile"><small>HORA</small><strong>2:00 <span>P. M.</span></strong><p>Edificio C · Aula 5</p></div>
@@ -176,7 +179,7 @@ export default function CafeRedesSocialesEvent() {
       </section>
 
       <section className="rs-rules rs-container" aria-labelledby="rs-rules-heading">
-        <div><span className="rs-section-index">09 — CÓMO DIALOGAMOS</span><h2 id="rs-rules-heading">Las ideas se discuten.<br /><em>Las personas se respetan.</em></h2></div>
+        <div><span className="rs-section-index">11 — CÓMO DIALOGAMOS</span><h2 id="rs-rules-heading">Las ideas se discuten.<br /><em>Las personas se respetan.</em></h2></div>
         <p>Protocolo confirmado al inicio de esta edición: levantar la mano, turnos de 3 minutos, señal de cierre y 30 segundos adicionales; no interrumpir y dirigir las críticas a las ideas, nunca a las personas, manteniendo respeto entre participantes.</p>
       </section>
 
