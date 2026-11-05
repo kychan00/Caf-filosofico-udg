@@ -274,7 +274,8 @@ export const redesStudyQuestions = [
 export const redesEvidence = [
   {
     id:'E01',
-    src:'images/cafe-filosofico/redes-sociales/sesion-05/01.jpg',
+    src:null,
+    status:'original-pendiente',
     alt:'Participantes sentados alrededor de mesas durante el Café Filosófico sobre redes sociales.',
     title:'Evidencia 01 · Vista general del círculo de diálogo',
     caption:'Vista general del encuentro presencial. La fotografía documenta la disposición de conversación y el uso compartido del aula durante la edición 05.',
