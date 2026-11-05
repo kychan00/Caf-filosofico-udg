@@ -1,5 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { existsSync, readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import {
   redesArguments,
   redesEvidence,
@@ -67,7 +69,11 @@ test('el sistema contiene esquemas conceptuales trazables', () => {
 test('evidencia fotográfica queda separada de las tesis', () => {
   assert.equal(redesEvidence.length, 2)
   for (const photo of redesEvidence) {
-    assert.match(photo.src, /redes-sociales\/sesion-05\/0[12]\.webp$/)
+    assert.match(photo.src, /redes-sociales\/sesion-05\/0[12]\.jpg$/)
+    const fullPath = join(process.cwd(), 'public', photo.src)
+    assert.ok(existsSync(fullPath), 'Falta imagen de evidencia: ' + photo.src)
+    const signature = readFileSync(fullPath).subarray(0, 3)
+    assert.deepEqual([...signature], [0xff, 0xd8, 0xff], 'No es JPEG válido: ' + photo.src)
     assert.ok(photo.alt)
     assert.ok(photo.title)
     assert.ok(photo.caption)
