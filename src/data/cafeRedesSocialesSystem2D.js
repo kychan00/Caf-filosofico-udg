@@ -281,7 +281,7 @@ export const redesEvidence = [
   },
   {
     id:'E02',
-    src:'images/cafe-filosofico/redes-sociales/sesion-05/02.jpg',
+    src:'images/cafe-filosofico/redes-sociales/sesion-05/02.webp',
     alt:'Vista lateral de participantes durante una intervención del Café Filosófico sobre redes sociales.',
     title:'Evidencia 02 · Desarrollo del intercambio',
     caption:'Vista complementaria del diálogo en curso. La imagen documenta escucha, intervención y trabajo presencial sin atribuir una posición filosófica concreta a las personas retratadas.',
