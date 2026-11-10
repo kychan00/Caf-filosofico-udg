@@ -194,7 +194,7 @@ try {
     ['#archivo', 'archivo-desktop-1440x900'],
     ['#recursos', 'recursos-desktop-1440x900'],
   ]) {
-    await evaluate("document.querySelector('" + selector + "')?.scrollIntoView({block:'start'})")
+    await evaluate("const el=document.querySelector('" + selector + "'); if(el){document.documentElement.style.scrollBehavior='auto'; window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY);}")
     if (selector === '#cafes') {
       await until("[...document.querySelectorAll('.cafe-event-poster img')].every(img=>img.complete&&img.naturalWidth>0)", 'cafe posters visual review')
     }
