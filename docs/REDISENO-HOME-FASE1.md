@@ -3,7 +3,7 @@
 **Proyecto:** Café Filosófico UdeG  
 **Rama:** `redesign/home-editorial-paper`  
 **Fecha de auditoría:** 2026-11-10  
-**Estado:** Fase 1 completada; sin PR abierto; sin cambios funcionales en producción.
+**Estado:** Fase 1 completada; PR único #6 abierto como borrador; sin cambios funcionales en producción.
 
 ## 1. Decisiones no negociables
 
