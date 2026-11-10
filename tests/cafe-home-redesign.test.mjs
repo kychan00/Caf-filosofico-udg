@@ -23,6 +23,7 @@ test('la portada usa una sola fuente de datos y conserva los carteles documental
   ]) {
     assert.ok(catalog.includes(poster), 'Falta cartel documental en catálogo: ' + poster)
   }
+  assert.ok(styles.includes("content: 'NUESTRO MÉTODO'"))
 })
 
 test('la dirección visual de la portada está construida como papel editorial', () => {
@@ -50,7 +51,7 @@ test('hero, navegación y secciones esenciales del PRD permanecen presentes', ()
     'cafe-search-panel',
     'cafe-hero-collage',
     'Cafés que han sucedido',
-    'NUESTRO MÉTODO',
+    'cafe-method-grid',
     'El Café',
     'PRÓXIMA CONVERSACIÓN',
     'ARCHIVO · MEMORIA · EVIDENCIA',
