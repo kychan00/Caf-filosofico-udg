@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import { cafeEvents } from '../data/cafeFilosoficoEvents'
 import './CafeFilosofico.css'
@@ -64,6 +64,7 @@ export default function CafeFilosofico() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
+  const cardTrackRef = useRef<HTMLDivElement>(null)
 
   const base = import.meta.env.BASE_URL
   const published = cafeEvents.filter((event) => event.status === 'publicado')
@@ -109,6 +110,16 @@ export default function CafeFilosofico() {
     scrollToSection(id)
   }
 
+  const scrollCards = (direction: -1 | 1) => {
+    const track = cardTrackRef.current
+    if (!track) return
+
+    track.scrollBy({
+      left: direction * Math.max(280, track.clientWidth * 0.72),
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <main className="cafe-home" id="inicio">
       <div className="cafe-home-grain" aria-hidden="true" />
@@ -130,7 +141,7 @@ export default function CafeFilosofico() {
             <button type="button" onClick={() => goToSection('cafes')}>Cafés</button>
             <button type="button" onClick={() => goToSection('archivo')}>Archivo</button>
             <button type="button" onClick={() => goToSection('metodo')}>El proyecto</button>
-            <button type="button" onClick={() => goToSection('archivo')}>Recursos</button>
+            <button type="button" onClick={() => goToSection('recursos')}>Recursos</button>
           </div>
 
           <div className="cafe-nav-actions">
@@ -293,13 +304,19 @@ export default function CafeFilosofico() {
             <p>CONVERSACIONES QUE HEMOS ABIERTO</p>
             <h2>Cafés que han sucedido</h2>
           </div>
-          <p className="cafe-section-lead">
-            Temas contemporáneos, preguntas filosóficas y un diálogo interdisciplinario
-            que sigue creciendo.
-          </p>
+          <div className="cafe-section-aside">
+            <p className="cafe-section-lead">
+              Temas contemporáneos, preguntas filosóficas y un diálogo interdisciplinario
+              que sigue creciendo.
+            </p>
+            <div className="cafe-card-controls" aria-label="Navegar cafés">
+              <button type="button" onClick={() => scrollCards(-1)} aria-label="Ver cafés anteriores">←</button>
+              <button type="button" onClick={() => scrollCards(1)} aria-label="Ver cafés siguientes">→</button>
+            </div>
+          </div>
         </header>
 
-        <div className="cafe-card-track">
+        <div className="cafe-card-track" ref={cardTrackRef}>
           {published.map((event) => (
             <article className="cafe-event-card" key={event.id}>
               <Link to={event.route} className="cafe-event-poster">
@@ -448,6 +465,57 @@ export default function CafeFilosofico() {
           <button type="button" onClick={() => goToSection('cafes')}>
             Explorar el archivo <span aria-hidden="true">→</span>
           </button>
+        </div>
+      </section>
+
+      <section className="cafe-resources cafe-section" id="recursos" aria-labelledby="cafe-resources-title">
+        <header className="cafe-section-heading cafe-resources-heading">
+          <div>
+            <p>RECURSOS PARA VOLVER A LA CONVERSACIÓN</p>
+            <h2 id="cafe-resources-title">Leer, mapear,<br />volver a preguntar</h2>
+          </div>
+          <p className="cafe-section-lead">
+            El archivo no termina en una fotografía: cada edición conserva herramientas para
+            reconstruir problemas, argumentos y rutas de lectura.
+          </p>
+        </header>
+
+        <div className="cafe-resource-grid">
+          <article>
+            <span className="cafe-resource-index">01</span>
+            <p className="cafe-resource-mark" aria-hidden="true">¶</p>
+            <h3>Memorias de sesión</h3>
+            <p>Reconstrucciones editoriales del diálogo, con fronteras claras entre preparación, intervención y verificación.</p>
+            <button type="button" onClick={() => goToSection('cafes')}>
+              Explorar memorias <span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article>
+            <span className="cafe-resource-index">02</span>
+            <p className="cafe-resource-mark" aria-hidden="true">⌁</p>
+            <h3>Sistemas 2D</h3>
+            <p>Mapas conceptuales interactivos para estudiar relaciones, tensiones y recorridos argumentales.</p>
+            <Link to="/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d">
+              Abrir un sistema 2D <span aria-hidden="true">→</span>
+            </Link>
+          </article>
+
+          <article>
+            <span className="cafe-resource-index">03</span>
+            <p className="cafe-resource-mark" aria-hidden="true">?</p>
+            <h3>Preguntas detonadoras</h3>
+            <p>Las preguntas que abren cada sesión permanecen disponibles para preparar la siguiente conversación.</p>
+            {nextEvent ? (
+              <Link to={nextEvent.route}>
+                Ver próximas preguntas <span aria-hidden="true">→</span>
+              </Link>
+            ) : (
+              <button type="button" onClick={() => goToSection('cafes')}>
+                Revisar el archivo <span aria-hidden="true">→</span>
+              </button>
+            )}
+          </article>
         </div>
       </section>
 
