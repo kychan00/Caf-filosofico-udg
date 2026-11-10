@@ -17,3 +17,4 @@ jobs:
       - run: npm run build
       - run: node tests/cafe-agua-browser-smoke.mjs
       - run: node tests/cafe-redes-sociales-browser-smoke.mjs
+      - run: node tests/cafe-inteligencia-artificial-browser-smoke.mjs
