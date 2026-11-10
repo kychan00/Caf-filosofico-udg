@@ -230,9 +230,9 @@ export default function CafeFilosofico() {
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-c" aria-hidden="true" />
 
-          <img className="cafe-collage-bust" src={heroBust} alt="" aria-hidden="true" />
-          <img className="cafe-collage-books" src={heroBooks} alt="" aria-hidden="true" />
-          <img className="cafe-collage-coffee" src={heroCoffee} alt="" aria-hidden="true" />
+          <img className="cafe-collage-bust" src={heroBust} alt="" aria-hidden="true" decoding="async" fetchPriority="high" />
+          <img className="cafe-collage-books" src={heroBooks} alt="" aria-hidden="true" decoding="async" />
+          <img className="cafe-collage-coffee" src={heroCoffee} alt="" aria-hidden="true" decoding="async" />
 
           <div className="cafe-collage-building" aria-hidden="true">
             <span />
@@ -284,6 +284,7 @@ export default function CafeFilosofico() {
                   src={`${base}${event.poster}`}
                   alt={event.posterAlt}
                   loading="lazy"
+                  decoding="async"
                 />
                 {event.assetKind === 'archivo' && (
                   <span className="cafe-archive-asset">PIEZA DE ARCHIVO</span>
@@ -363,6 +364,8 @@ export default function CafeFilosofico() {
               src={`${base}${nextEvent.poster}`}
               alt={nextEvent.posterAlt}
               className="cafe-next-poster"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -402,7 +405,7 @@ export default function CafeFilosofico() {
           {evidence.map((item, index) => (
             <figure className={`cafe-evidence cafe-evidence-${index + 1}`} key={item.src}>
               <div className="cafe-evidence-photo">
-                <img src={`${base}${item.src}`} alt={item.caption} loading="lazy" />
+                <img src={`${base}${item.src}`} alt={item.caption} loading="lazy" decoding="async" />
               </div>
               <figcaption>
                 <span>{item.label}</span>
