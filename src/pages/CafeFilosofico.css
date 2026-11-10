@@ -743,9 +743,9 @@ body {
 .cafe-collage-caption {
   position: absolute;
   z-index: 12;
-  left: 3%;
-  top: 23%;
-  width: 220px;
+  left: 2%;
+  top: 5%;
+  width: 210px;
   margin: 0;
   font-family: var(--cafe-display);
   font-size: 1.1rem;
@@ -1676,12 +1676,13 @@ body {
   }
 
   .cafe-hero h1 {
-    font-size: clamp(4.2rem, 21vw, 6.4rem);
-    line-height: .67;
+    font-size: clamp(3.55rem, 15vw, 4.65rem);
+    letter-spacing: -.065em;
+    line-height: .71;
   }
 
   .cafe-hero h1 span:last-child {
-    margin-left: .08em;
+    margin-left: 0;
   }
 
   .cafe-hero-deck {
@@ -1885,7 +1886,7 @@ body {
   }
 
   .cafe-hero h1 {
-    font-size: 19vw;
+    font-size: 15vw;
   }
 
   .cafe-hero-collage {
@@ -1966,16 +1967,6 @@ body {
 
 
 /* RENDERING PERFORMANCE */
-
-.cafe-conversations,
-.cafe-manifesto,
-.cafe-numbers,
-.cafe-next,
-.cafe-archive,
-.cafe-resources {
-  content-visibility: auto;
-  contain-intrinsic-size: 900px;
-}
 
 @media (max-width: 720px) {
   .cafe-nav-shell,
@@ -2147,4 +2138,9 @@ body {
     min-height: 330px;
     transform: none;
   }
+}
+
+
+.cafe-next a.cafe-button-light {
+  color: var(--cafe-green);
 }
