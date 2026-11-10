@@ -1709,9 +1709,7 @@ body {
   }
 
   .cafe-collage-bust {
-    width: 82%;
-    height: 74%;
-    right: -2%;
+    display: none;
   }
 
   .cafe-collage-sun {
