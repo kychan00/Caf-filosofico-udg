@@ -88,7 +88,7 @@ try{
 
   await send('Emulation.setDeviceMetricsOverride',{width:1024,height:768,deviceScaleFactor:2,mobile:false})
   await send('Page.navigate',{url:systemUrl})
-  await until("!!document.querySelector('.redes2d-workspace') && document.querySelectorAll('.redes2d-routes button').length === 5",'standalone 2D route')
+  await until("location.hash==='#/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d' && !!document.querySelector('.redes2d-shell.is-page .redes2d-workspace') && document.querySelectorAll('.redes2d-shell.is-page .redes2d-routes button').length === 5",'standalone 2D route')
   await evaluate("document.querySelector('.redes2d-routes button[data-topic=rust]').click()")
   await until("document.querySelector('.redes2d-routes button[data-topic=rust]').classList.contains('is-active')",'distance route')
   await until("!!document.querySelector('[data-node-id=R06]')",'R06 visible')
