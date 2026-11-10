@@ -1,7 +1,7 @@
 // Chromium CDP smoke for the redesigned Café Filosófico home.
 import assert from 'node:assert/strict'
 import { spawn, spawnSync } from 'node:child_process'
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
@@ -17,6 +17,8 @@ const vite = spawn(
 )
 const userData = mkdtempSync(join(tmpdir(), 'cafe-home-smoke-'))
 const url = 'http://127.0.0.1:4173/Caf-filosofico-udg/#/cafe-filosofico'
+const artifactDir = join(process.cwd(), 'artifacts', 'cafe-home')
+mkdirSync(artifactDir, { recursive: true })
 
 let child, socket, serial = 0
 const pending = new Map()
@@ -37,6 +39,15 @@ async function evaluate(source) {
   })
   if (result.exceptionDetails) throw Error('Browser eval: ' + JSON.stringify(result.exceptionDetails))
   return result.result?.value
+}
+
+async function capture(name) {
+  const shot = await send('Page.captureScreenshot', {
+    format: 'png',
+    fromSurface: true,
+    captureBeyondViewport: false,
+  })
+  writeFileSync(join(artifactDir, name + '.png'), Buffer.from(shot.data, 'base64'))
 }
 
 async function until(source, label) {
@@ -127,6 +138,11 @@ try {
     assert.ok(data.heading.includes('Café') && data.heading.includes('Filosófico'))
     assert.ok(data.next.includes('Inteligencia'))
     assert.ok(data.nav && data.search)
+
+    if (width === 390 || width === 1440) {
+      await capture('hero-' + width + 'x' + height)
+    }
+
     console.log('OK home viewport', width, height)
   }
 
@@ -159,7 +175,31 @@ try {
 
   await evaluate("document.querySelector('.cafe-next')?.scrollIntoView({block:'center'})")
   await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
-  console.log('OK home interactions, search, mobile navigation and lazy poster')
+  await wait(250)
+  await capture('next-mobile-390x844')
+
+  await send('Emulation.setDeviceMetricsOverride', {
+    width: 1440,
+    height: 900,
+    deviceScaleFactor: 1,
+    mobile: false,
+  })
+  await send('Page.navigate', { url })
+  await until("document.querySelectorAll('.cafe-event-card').length===5", 'desktop visual review')
+
+  for (const [selector, name] of [
+    ['#cafes', 'cafes-desktop-1440x900'],
+    ['#metodo', 'metodo-desktop-1440x900'],
+    ['.cafe-next', 'next-desktop-1440x900'],
+    ['#archivo', 'archivo-desktop-1440x900'],
+    ['#recursos', 'recursos-desktop-1440x900'],
+  ]) {
+    await evaluate("document.querySelector('" + selector + "')?.scrollIntoView({block:'start'})")
+    await wait(300)
+    await capture(name)
+  }
+
+  console.log('OK home interactions, search, mobile navigation, lazy poster and visual review captures')
 } finally {
   if (socket) socket.close()
   if (child && !child.killed) child.kill('SIGTERM')
