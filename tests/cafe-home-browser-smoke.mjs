@@ -116,12 +116,14 @@ try {
       'home at ' + width + 'x' + height,
     )
 
-    const data = await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,cards:document.querySelectorAll('.cafe-event-card').length,stats:document.querySelectorAll('.cafe-stat-grid article').length,method:document.querySelectorAll('.cafe-method-grid article').length,heading:document.querySelector('.cafe-hero h1')?.textContent,next:document.querySelector('.cafe-next-copy h2')?.textContent,nav:!!document.querySelector('.cafe-nav-shell'),search:!!document.querySelector('.cafe-search-trigger')})")
+    const data = await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,cards:document.querySelectorAll('.cafe-event-card').length,stats:document.querySelectorAll('.cafe-stat-grid article').length,method:document.querySelectorAll('.cafe-method-grid article').length,resources:document.querySelectorAll('.cafe-resource-grid article').length,controls:document.querySelectorAll('.cafe-card-controls button').length,heading:document.querySelector('.cafe-hero h1')?.textContent,next:document.querySelector('.cafe-next-copy h2')?.textContent,nav:!!document.querySelector('.cafe-nav-shell'),search:!!document.querySelector('.cafe-search-trigger')})")
 
     assert.ok(data.scroll <= data.inner + 3, 'Horizontal overflow at ' + width + 'x' + height + ': ' + JSON.stringify(data))
     assert.equal(data.cards, 5)
     assert.equal(data.stats, 4)
     assert.equal(data.method, 4)
+    assert.equal(data.resources, 3)
+    assert.equal(data.controls, 2)
     assert.ok(data.heading.includes('Café') && data.heading.includes('Filosófico'))
     assert.ok(data.next.includes('Inteligencia'))
     assert.ok(data.nav && data.search)
