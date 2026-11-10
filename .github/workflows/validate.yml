@@ -15,6 +15,7 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
+      - run: node tests/cafe-home-browser-smoke.mjs
       - run: node tests/cafe-inteligencia-artificial-browser-smoke.mjs
       - run: node tests/cafe-agua-browser-smoke.mjs
       - run: node tests/cafe-redes-sociales-browser-smoke.mjs
