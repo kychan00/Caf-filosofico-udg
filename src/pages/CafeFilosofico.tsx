@@ -136,7 +136,7 @@ export default function CafeFilosofico() {
             </span>
           </Link>
 
-          <div className={`cafe-nav-links ${menuOpen ? 'is-open' : ''}`}>
+          <div id="cafe-nav-links" className={`cafe-nav-links ${menuOpen ? 'is-open' : ''}`}>
             <button type="button" onClick={() => goToSection('inicio')}>Inicio</button>
             <button type="button" onClick={() => goToSection('cafes')}>Cafés</button>
             <button type="button" onClick={() => goToSection('archivo')}>Archivo</button>
@@ -150,6 +150,7 @@ export default function CafeFilosofico() {
               className="cafe-search-trigger"
               aria-label="Buscar conversaciones"
               aria-expanded={searchOpen}
+              aria-controls="cafe-search-panel"
               onClick={() => {
                 setMenuOpen(false)
                 setSearchOpen((value) => !value)
@@ -169,6 +170,7 @@ export default function CafeFilosofico() {
               className="cafe-menu-trigger"
               aria-label="Abrir navegación"
               aria-expanded={menuOpen}
+              aria-controls="cafe-nav-links"
               onClick={() => {
                 setSearchOpen(false)
                 setMenuOpen((value) => !value)
@@ -181,7 +183,7 @@ export default function CafeFilosofico() {
         </nav>
 
         {searchOpen && (
-          <div className="cafe-search-panel">
+          <div id="cafe-search-panel" className="cafe-search-panel" role="search" aria-label="Buscar en el archivo del Café Filosófico">
             <div className="cafe-search-paper">
               <label htmlFor="cafe-search">Buscar en las conversaciones</label>
               <div className="cafe-search-field">
@@ -259,7 +261,7 @@ export default function CafeFilosofico() {
           </div>
         </div>
 
-        <div className="cafe-hero-collage" aria-label="Collage editorial del Café Filosófico">
+        <div className="cafe-hero-collage" role="img" aria-label="Collage editorial del Café Filosófico con busto clásico, libros, café, arquitectura universitaria y papeles superpuestos.">
           <span className="cafe-collage-sun" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-a" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
