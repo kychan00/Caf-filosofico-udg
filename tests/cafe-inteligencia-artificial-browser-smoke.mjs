@@ -1,4 +1,4 @@
-// Chromium CDP smoke for the upcoming Café Filosófico 06.
+// Chromium CDP smoke for the upcoming Café Filosófico 06. Run this before legacy session smokes.
 import assert from 'node:assert/strict'
 import { spawn, spawnSync } from 'node:child_process'
 import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'
