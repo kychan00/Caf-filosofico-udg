@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router'
 import { cafeEvents } from '../data/cafeFilosoficoEvents'
 import './CafeFilosofico.css'
@@ -91,6 +91,23 @@ export default function CafeFilosofico() {
   const heroBooks = `${base}images/cafe-filosofico/meritocracia/books-stack.png`
   const heroCoffee = `${base}images/cafe-filosofico/meritocracia/coffee-cup.png`
 
+  useEffect(() => {
+    const closeOverlays = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setMenuOpen(false)
+      setSearchOpen(false)
+    }
+
+    window.addEventListener('keydown', closeOverlays)
+    return () => window.removeEventListener('keydown', closeOverlays)
+  }, [])
+
+  const goToSection = (id: string) => {
+    setMenuOpen(false)
+    setSearchOpen(false)
+    scrollToSection(id)
+  }
+
   return (
     <main className="cafe-home" id="inicio">
       <div className="cafe-home-grain" aria-hidden="true" />
@@ -108,11 +125,11 @@ export default function CafeFilosofico() {
           </Link>
 
           <div className={`cafe-nav-links ${menuOpen ? 'is-open' : ''}`}>
-            <button type="button" onClick={() => scrollToSection('inicio')}>Inicio</button>
-            <button type="button" onClick={() => scrollToSection('cafes')}>Cafés</button>
-            <button type="button" onClick={() => scrollToSection('archivo')}>Archivo</button>
-            <button type="button" onClick={() => scrollToSection('metodo')}>El proyecto</button>
-            <button type="button" onClick={() => scrollToSection('archivo')}>Recursos</button>
+            <button type="button" onClick={() => goToSection('inicio')}>Inicio</button>
+            <button type="button" onClick={() => goToSection('cafes')}>Cafés</button>
+            <button type="button" onClick={() => goToSection('archivo')}>Archivo</button>
+            <button type="button" onClick={() => goToSection('metodo')}>El proyecto</button>
+            <button type="button" onClick={() => goToSection('archivo')}>Recursos</button>
           </div>
 
           <div className="cafe-nav-actions">
@@ -121,7 +138,10 @@ export default function CafeFilosofico() {
               className="cafe-search-trigger"
               aria-label="Buscar conversaciones"
               aria-expanded={searchOpen}
-              onClick={() => setSearchOpen((value) => !value)}
+              onClick={() => {
+                setMenuOpen(false)
+                setSearchOpen((value) => !value)
+              }}
             >
               <span aria-hidden="true">⌕</span>
             </button>
@@ -137,7 +157,10 @@ export default function CafeFilosofico() {
               className="cafe-menu-trigger"
               aria-label="Abrir navegación"
               aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((value) => !value)}
+              onClick={() => {
+                setSearchOpen(false)
+                setMenuOpen((value) => !value)
+              }}
             >
               <span />
               <span />
@@ -208,10 +231,10 @@ export default function CafeFilosofico() {
           </p>
 
           <div className="cafe-hero-actions">
-            <button type="button" className="cafe-button cafe-button-primary" onClick={() => scrollToSection('cafes')}>
+            <button type="button" className="cafe-button cafe-button-primary" onClick={() => goToSection('cafes')}>
               Explorar los cafés <span aria-hidden="true">→</span>
             </button>
-            <button type="button" className="cafe-button cafe-button-paper" onClick={() => scrollToSection('metodo')}>
+            <button type="button" className="cafe-button cafe-button-paper" onClick={() => goToSection('metodo')}>
               Conocer el proyecto <span aria-hidden="true">→</span>
             </button>
           </div>
@@ -421,7 +444,7 @@ export default function CafeFilosofico() {
             Cada memoria distingue entre material preparatorio, diálogo celebrado,
             reconstrucción editorial y verificación externa.
           </p>
-          <button type="button" onClick={() => scrollToSection('cafes')}>
+          <button type="button" onClick={() => goToSection('cafes')}>
             Explorar el archivo <span aria-hidden="true">→</span>
           </button>
         </div>
