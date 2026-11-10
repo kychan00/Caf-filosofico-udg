@@ -149,7 +149,7 @@ try {
 
   await evaluate("document.querySelector('.cafe-search-trigger').click()")
   await until("!!document.querySelector('#cafe-search')", 'search open')
-  await evaluate("const input=document.querySelector('#cafe-search'); input.value='agua'; input.dispatchEvent(new Event('input',{bubbles:true}))")
+  await evaluate("const input=document.querySelector('#cafe-search'); const setter=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; setter.call(input,'agua'); input.dispatchEvent(new Event('input',{bubbles:true}))")
   await until("document.querySelectorAll('.cafe-search-results a').length===1", 'search filtering')
   const resultText = await evaluate("document.querySelector('.cafe-search-results a')?.textContent")
   assert.ok(resultText.toLowerCase().includes('agua'))
