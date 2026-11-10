@@ -126,6 +126,10 @@ try {
       "document.querySelectorAll('.cafe-event-card').length===5 && !!document.querySelector('.cafe-next-poster') && !!document.querySelector('.cafe-method-grid')",
       'home at ' + width + 'x' + height,
     )
+    await until(
+      "[...document.querySelectorAll('.cafe-event-poster img')].every(img=>img.complete&&img.naturalWidth>0)",
+      'archive posters at ' + width + 'x' + height,
+    )
 
     const data = await evaluate("({inner:innerWidth,scroll:document.documentElement.scrollWidth,cards:document.querySelectorAll('.cafe-event-card').length,stats:document.querySelectorAll('.cafe-stat-grid article').length,method:document.querySelectorAll('.cafe-method-grid article').length,resources:document.querySelectorAll('.cafe-resource-grid article').length,controls:document.querySelectorAll('.cafe-card-controls button').length,heading:document.querySelector('.cafe-hero h1')?.textContent,next:document.querySelector('.cafe-next-copy h2')?.textContent,nav:!!document.querySelector('.cafe-nav-shell'),search:!!document.querySelector('.cafe-search-trigger')})")
 
@@ -195,7 +199,13 @@ try {
     ['#recursos', 'recursos-desktop-1440x900'],
   ]) {
     await evaluate("document.querySelector('" + selector + "')?.scrollIntoView({block:'start'})")
-    await wait(300)
+    if (selector === '#cafes') {
+      await until("[...document.querySelectorAll('.cafe-event-poster img')].every(img=>img.complete&&img.naturalWidth>0)", 'cafe posters visual review')
+    }
+    if (selector === '#archivo') {
+      await until("[...document.querySelectorAll('.cafe-evidence img')].every(img=>img.complete&&img.naturalWidth>0)", 'evidence visual review')
+    }
+    await wait(500)
     await capture(name)
   }
 
