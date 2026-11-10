@@ -1936,3 +1936,29 @@ body {
     --cafe-rule: rgba(23, 22, 20, .62);
   }
 }
+
+
+/* ACCESSIBILITY */
+
+.cafe-home :is(a, button, input):focus-visible {
+  outline: 3px solid var(--cafe-terra);
+  outline-offset: 4px;
+}
+
+.cafe-home input:focus-visible {
+  outline-offset: 2px;
+}
+
+.cafe-home :is(a, button)[aria-expanded="true"]:focus-visible {
+  outline-color: var(--cafe-green);
+}
+
+@media (max-width: 720px) {
+  .cafe-nav-links button,
+  .cafe-search-trigger,
+  .cafe-menu-trigger,
+  .cafe-circle-link,
+  .cafe-button {
+    min-height: 44px;
+  }
+}
