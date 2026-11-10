@@ -11,6 +11,7 @@ Este repositorio separa del proyecto PHILOSOPHIA el archivo público completo de
 - Edición 03 · 5 oct 2026 · Mercadotecnia.
 - Edición 04 · 19 oct 2026 · Hablemos sobre el agua.
 - Edición 05 · 3 nov 2026 · Redes sociales.
+- Edición 06 · 17 nov 2026 · Inteligencia Artificial · próximo encuentro.
 
 ## Desarrollo
 
