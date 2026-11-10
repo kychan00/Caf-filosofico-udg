@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test tests/*.test.mjs",
-    "test:smoke": "npm run build && node tests/cafe-agua-browser-smoke.mjs && node tests/cafe-redes-sociales-browser-smoke.mjs",
+    "test:smoke": "npm run build && node tests/cafe-inteligencia-artificial-browser-smoke.mjs && node tests/cafe-agua-browser-smoke.mjs && node tests/cafe-redes-sociales-browser-smoke.mjs",
     "validate": "npm test && npm run build"
   },
   "dependencies": {

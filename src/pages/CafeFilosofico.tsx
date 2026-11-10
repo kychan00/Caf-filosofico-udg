@@ -1,6 +1,9 @@
 import './CafeFilosofico.css'
 import { cafeAguaPhotos } from '../data/cafeAguaPhotos'
 
+// Portada editorial del catálogo. No sustituye ni modifica el cartel oficial de la convocatoria.
+const inteligenciaArtificialArchiveCover = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 820'%3E%3Crect width='720' height='820' fill='%23efe8de'/%3E%3Cpath d='M0 200L720 330V670H0Z' fill='%23b98a5d'/%3E%3Crect y='670' width='720' height='150' fill='%23212827'/%3E%3Ctext x='52' y='90' font-family='Georgia,serif' font-size='44' font-weight='700' fill='%23221812'%3ECAFÉ FILOSÓFICO%3C/text%3E%3Ctext x='52' y='151' font-family='Arial,sans-serif' font-size='25' font-weight='700' letter-spacing='5' fill='%23221812'%3EINTERDISCIPLINARIO%3C/text%3E%3Ctext x='50' y='300' font-family='Arial Black,Arial,sans-serif' font-size='63' font-weight='900' fill='%230d0d0c'%3EINTELIGENCIA%3C/text%3E%3Ctext x='50' y='371' font-family='Arial Black,Arial,sans-serif' font-size='63' font-weight='900' fill='%230d0d0c'%3EARTIFICIAL%3C/text%3E%3Cg stroke='%231b1713' stroke-width='4' fill='%23eee9e1'%3E%3Ccircle cx='118' cy='500' r='34'/%3E%3Crect x='83' y='536' width='70' height='125'/%3E%3Ccircle cx='260' cy='500' r='34'/%3E%3Crect x='225' y='536' width='70' height='125'/%3E%3Crect x='368' y='466' width='78' height='195'/%3E%3Ccircle cx='407' cy='501' r='27'/%3E%3Crect x='510' y='431' width='115' height='230'/%3E%3Ccircle cx='568' cy='489' r='35'/%3E%3C/g%3E%3Ctext x='52' y='738' font-family='Georgia,serif' font-size='31' fill='%23f6ead7'%3E17 NOV · 2:00 P.M.%3C/text%3E%3Ctext x='52' y='784' font-family='Arial,sans-serif' font-size='20' letter-spacing='3' fill='%23f6ead7'%3EPRÓXIMO ENCUENTRO%3C/text%3E%3C/svg%3E"
+
 const sessions = [
   {
     edition: 'EDICIÓN 01',
@@ -86,6 +89,20 @@ const sessions = [
     imageMode: 'poster',
     badge: 'MEMORIA PUBLICADA',
     actionLabel: 'Explorar memoria',
+  },
+
+  {
+    edition: 'EDICIÓN 06',
+    date: '17 NOV 2026',
+    title: 'Inteligencia Artificial',
+    description:
+      '¿Cómo afecta la IA a la identidad humana? Una convocatoria para discutir si es un riesgo existencial o una herramienta y qué significa que pueda salirse de control.',
+    tags: ['Inteligencia artificial', 'Identidad humana', 'Riesgo', 'Herramienta', 'Control'],
+    route: '/cafe-filosofico/2026/11/17/inteligencia-artificial',
+    image: inteligenciaArtificialArchiveCover,
+    imageMode: 'poster',
+    badge: 'PRÓXIMO ENCUENTRO',
+    actionLabel: 'Ver convocatoria',
   },
 
 ]

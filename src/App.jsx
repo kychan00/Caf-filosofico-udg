@@ -9,6 +9,7 @@ import CafeAguaEvent from './pages/CafeAguaEvent'
 import CafeAguaSystem2D from './pages/CafeAguaSystem2D'
 import CafeRedesSocialesEvent from './pages/CafeRedesSocialesEvent'
 import CafeRedesSocialesSystem2D from './pages/CafeRedesSocialesSystem2D'
+import CafeInteligenciaArtificialEvent from './pages/CafeInteligenciaArtificialEvent'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/cafe-filosofico/2026/10/19/agua/sistema-2d" element={<CafeAguaSystem2D />} />
         <Route path="/cafe-filosofico/2026/11/03/redes-sociales" element={<CafeRedesSocialesEvent />} />
         <Route path="/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d" element={<CafeRedesSocialesSystem2D />} />
+        <Route path="/cafe-filosofico/2026/11/17/inteligencia-artificial" element={<CafeInteligenciaArtificialEvent />} />
         <Route path="*" element={<Navigate to="/cafe-filosofico" replace />} />
       </Routes>
     </HashRouter>

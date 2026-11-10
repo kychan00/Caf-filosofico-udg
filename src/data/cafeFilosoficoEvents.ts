@@ -88,6 +88,18 @@ export const cafeEvents: CafeEvent[] = [
     themes: ['redes sociales', 'identidad', 'atención', 'algoritmos', 'virtualidad', 'responsabilidad', 'inteligencia artificial'],
   },
 
+  {
+    id: 'cafe-2026-11-17-inteligencia-artificial',
+    date: '2026-11-17',
+    slug: 'inteligencia-artificial',
+    eyebrow: 'Café filosófico · interdisciplinario',
+    title: 'Inteligencia Artificial',
+    deck: 'Convocatoria para discutir cómo afecta la IA a la identidad humana, si debe pensarse como riesgo existencial o herramienta y qué significa que pueda salirse de control.',
+    route: '/cafe-filosofico/2026/11/17/inteligencia-artificial',
+    status: 'proximo',
+    themes: ['inteligencia artificial', 'identidad humana', 'riesgo', 'herramienta', 'control'],
+  },
+
 ]
 
 export function getCafeEventBySlug(slug: string) {
