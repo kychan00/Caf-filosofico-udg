@@ -19,3 +19,11 @@ jobs:
       - run: node tests/cafe-inteligencia-artificial-browser-smoke.mjs
       - run: node tests/cafe-agua-browser-smoke.mjs
       - run: node tests/cafe-redes-sociales-browser-smoke.mjs
+      - name: Upload home visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cafe-home-visual-review
+          path: artifacts/cafe-home
+          if-no-files-found: ignore
+          retention-days: 7
