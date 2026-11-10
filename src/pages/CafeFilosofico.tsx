@@ -67,6 +67,7 @@ export default function CafeFilosofico() {
 
   const base = import.meta.env.BASE_URL
   const published = cafeEvents.filter((event) => event.status === 'publicado')
+  const editionCount = cafeEvents.length
   const nextEvent = cafeEvents.find((event) => event.status === 'proximo')
 
   const searchResults = useMemo(() => {
@@ -239,10 +240,10 @@ export default function CafeFilosofico() {
             </button>
           </div>
 
-          <div className="cafe-hero-index" aria-label="Seis ediciones registradas">
+          <div className="cafe-hero-index" aria-label={`${editionCount} ediciones registradas`}>
             <span>01</span>
             <i />
-            <span>06</span>
+            <span>{String(editionCount).padStart(2, '0')}</span>
             <b aria-hidden="true">● ○ ○</b>
           </div>
         </div>
@@ -315,7 +316,7 @@ export default function CafeFilosofico() {
               </Link>
 
               <div className="cafe-event-meta">
-                <span>{String(event.edition).padStart(2, '0')} / 06</span>
+                <span>{String(event.edition).padStart(2, '0')} / {String(editionCount).padStart(2, '0')}</span>
                 <span>{event.displayDate}</span>
               </div>
               <h3>{event.shortTitle}</h3>
@@ -360,7 +361,7 @@ export default function CafeFilosofico() {
         </div>
         <div className="cafe-stat-grid">
           <article>
-            <strong>06</strong>
+            <strong>{String(published.length).padStart(2, '0')}</strong>
             <span>cafés realizados</span>
           </article>
           <article>
