@@ -90,6 +90,7 @@ export default function CafeFilosofico() {
   }, [query])
 
   const heroBust = `${base}images/cafe-filosofico/meritocracia/aristotle-bust.png`
+  const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
   const heroBooks = `${base}images/cafe-filosofico/meritocracia/books-stack.png`
   const heroCoffee = `${base}images/cafe-filosofico/meritocracia/coffee-cup.png`
 
@@ -267,7 +268,17 @@ export default function CafeFilosofico() {
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-c" aria-hidden="true" />
 
-          <img className="cafe-collage-bust" src={heroBust} alt="" aria-hidden="true" decoding="async" fetchPriority="high" />
+          <picture>
+            <source media="(max-width: 720px)" srcSet={transparentPixel} />
+            <img
+              className="cafe-collage-bust"
+              src={heroBust}
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              fetchPriority="low"
+            />
+          </picture>
           <img className="cafe-collage-books" src={heroBooks} alt="" aria-hidden="true" decoding="async" />
           <img className="cafe-collage-coffee" src={heroCoffee} alt="" aria-hidden="true" decoding="async" />
 
