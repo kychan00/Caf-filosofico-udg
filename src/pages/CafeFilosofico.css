@@ -1962,3 +1962,26 @@ body {
     min-height: 44px;
   }
 }
+
+
+/* RENDERING PERFORMANCE */
+
+.cafe-conversations,
+.cafe-manifesto,
+.cafe-numbers,
+.cafe-next,
+.cafe-archive {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+@media (max-width: 720px) {
+  .cafe-nav-shell,
+  .cafe-search-panel {
+    backdrop-filter: none;
+  }
+
+  .cafe-nav-shell {
+    background: rgba(244, 238, 225, .985);
+  }
+}
