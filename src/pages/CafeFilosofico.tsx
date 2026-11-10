@@ -261,7 +261,7 @@ export default function CafeFilosofico() {
           </div>
         </div>
 
-        <div className="cafe-hero-collage" role="img" aria-label="Collage editorial del Café Filosófico con busto clásico, libros, café, arquitectura universitaria y papeles superpuestos.">
+        <figure className="cafe-hero-collage">
           <span className="cafe-collage-sun" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-a" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
@@ -291,11 +291,11 @@ export default function CafeFilosofico() {
             <i />
           </div>
 
-          <p className="cafe-collage-caption">
+          <figcaption className="cafe-collage-caption">
             <span>CUCSH · UdeG</span>
             Un archivo vivo de conversaciones que permanecen abiertas.
-          </p>
-        </div>
+          </figcaption>
+        </figure>
 
         <div className="cafe-torn-edge" aria-hidden="true" />
       </section>
