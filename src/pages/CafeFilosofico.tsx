@@ -474,6 +474,7 @@ export default function CafeFilosofico() {
 
       {nextEvent && (
         <section className="cafe-next" aria-labelledby="cafe-next-title">
+          <span className="cafe-next-tear cafe-next-tear-top" aria-hidden="true" />
           <div className="cafe-next-poster-wrap" data-reveal>
             <span className="cafe-next-paper-back" aria-hidden="true" />
             <span className="cafe-next-tape" aria-hidden="true" />
