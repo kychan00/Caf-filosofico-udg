@@ -47,7 +47,7 @@ const evidence = [
     caption: 'Agua · diálogo y comunidad',
   },
   {
-    src: 'images/cafe-filosofico/redes-sociales/sesion-05/01.jpg',
+    src: 'images/cafe-filosofico/redes-sociales/sesion-05/02.webp',
     label: 'Edición 05',
     caption: 'Redes sociales · evidencia de sesión',
   },
@@ -458,12 +458,12 @@ export default function CafeFilosofico() {
             <span>cafés realizados</span>
           </article>
           <article data-reveal>
-            <strong>+150</strong>
-            <span>participaciones</span>
+            <strong>{String(editionCount).padStart(2, '0')}</strong>
+            <span>ediciones documentadas</span>
           </article>
           <article data-reveal>
-            <strong>+300</strong>
-            <span>preguntas discutidas</span>
+            <strong>{String(method.length).padStart(2, '0')}</strong>
+            <span>pilares del método</span>
           </article>
           <article data-reveal>
             <strong>01</strong>
