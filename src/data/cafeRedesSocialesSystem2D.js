@@ -274,17 +274,10 @@ export const redesStudyQuestions = [
 export const redesEvidence = [
   {
     id:'E01',
-    src:'images/cafe-filosofico/redes-sociales/sesion-05/01.jpg',
-    alt:'Participantes sentados alrededor de mesas durante el Café Filosófico sobre redes sociales.',
-    title:'Evidencia 01 · Vista general del círculo de diálogo',
-    caption:'Vista general del encuentro presencial. La fotografía documenta la disposición de conversación y el uso compartido del aula durante la edición 05.',
-  },
-  {
-    id:'E02',
     src:'images/cafe-filosofico/redes-sociales/sesion-05/02.webp',
-    alt:'Vista lateral de participantes durante una intervención del Café Filosófico sobre redes sociales.',
-    title:'Evidencia 02 · Desarrollo del intercambio',
-    caption:'Vista complementaria del diálogo en curso. La imagen documenta escucha, intervención y trabajo presencial sin atribuir una posición filosófica concreta a las personas retratadas.',
+    alt:'Participantes reunidos alrededor de mesas en el aula durante el Café Filosófico sobre redes sociales.',
+    title:'Evidencia 01 · Círculo de diálogo',
+    caption:'Registro fotográfico del encuentro presencial del 3 de noviembre de 2026. Se observan participantes compartiendo la palabra alrededor de las mesas del aula.',
   },
 ]
 
