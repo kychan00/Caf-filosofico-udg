@@ -13,9 +13,15 @@
 4. La IA puede usarse para crear el universo visual alrededor de los pósters: grabados, bustos, libros, botánica, recortes, manchas, texturas y ornamentos editoriales.
 5. La interfaz debe privilegiar materialidad: fibra, grano, bordes rasgados, capas, cinta, impresión, sellos y tinta.
 6. No usar glassmorphism, brillos digitales, tarjetas SaaS, gradientes tecnológicos ni sombras genéricas de dashboard.
-7. Las páginas individuales, memorias y Sistemas 2D se consideran archivo académico y **no forman parte del rediseño destructivo de la home**.
+7. Las seis páginas individuales, sus CSS, memorias y Sistemas 2D quedan **fuera de alcance**: deben permanecer idénticos a `main`.
 8. Se trabaja en **una sola rama** hasta tener el rediseño completo. No abrir PR parcial por cada sección.
 9. Se mantienen las reglas editoriales existentes: primero fidelidad, después claridad, después diseño.
+
+### 1.1 Alcance congelado
+
+El PR #6 modifica únicamente la página principal y sus soportes directos. Un test de alcance compara los Git blob SHA de los seis TSX y seis CSS históricos contra `main`; cualquier cambio en ellos hace fallar CI. El router global, el CSS global y el comportamiento de carga de las rutas históricas se conservan como en producción.
+
+Las cifras de la home deben ser constatables desde el propio repositorio. Metas del PRD como `+150` participaciones o `+300` preguntas no se presentan como resultados observados. En su lugar, la portada muestra conteos derivados del catálogo y del método.
 
 ## 2. Baseline técnico auditado
 
@@ -127,7 +133,7 @@ Orden de implementación aprobado:
 
 ### Materialidad obligatoria
 
-- microfibra/grano de papel;
+- microfibra/grano de papel orgánico, sin microretícula de aspecto digital;
 - diferencias tonales leves entre hojas;
 - bordes rasgados con SVG/masks;
 - capas superpuestas con sombras de contacto muy suaves;
@@ -186,5 +192,5 @@ Antes de considerar lista la nueva home:
 - `prefers-reduced-motion`;
 - `npm test` y `npm run build` verdes;
 - smoke visual de rutas históricas;
-- ningún cambio destructivo en memorias/Sistemas 2D;
+- ningún cambio en las seis páginas individuales ni sus CSS; memorias/Sistemas 2D conservados;
 - sólo entonces abrir PR de rediseño.
