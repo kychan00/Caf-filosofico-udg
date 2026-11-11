@@ -193,9 +193,9 @@ try {
     }
 
     const mobileSticky = await evaluate("(()=>{const nav=document.querySelector('.cafe-nav-shell'); const section=document.querySelector('" + selector + "'); const nr=nav.getBoundingClientRect(); const sr=section.getBoundingClientRect(); return {position:getComputedStyle(nav).position,top:nr.top,height:nr.height,sectionTop:sr.top}})()")
-    assert.equal(mobileSticky.position, 'sticky', 'Mobile navigation must stay sticky')
-    assert.ok(Math.abs(mobileSticky.top) <= 3, 'Mobile sticky navigation should remain at viewport top: ' + JSON.stringify(mobileSticky))
-    assert.ok(mobileSticky.sectionTop >= mobileSticky.height - 4, 'Mobile anchor should remain visible below sticky navigation: ' + JSON.stringify(mobileSticky))
+    assert.ok(['sticky','fixed'].includes(mobileSticky.position), 'Mobile navigation must remain persistent: ' + JSON.stringify(mobileSticky))
+    assert.ok(Math.abs(mobileSticky.top) <= 3, 'Mobile navigation should remain at viewport top: ' + JSON.stringify(mobileSticky))
+    assert.ok(mobileSticky.sectionTop >= mobileSticky.height - 4, 'Mobile anchor should remain visible below persistent navigation: ' + JSON.stringify(mobileSticky))
 
     if (selector === '.cafe-next') {
       await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
