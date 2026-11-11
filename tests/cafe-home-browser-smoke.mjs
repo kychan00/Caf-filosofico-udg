@@ -177,10 +177,27 @@ try {
   await until("document.querySelector('.cafe-card-track').scrollLeft>0", 'keyboard archive navigation')
   console.log('OK keyboard archive navigation')
 
-  await evaluate("document.querySelector('.cafe-next')?.scrollIntoView({block:'center'})")
-  await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
-  await wait(250)
-  await capture('next-mobile-390x844')
+  for (const [selector, name] of [
+    ['#cafes', 'cafes-mobile-390x844'],
+    ['#metodo', 'metodo-mobile-390x844'],
+    ['.cafe-numbers', 'numeros-mobile-390x844'],
+    ['.cafe-next', 'next-mobile-390x844'],
+    ['#archivo', 'archivo-mobile-390x844'],
+    ['#recursos', 'recursos-mobile-390x844'],
+  ]) {
+    await evaluate("(()=>{const section=document.querySelector('" + selector + "'); if(section){document.documentElement.style.scrollBehavior='auto'; section.scrollIntoView({block:'start',behavior:'auto'});}})()")
+    if (selector === '#cafes') {
+      await until("[...document.querySelectorAll('.cafe-event-poster img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight}).every(img=>img.complete&&img.naturalWidth>0)", 'visible mobile cafe posters')
+    }
+    if (selector === '.cafe-next') {
+      await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
+    }
+    if (selector === '#archivo') {
+      await until("[...document.querySelectorAll('.cafe-evidence img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight}).every(img=>img.complete&&img.naturalWidth>0)", 'visible mobile evidence')
+    }
+    await wait(550)
+    await capture(name)
+  }
 
   await send('Emulation.setDeviceMetricsOverride', {
     width: 1440,
