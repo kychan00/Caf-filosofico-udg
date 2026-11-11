@@ -59,3 +59,10 @@ test('hero, navegación y secciones esenciales del PRD permanecen presentes', ()
     assert.ok(home.includes(contract), 'Falta sección o contrato: ' + contract)
   }
 })
+
+test('la portada no presenta metas de KPI como resultados observados', () => {
+  assert.equal(home.includes('+150'), false)
+  assert.equal(home.includes('+300'), false)
+  assert.ok(home.includes('ediciones documentadas'))
+  assert.ok(home.includes('pilares del método'))
+})
