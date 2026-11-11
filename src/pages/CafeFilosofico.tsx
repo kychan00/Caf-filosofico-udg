@@ -63,6 +63,7 @@ function scrollToSection(id: string) {
 export default function CafeFilosofico() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
   const [query, setQuery] = useState('')
   const cardTrackRef = useRef<HTMLDivElement>(null)
   const heroCollageRef = useRef<HTMLElement>(null)
@@ -100,6 +101,7 @@ export default function CafeFilosofico() {
       if (event.key !== 'Escape') return
       setMenuOpen(false)
       setSearchOpen(false)
+      setResourcesOpen(false)
     }
 
     window.addEventListener('keydown', closeOverlays)
@@ -171,6 +173,7 @@ export default function CafeFilosofico() {
   const goToSection = (id: string) => {
     setMenuOpen(false)
     setSearchOpen(false)
+    setResourcesOpen(false)
     scrollToSection(id)
   }
 
@@ -205,7 +208,46 @@ export default function CafeFilosofico() {
             <button type="button" onClick={() => goToSection('cafes')}>Cafés</button>
             <button type="button" onClick={() => goToSection('archivo')}>Archivo</button>
             <button type="button" onClick={() => goToSection('metodo')}>El proyecto</button>
-            <button type="button" onClick={() => goToSection('recursos')}>Recursos</button>
+            <div className="cafe-nav-resource-menu">
+              <button
+                type="button"
+                aria-expanded={resourcesOpen}
+                aria-controls="cafe-resource-dropdown"
+                onClick={() => setResourcesOpen((value) => !value)}
+              >
+                Recursos <span className="cafe-nav-chevron" aria-hidden="true">⌄</span>
+              </button>
+              {resourcesOpen && (
+                <div id="cafe-resource-dropdown" className="cafe-nav-resource-dropdown">
+                  <button type="button" onClick={() => goToSection('archivo')}>
+                    <span>01</span> Memorias
+                  </button>
+                  <Link
+                    to="/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d"
+                    onClick={() => {
+                      setResourcesOpen(false)
+                      setMenuOpen(false)
+                    }}
+                  >
+                    <span>02</span> Sistemas 2D
+                  </Link>
+                  {nextEvent && (
+                    <Link
+                      to={nextEvent.route}
+                      onClick={() => {
+                        setResourcesOpen(false)
+                        setMenuOpen(false)
+                      }}
+                    >
+                      <span>03</span> Preguntas
+                    </Link>
+                  )}
+                  <button type="button" onClick={() => goToSection('recursos')}>
+                    <span>→</span> Ver todos
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="cafe-nav-actions">
@@ -217,6 +259,7 @@ export default function CafeFilosofico() {
               aria-controls="cafe-search-panel"
               onClick={() => {
                 setMenuOpen(false)
+                setResourcesOpen(false)
                 setSearchOpen((value) => !value)
               }}
             >
@@ -237,6 +280,7 @@ export default function CafeFilosofico() {
               aria-controls="cafe-nav-links"
               onClick={() => {
                 setSearchOpen(false)
+                setResourcesOpen(false)
                 setMenuOpen((value) => !value)
               }}
             >
