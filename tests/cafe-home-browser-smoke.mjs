@@ -195,9 +195,14 @@ try {
     ['#archivo', 'archivo-desktop-1440x900'],
     ['#recursos', 'recursos-desktop-1440x900'],
   ]) {
-    await evaluate("(()=>{const section=document.querySelector('" + selector + "'); if(section){document.documentElement.style.scrollBehavior='auto'; window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY);}})()")
+    await evaluate("(()=>{const section=document.querySelector('" + selector + "'); if(section){document.documentElement.style.scrollBehavior='auto'; section.scrollIntoView({block:'start',behavior:'auto'});}})()")
     if (selector === '#cafes') {
       await until("[...document.querySelectorAll('.cafe-event-poster img')].every(img=>img.complete&&img.naturalWidth>0)", 'cafe posters visual review')
+      const sticky = await evaluate("(()=>{const nav=document.querySelector('.cafe-nav-shell'); const section=document.querySelector('#cafes'); const nr=nav.getBoundingClientRect(); const sr=section.getBoundingClientRect(); return {position:getComputedStyle(nav).position,top:nr.top,height:nr.height,sectionTop:sr.top}})()")
+      assert.equal(sticky.position, 'sticky', 'Global navigation must stay sticky')
+      assert.ok(Math.abs(sticky.top) <= 3, 'Sticky navigation should remain at viewport top: ' + JSON.stringify(sticky))
+      assert.ok(sticky.sectionTop >= sticky.height - 4, 'Anchor should remain visible below sticky navigation: ' + JSON.stringify(sticky))
+      console.log('OK sticky navigation and section anchor offset')
     }
     if (selector === '#archivo') {
       await until("[...document.querySelectorAll('.cafe-evidence img')].every(img=>img.complete&&img.naturalWidth>0)", 'evidence visual review')
