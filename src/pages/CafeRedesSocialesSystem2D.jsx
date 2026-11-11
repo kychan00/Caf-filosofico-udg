@@ -557,8 +557,8 @@ function RedesWorkspace({ embedded = false }) {
           <span>EVIDENCIA DEL ENCUENTRO · 03 NOV 2026</span>
           <h2 id="redes2d-evidence-title">La conversación también ocurrió <em>en un lugar.</em></h2>
           <p>
-            Estas fotografías documentan la realización presencial de la edición 05.
-            Funcionan como evidencia material del encuentro y no como prueba de una
+            Esta fotografía documenta la realización presencial de la edición 05.
+            Funciona como evidencia material del encuentro y no como prueba de una
             tesis filosófica particular.
           </p>
         </header>
