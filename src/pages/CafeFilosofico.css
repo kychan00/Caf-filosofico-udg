@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
-:root {
+.cafe-home {
   --cafe-paper: #f4eee1;
   --cafe-paper-deep: #e8dece;
   --cafe-paper-kraft: #dccbb5;
