@@ -1929,6 +1929,27 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
+
+  .cafe-home [data-reveal].is-reveal-ready,
+  .cafe-home [data-reveal].is-reveal-ready.is-visible {
+    opacity: 1 !important;
+    translate: none !important;
+    filter: none !important;
+  }
+
+  .cafe-collage-bust,
+  .cafe-collage-books,
+  .cafe-collage-coffee,
+  .cafe-collage-note,
+  .cafe-collage-sun,
+  .cafe-collage-paper-a,
+  .cafe-collage-paper-b,
+  .cafe-collage-paper-c,
+  .cafe-collage-building {
+    translate: none !important;
+    will-change: auto;
+  }
+
 }
 
 @media (prefers-contrast: more) {
@@ -2141,4 +2162,127 @@ body {
 
 .cafe-next a.cafe-button-light {
   color: var(--cafe-green);
+}
+
+
+/* EDITORIAL MOTION LAYER */
+
+.cafe-home [data-reveal].is-reveal-ready {
+  opacity: 0;
+  translate: 0 18px;
+  filter: blur(3px);
+}
+
+.cafe-home [data-reveal].is-reveal-ready.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  filter: blur(0);
+  transition:
+    opacity 620ms cubic-bezier(.2,.72,.2,1),
+    translate 760ms cubic-bezier(.16,.74,.18,1),
+    filter 520ms ease;
+}
+
+.cafe-card-track > [data-reveal]:nth-child(2),
+.cafe-method-grid > [data-reveal]:nth-child(2),
+.cafe-stat-grid > [data-reveal]:nth-child(2),
+.cafe-resource-grid > [data-reveal]:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.cafe-card-track > [data-reveal]:nth-child(3),
+.cafe-method-grid > [data-reveal]:nth-child(3),
+.cafe-stat-grid > [data-reveal]:nth-child(3),
+.cafe-resource-grid > [data-reveal]:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+.cafe-card-track > [data-reveal]:nth-child(4),
+.cafe-method-grid > [data-reveal]:nth-child(4),
+.cafe-stat-grid > [data-reveal]:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+.cafe-card-track > [data-reveal]:nth-child(5) {
+  transition-delay: 280ms;
+}
+
+.cafe-hero-collage {
+  --parallax-x: 0px;
+  --parallax-y: 0px;
+  --parallax-x-soft: 0px;
+  --parallax-y-soft: 0px;
+  --parallax-x-back: 0px;
+  --parallax-y-back: 0px;
+}
+
+.cafe-collage-bust {
+  translate: var(--parallax-x) var(--parallax-y);
+}
+
+.cafe-collage-books,
+.cafe-collage-coffee,
+.cafe-collage-note {
+  translate: var(--parallax-x-soft) var(--parallax-y-soft);
+}
+
+.cafe-collage-sun,
+.cafe-collage-paper-a,
+.cafe-collage-paper-b,
+.cafe-collage-paper-c,
+.cafe-collage-building {
+  translate: var(--parallax-x-back) var(--parallax-y-back);
+}
+
+.cafe-collage-bust,
+.cafe-collage-books,
+.cafe-collage-coffee,
+.cafe-collage-note,
+.cafe-collage-sun,
+.cafe-collage-paper-a,
+.cafe-collage-paper-b,
+.cafe-collage-paper-c,
+.cafe-collage-building {
+  transition: translate 160ms ease-out;
+  will-change: translate;
+}
+
+.cafe-event-poster::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,.15);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.cafe-event-poster:hover::after {
+  opacity: 1;
+}
+
+.cafe-method-mark,
+.cafe-resource-mark,
+.cafe-next-scribble {
+  transform-origin: center;
+}
+
+.cafe-method-grid article:hover .cafe-method-mark {
+  animation: cafe-mark-wobble 520ms ease both;
+}
+
+.cafe-resource-grid article:hover .cafe-resource-mark {
+  animation: cafe-resource-mark-pulse 620ms ease both;
+}
+
+@keyframes cafe-mark-wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  35% { transform: rotate(-7deg) scale(1.08); }
+  68% { transform: rotate(5deg) scale(.98); }
+}
+
+@keyframes cafe-resource-mark-pulse {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  45% { transform: translateY(-5px) rotate(-5deg); }
+  75% { transform: translateY(1px) rotate(3deg); }
 }
