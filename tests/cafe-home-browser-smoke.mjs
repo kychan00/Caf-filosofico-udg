@@ -170,6 +170,7 @@ try {
   const resultText = await evaluate("document.querySelector('.cafe-search-results a')?.textContent")
   assert.ok(resultText.toLowerCase().includes('agua'))
 
+  await capture('search-mobile-390x844')
   await evaluate("window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
   await until("!document.querySelector('#cafe-search')", 'search close on Escape')
 
@@ -206,6 +207,10 @@ try {
     await wait(550)
     await capture(name)
   }
+
+  await evaluate("document.querySelector('.cafe-footer')?.scrollIntoView({block:'end',behavior:'auto'})")
+  await wait(250)
+  await capture('footer-mobile-390x844')
 
   await evaluate("window.scrollTo({top:0,behavior:'auto'}); document.querySelector('.cafe-menu-trigger')?.click()")
   await until("document.querySelector('.cafe-nav-links').classList.contains('is-open')", 'mobile menu reopen for visual review')
@@ -247,6 +252,16 @@ try {
     await wait(500)
     await capture(name)
   }
+
+  await evaluate("window.scrollTo({top:0,behavior:'auto'}); document.querySelector('.cafe-search-trigger')?.click()")
+  await until("!!document.querySelector('#cafe-search')", 'desktop search visual review')
+  await wait(200)
+  await capture('search-desktop-1440x900')
+  await evaluate("window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
+
+  await evaluate("document.querySelector('.cafe-footer')?.scrollIntoView({block:'end',behavior:'auto'})")
+  await wait(200)
+  await capture('footer-desktop-1440x900')
 
   await evaluate("window.scrollTo({top:0,behavior:'auto'}); document.querySelector('.cafe-nav-resource-menu > button')?.click()")
   await until("!!document.querySelector('#cafe-resource-dropdown')", 'resources dropdown open')
