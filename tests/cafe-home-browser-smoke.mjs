@@ -190,6 +190,7 @@ try {
   for (const [selector, name] of [
     ['#cafes', 'cafes-desktop-1440x900'],
     ['#metodo', 'metodo-desktop-1440x900'],
+    ['.cafe-numbers', 'numeros-desktop-1440x900'],
     ['.cafe-next', 'next-desktop-1440x900'],
     ['#archivo', 'archivo-desktop-1440x900'],
     ['#recursos', 'recursos-desktop-1440x900'],
