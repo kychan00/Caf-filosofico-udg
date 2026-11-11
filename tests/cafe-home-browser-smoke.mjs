@@ -211,6 +211,18 @@ try {
     await capture(name)
   }
 
+  await evaluate("window.scrollTo({top:0,behavior:'auto'}); document.querySelector('.cafe-nav-resource-menu > button')?.click()")
+  await until("!!document.querySelector('#cafe-resource-dropdown')", 'resources dropdown open')
+  const resourcesMenu = await evaluate("({expanded:document.querySelector('.cafe-nav-resource-menu > button')?.getAttribute('aria-expanded'),items:document.querySelectorAll('#cafe-resource-dropdown > a, #cafe-resource-dropdown > button').length,text:document.querySelector('#cafe-resource-dropdown')?.textContent})")
+  assert.equal(resourcesMenu.expanded, 'true')
+  assert.equal(resourcesMenu.items, 4)
+  assert.ok(resourcesMenu.text.includes('Memorias'))
+  assert.ok(resourcesMenu.text.includes('Sistemas 2D'))
+  assert.ok(resourcesMenu.text.includes('Preguntas'))
+  await evaluate("window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
+  await until("!document.querySelector('#cafe-resource-dropdown')", 'resources dropdown close on Escape')
+  console.log('OK resources dropdown interaction')
+
   console.log('OK home interactions, search, mobile navigation, lazy poster and visual review captures')
 } finally {
   if (socket) socket.close()
