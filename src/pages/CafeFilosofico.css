@@ -19,16 +19,11 @@
   --cafe-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-* {
+.cafe-home,
+.cafe-home *,
+.cafe-home *::before,
+.cafe-home *::after {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
 }
 
 .cafe-home {
