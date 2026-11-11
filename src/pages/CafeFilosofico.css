@@ -2427,3 +2427,9 @@
     padding: 10px 6px;
   }
 }
+
+
+.cafe-card-track:focus-visible {
+  outline: 2px dashed var(--cafe-terra);
+  outline-offset: 8px;
+}
