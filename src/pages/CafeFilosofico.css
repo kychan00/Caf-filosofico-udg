@@ -1934,7 +1934,6 @@ body {
   .cafe-home [data-reveal].is-reveal-ready.is-visible {
     opacity: 1 !important;
     translate: none !important;
-    filter: none !important;
   }
 
   .cafe-collage-bust,
@@ -2170,17 +2169,14 @@ body {
 .cafe-home [data-reveal].is-reveal-ready {
   opacity: 0;
   translate: 0 18px;
-  filter: blur(3px);
 }
 
 .cafe-home [data-reveal].is-reveal-ready.is-visible {
   opacity: 1;
   translate: 0 0;
-  filter: blur(0);
   transition:
-    opacity 620ms cubic-bezier(.2,.72,.2,1),
-    translate 760ms cubic-bezier(.16,.74,.18,1),
-    filter 520ms ease;
+    opacity 520ms cubic-bezier(.2,.72,.2,1),
+    translate 680ms cubic-bezier(.16,.74,.18,1);
 }
 
 .cafe-card-track > [data-reveal]:nth-child(2),
