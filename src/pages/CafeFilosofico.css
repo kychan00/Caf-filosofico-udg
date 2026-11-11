@@ -1661,8 +1661,21 @@
 }
 
 @media (max-width: 720px) {
+  .cafe-home {
+    padding-top: 72px;
+  }
+
   .cafe-nav-shell {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
     padding: 0 16px;
+  }
+
+  .cafe-section,
+  .cafe-manifesto,
+  .cafe-next {
+    scroll-margin-top: 88px;
   }
 
   .cafe-nav {
