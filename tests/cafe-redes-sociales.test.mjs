@@ -65,7 +65,7 @@ test('interacción, semántica, reducción de movimiento y geometría adaptable'
 test('la galería no publica el JPEG 01 cuyo contenido presenta una región gris', () => {
   const system = read('src/data/cafeRedesSocialesSystem2D.js')
   const gallery = read('src/pages/CafeRedesSocialesSystem2D.jsx')
-  assert.doesNotMatch(system, /sesion-05\\/01\\.jpg/)
-  assert.match(system, /sesion-05\\/02\\.webp/)
+  assert.doesNotMatch(system, /sesion-05\/01\.jpg/)
+  assert.match(system, /sesion-05\/02\.webp/)
   assert.match(gallery, /Esta fotografía documenta la realización presencial/)
 })
