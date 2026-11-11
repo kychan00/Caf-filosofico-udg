@@ -65,6 +65,7 @@ export default function CafeFilosofico() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
   const cardTrackRef = useRef<HTMLDivElement>(null)
+  const heroCollageRef = useRef<HTMLElement>(null)
 
   const base = import.meta.env.BASE_URL
   const published = cafeEvents.filter((event) => event.status === 'publicado')
@@ -103,6 +104,60 @@ export default function CafeFilosofico() {
 
     window.addEventListener('keydown', closeOverlays)
     return () => window.removeEventListener('keydown', closeOverlays)
+  }, [])
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>('.cafe-home [data-reveal]')
+    )
+
+    if (reducedMotion.matches) {
+      nodes.forEach((node) => node.classList.add('is-visible'))
+      return
+    }
+
+    nodes.forEach((node) => node.classList.add('is-reveal-ready'))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -7% 0px' }
+    )
+
+    nodes.forEach((node) => observer.observe(node))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const collage = heroCollageRef.current
+    if (!collage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const move = (event: PointerEvent) => {
+      const rect = collage.getBoundingClientRect()
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 14
+      collage.style.setProperty('--parallax-x', `${x.toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y', `${y.toFixed(2)}px`)
+    }
+
+    const reset = () => {
+      collage.style.setProperty('--parallax-x', '0px')
+      collage.style.setProperty('--parallax-y', '0px')
+    }
+
+    collage.addEventListener('pointermove', move)
+    collage.addEventListener('pointerleave', reset)
+
+    return () => {
+      collage.removeEventListener('pointermove', move)
+      collage.removeEventListener('pointerleave', reset)
+    }
   }, [])
 
   const goToSection = (id: string) => {
@@ -230,7 +285,7 @@ export default function CafeFilosofico() {
       </header>
 
       <section className="cafe-hero">
-        <div className="cafe-hero-copy">
+        <div className="cafe-hero-copy" data-reveal>
           <p className="cafe-overline">DIÁLOGO · PREGUNTA · ARGUMENTO · COMUNIDAD</p>
           <h1>
             <span>Café</span>
@@ -262,7 +317,7 @@ export default function CafeFilosofico() {
           </div>
         </div>
 
-        <figure className="cafe-hero-collage">
+        <figure className="cafe-hero-collage" ref={heroCollageRef} data-reveal>
           <span className="cafe-collage-sun" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-a" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
@@ -312,7 +367,7 @@ export default function CafeFilosofico() {
       </section>
 
       <section className="cafe-conversations cafe-section" id="cafes">
-        <header className="cafe-section-heading">
+        <header className="cafe-section-heading" data-reveal>
           <div>
             <p>CONVERSACIONES QUE HEMOS ABIERTO</p>
             <h2>Cafés que han sucedido</h2>
@@ -331,7 +386,7 @@ export default function CafeFilosofico() {
 
         <div className="cafe-card-track" ref={cardTrackRef}>
           {published.map((event) => (
-            <article className="cafe-event-card" key={event.id}>
+            <article className="cafe-event-card" key={event.id} data-reveal>
               <Link to={event.route} className="cafe-event-poster">
                 <span className="cafe-poster-tape" aria-hidden="true" />
                 <img
@@ -361,7 +416,7 @@ export default function CafeFilosofico() {
 
       <section className="cafe-manifesto" id="metodo">
         <div className="cafe-manifesto-tear cafe-manifesto-tear-top" aria-hidden="true" />
-        <div className="cafe-manifesto-copy">
+        <div className="cafe-manifesto-copy" data-reveal>
           <p className="cafe-manifesto-quote">
             NO ES UNA CONFERENCIA.<br />
             NO ES UN DEBATE PARA GANAR.<br />
@@ -372,7 +427,7 @@ export default function CafeFilosofico() {
 
         <div className="cafe-method-grid" aria-label="Método del Café Filosófico">
           {method.map((item) => (
-            <article key={item.title}>
+            <article key={item.title} data-reveal>
               <span className="cafe-method-mark" aria-hidden="true">{item.mark}</span>
               <small>{item.number}</small>
               <h3>{item.title}</h3>
@@ -385,24 +440,24 @@ export default function CafeFilosofico() {
       </section>
 
       <section className="cafe-numbers cafe-section" aria-labelledby="cafe-numbers-title">
-        <div className="cafe-numbers-title">
+        <div className="cafe-numbers-title" data-reveal>
           <p>UNA COMUNIDAD QUE CRECE CON SUS CONVERSACIONES</p>
           <h2 id="cafe-numbers-title">El Café<br />en números</h2>
         </div>
         <div className="cafe-stat-grid">
-          <article>
+          <article data-reveal>
             <strong>{String(published.length).padStart(2, '0')}</strong>
             <span>cafés realizados</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>+150</strong>
             <span>participaciones</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>+300</strong>
             <span>preguntas discutidas</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>01</strong>
             <span>comunidad abierta</span>
           </article>
@@ -411,7 +466,7 @@ export default function CafeFilosofico() {
 
       {nextEvent && (
         <section className="cafe-next" aria-labelledby="cafe-next-title">
-          <div className="cafe-next-poster-wrap">
+          <div className="cafe-next-poster-wrap" data-reveal>
             <span className="cafe-next-paper-back" aria-hidden="true" />
             <span className="cafe-next-tape" aria-hidden="true" />
             <img
@@ -423,7 +478,7 @@ export default function CafeFilosofico() {
             />
           </div>
 
-          <div className="cafe-next-copy">
+          <div className="cafe-next-copy" data-reveal>
             <p>PRÓXIMA CONVERSACIÓN · EDICIÓN {String(nextEvent.edition).padStart(2, '0')}</p>
             <h2 id="cafe-next-title">{nextEvent.shortTitle}</h2>
             <blockquote>{nextEvent.question}</blockquote>
@@ -444,7 +499,7 @@ export default function CafeFilosofico() {
       )}
 
       <section className="cafe-archive cafe-section" id="archivo">
-        <header className="cafe-section-heading cafe-archive-heading">
+        <header className="cafe-section-heading cafe-archive-heading" data-reveal>
           <div>
             <p>ARCHIVO · MEMORIA · EVIDENCIA</p>
             <h2>Lo que queda<br />después de conversar</h2>
@@ -457,7 +512,7 @@ export default function CafeFilosofico() {
 
         <div className="cafe-evidence-grid">
           {evidence.map((item, index) => (
-            <figure className={`cafe-evidence cafe-evidence-${index + 1}`} key={item.src}>
+            <figure className={`cafe-evidence cafe-evidence-${index + 1}`} key={item.src} data-reveal>
               <div className="cafe-evidence-photo">
                 <img src={`${base}${item.src}`} alt={item.caption} loading="lazy" decoding="async" />
               </div>
@@ -482,7 +537,7 @@ export default function CafeFilosofico() {
       </section>
 
       <section className="cafe-resources cafe-section" id="recursos" aria-labelledby="cafe-resources-title">
-        <header className="cafe-section-heading cafe-resources-heading">
+        <header className="cafe-section-heading cafe-resources-heading" data-reveal>
           <div>
             <p>RECURSOS PARA VOLVER A LA CONVERSACIÓN</p>
             <h2 id="cafe-resources-title">Leer, mapear,<br />volver a preguntar</h2>
@@ -494,7 +549,7 @@ export default function CafeFilosofico() {
         </header>
 
         <div className="cafe-resource-grid">
-          <article>
+          <article data-reveal>
             <span className="cafe-resource-index">01</span>
             <p className="cafe-resource-mark" aria-hidden="true">¶</p>
             <h3>Memorias de sesión</h3>
@@ -504,7 +559,7 @@ export default function CafeFilosofico() {
             </button>
           </article>
 
-          <article>
+          <article data-reveal>
             <span className="cafe-resource-index">02</span>
             <p className="cafe-resource-mark" aria-hidden="true">⌁</p>
             <h3>Sistemas 2D</h3>
@@ -514,7 +569,7 @@ export default function CafeFilosofico() {
             </Link>
           </article>
 
-          <article>
+          <article data-reveal>
             <span className="cafe-resource-index">03</span>
             <p className="cafe-resource-mark" aria-hidden="true">?</p>
             <h3>Preguntas detonadoras</h3>
