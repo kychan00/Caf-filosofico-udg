@@ -144,11 +144,19 @@ export default function CafeFilosofico() {
       const y = ((event.clientY - rect.top) / rect.height - 0.5) * 14
       collage.style.setProperty('--parallax-x', `${x.toFixed(2)}px`)
       collage.style.setProperty('--parallax-y', `${y.toFixed(2)}px`)
+      collage.style.setProperty('--parallax-x-soft', `${(x * 0.45).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y-soft', `${(y * 0.45).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-x-back', `${(-x * 0.28).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y-back', `${(-y * 0.28).toFixed(2)}px`)
     }
 
     const reset = () => {
       collage.style.setProperty('--parallax-x', '0px')
       collage.style.setProperty('--parallax-y', '0px')
+      collage.style.setProperty('--parallax-x-soft', '0px')
+      collage.style.setProperty('--parallax-y-soft', '0px')
+      collage.style.setProperty('--parallax-x-back', '0px')
+      collage.style.setProperty('--parallax-y-back', '0px')
     }
 
     collage.addEventListener('pointermove', move)
