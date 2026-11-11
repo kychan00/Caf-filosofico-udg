@@ -33,3 +33,12 @@ test('las seis páginas históricas y sus estilos permanecen idénticos a main',
     )
   }
 })
+
+test('el CSS de la home no introduce selectores globales que contaminen páginas históricas', () => {
+  const css = readFileSync(new URL('../src/pages/CafeFilosofico.css', import.meta.url), 'utf8')
+  assert.equal(/^:root\s*\{/m.test(css), false)
+  assert.equal(/^html\s*\{/m.test(css), false)
+  assert.equal(/^body\s*\{/m.test(css), false)
+  assert.equal(/^\*\s*\{/m.test(css), false)
+  assert.ok(css.includes('.cafe-home,\n.cafe-home *,'))
+})
