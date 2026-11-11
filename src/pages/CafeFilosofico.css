@@ -1194,6 +1194,22 @@ body {
   clip-path: polygon(0 46%, 3% 18%, 7% 53%, 11% 20%, 15% 48%, 20% 12%, 25% 52%, 30% 16%, 35% 55%, 40% 13%, 45% 50%, 50% 15%, 55% 54%, 60% 10%, 65% 52%, 70% 16%, 75% 55%, 80% 12%, 85% 51%, 90% 16%, 95% 54%, 100% 14%, 100% 100%, 0 100%);
 }
 
+.cafe-next-tear {
+  position: absolute;
+  z-index: 5;
+  left: -2%;
+  right: -2%;
+  height: 34px;
+  pointer-events: none;
+  background: var(--cafe-paper);
+  clip-path: polygon(0 46%, 3% 18%, 7% 53%, 11% 20%, 15% 48%, 20% 12%, 25% 52%, 30% 16%, 35% 55%, 40% 13%, 45% 50%, 50% 15%, 55% 54%, 60% 10%, 65% 52%, 70% 16%, 75% 55%, 80% 12%, 85% 51%, 90% 16%, 95% 54%, 100% 14%, 100% 100%, 0 100%);
+}
+
+.cafe-next-tear-top {
+  top: -2px;
+  transform: rotate(180deg);
+}
+
 .cafe-next-poster-wrap {
   position: relative;
   z-index: 3;
