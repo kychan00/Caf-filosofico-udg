@@ -62,45 +62,10 @@ test('interacción, semántica, reducción de movimiento y geometría adaptable'
 })
 
 
-test('la evidencia 01 conserva una estructura JPEG válida y sus dimensiones originales', () => {
-  const jpeg = readFileSync(new URL('../public/images/cafe-filosofico/redes-sociales/sesion-05/01.jpg', import.meta.url))
-  assert.equal(jpeg[0], 0xff)
-  assert.equal(jpeg[1], 0xd8)
-
-  let offset = 2
-  let width = null
-  let height = null
-  let reachedScan = false
-
-  while (offset < jpeg.length) {
-    assert.equal(jpeg[offset], 0xff, 'Marcador JPEG inválido en byte ' + offset)
-    while (jpeg[offset] === 0xff) offset += 1
-    const marker = jpeg[offset]
-    offset += 1
-
-    if (marker === 0xd9) break
-    if (marker >= 0xd0 && marker <= 0xd7) continue
-
-    const length = jpeg.readUInt16BE(offset)
-    assert.ok(length >= 2, 'Longitud JPEG inválida')
-    assert.ok(offset + length <= jpeg.length, 'Segmento JPEG truncado')
-
-    if ([0xc0, 0xc1, 0xc2].includes(marker)) {
-      height = jpeg.readUInt16BE(offset + 3)
-      width = jpeg.readUInt16BE(offset + 5)
-    }
-
-    if (marker === 0xda) {
-      reachedScan = true
-      break
-    }
-
-    offset += length
-  }
-
-  assert.equal(reachedScan, true, 'El JPEG no alcanza un segmento de imagen decodificable')
-  assert.equal(width, 960)
-  assert.equal(height, 720)
-  assert.equal(jpeg.at(-2), 0xff)
-  assert.equal(jpeg.at(-1), 0xd9)
+test('la galería no publica el JPEG 01 cuyo contenido presenta una región gris', () => {
+  const system = read('src/data/cafeRedesSocialesSystem2D.js')
+  const gallery = read('src/pages/CafeRedesSocialesSystem2D.jsx')
+  assert.doesNotMatch(system, /sesion-05\\/01\\.jpg/)
+  assert.match(system, /sesion-05\\/02\\.webp/)
+  assert.match(gallery, /Esta fotografía documenta la realización presencial/)
 })
