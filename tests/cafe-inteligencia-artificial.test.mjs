@@ -42,10 +42,11 @@ test('ruta, catálogo y archivo público distinguen la edición como próxima', 
   assert.ok(catalog.includes("slug: 'inteligencia-artificial'"))
   assert.ok(catalog.includes("status: 'proximo'"))
   assert.ok(catalog.includes(route))
-  assert.ok(archive.includes("edition: 'EDICIÓN 06'"))
-  assert.ok(archive.includes("badge: 'PRÓXIMO ENCUENTRO'"))
-  assert.ok(archive.includes(route))
-  assert.match(archive, /No sustituye ni modifica el cartel oficial/)
+  assert.ok(catalog.includes("edition: 6"))
+  assert.ok(catalog.includes("poster: 'images/cafe-filosofico/inteligencia-artificial/poster-oficial.png'"))
+  assert.match(archive, /import \{ cafeEvents \}/)
+  assert.match(archive, /nextEvent\.route/)
+  assert.match(archive, /nextEvent\.poster/)
 })
 
 test('la convocatoria conserva interacción, accesibilidad y geometría adaptable', () => {
