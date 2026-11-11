@@ -1181,6 +1181,19 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
 }
 
+.cafe-next::after {
+  content: '';
+  position: absolute;
+  z-index: 5;
+  left: -2%;
+  right: -2%;
+  bottom: -2px;
+  height: 34px;
+  pointer-events: none;
+  background: var(--cafe-paper);
+  clip-path: polygon(0 46%, 3% 18%, 7% 53%, 11% 20%, 15% 48%, 20% 12%, 25% 52%, 30% 16%, 35% 55%, 40% 13%, 45% 50%, 50% 15%, 55% 54%, 60% 10%, 65% 52%, 70% 16%, 75% 55%, 80% 12%, 85% 51%, 90% 16%, 95% 54%, 100% 14%, 100% 100%, 0 100%);
+}
+
 .cafe-next-poster-wrap {
   position: relative;
   z-index: 3;
