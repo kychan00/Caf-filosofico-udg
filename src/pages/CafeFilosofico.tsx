@@ -1,257 +1,667 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router'
+import { cafeEvents } from '../data/cafeFilosoficoEvents'
 import './CafeFilosofico.css'
-import { cafeAguaPhotos } from '../data/cafeAguaPhotos'
 
-// Portada editorial del catálogo. No sustituye ni modifica el cartel oficial de la convocatoria.
-const inteligenciaArtificialArchiveCover = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 820'%3E%3Crect width='720' height='820' fill='%23efe8de'/%3E%3Cpath d='M0 200L720 330V670H0Z' fill='%23b98a5d'/%3E%3Crect y='670' width='720' height='150' fill='%23212827'/%3E%3Ctext x='52' y='90' font-family='Georgia,serif' font-size='44' font-weight='700' fill='%23221812'%3ECAFÉ FILOSÓFICO%3C/text%3E%3Ctext x='52' y='151' font-family='Arial,sans-serif' font-size='25' font-weight='700' letter-spacing='5' fill='%23221812'%3EINTERDISCIPLINARIO%3C/text%3E%3Ctext x='50' y='300' font-family='Arial Black,Arial,sans-serif' font-size='63' font-weight='900' fill='%230d0d0c'%3EINTELIGENCIA%3C/text%3E%3Ctext x='50' y='371' font-family='Arial Black,Arial,sans-serif' font-size='63' font-weight='900' fill='%230d0d0c'%3EARTIFICIAL%3C/text%3E%3Cg stroke='%231b1713' stroke-width='4' fill='%23eee9e1'%3E%3Ccircle cx='118' cy='500' r='34'/%3E%3Crect x='83' y='536' width='70' height='125'/%3E%3Ccircle cx='260' cy='500' r='34'/%3E%3Crect x='225' y='536' width='70' height='125'/%3E%3Crect x='368' y='466' width='78' height='195'/%3E%3Ccircle cx='407' cy='501' r='27'/%3E%3Crect x='510' y='431' width='115' height='230'/%3E%3Ccircle cx='568' cy='489' r='35'/%3E%3C/g%3E%3Ctext x='52' y='738' font-family='Georgia,serif' font-size='31' fill='%23f6ead7'%3E17 NOV · 2:00 P.M.%3C/text%3E%3Ctext x='52' y='784' font-family='Arial,sans-serif' font-size='20' letter-spacing='3' fill='%23f6ead7'%3EPRÓXIMO ENCUENTRO%3C/text%3E%3C/svg%3E"
-
-const sessions = [
+const method = [
   {
-    edition: 'EDICIÓN 01',
-    date: '07 SEP 2026',
-    title: '¿Por qué es más fácil pensar en el fin del mundo que en el fin del capitalismo?',
-    description:
-      'Una discusión sobre sistema, deseo, medios de producción, naturaleza, mérito y la dificultad de imaginar alternativas.',
-    tags: ['Capitalismo', 'Sistema', 'Deseo', 'Medios de producción', 'Naturaleza', 'Valor'],
-    route: '/cafe-filosofico/2026/09/07/fin-del-mundo-fin-del-capitalismo',
-    image: `${import.meta.env.BASE_URL}images/cafe-filosofico/session-01-thumb.png`,
-    photos: [
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/gale01.JPG`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/gale02.JPG`,
-    ],
+    number: '01',
+    title: 'Preguntar',
+    copy: 'Abrir problemas y explorar nuevas perspectivas.',
+    mark: '?',
   },
   {
-    edition: 'EDICIÓN 02',
-    date: '22 SEP 2026',
-    title: 'La meritocracia',
-    description:
-      'Memoria del diálogo sobre mérito, pobreza, merecimiento, trabajo, desigualdad, competencia y las condiciones sociales que hacen posible atribuir éxito o fracaso.',
-    tags: ['Meritocracia', 'Desigualdad', 'Pobreza', 'Individuo', 'Estructura'],
-    route: '/cafe-filosofico/2026/09/22/meritocracia',
-    image: `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/poster-original.jpg`,
-    imageMode: 'poster',
-    badge: 'MEMORIA PUBLICADA',
-    actionLabel: 'Explorar memoria',
-    galleryMode: 'strip',
-    photos: [
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/01.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/02.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/03.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/04.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/05.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/06.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/07.jpg`,
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/meritocracia/session-02/08.jpg`,
-    ],
+    number: '02',
+    title: 'Escuchar',
+    copy: 'Atender con respeto y disposición a lo que otros piensan.',
+    mark: '◌',
   },
   {
-    edition: 'EDICIÓN 03',
-    date: '05 OCT 2026',
-    title: 'Mercadotecnia',
-    description:
-      '¿Sugerencia, persuasión o manipulación? Un encuentro para discutir si la mercadotecnia sólo informa o también influye en lo que pensamos, sentimos y elegimos.',
-    tags: ['Mercadotecnia', 'Persuasión', 'Manipulación', 'Consumo', 'Libertad'],
-    route: '/cafe-filosofico/2026/10/05/mercadotecnia',
-    image: `${import.meta.env.BASE_URL}images/cafe-filosofico/mercadotecnia/poster-original.jpg`,
-    imageMode: 'poster',
-    badge: 'MEMORIA PUBLICADA',
-    actionLabel: 'Explorar memoria',
+    number: '03',
+    title: 'Argumentar',
+    copy: 'Construir razones, examinar ideas y contrastar posturas.',
+    mark: '≋',
   },
-
   {
-    edition: 'EDICIÓN 04',
-    date: '19 OCT 2026',
-    title: 'Hablemos sobre el agua',
-    description:
-      'Memoria del diálogo sobre crisis ecológica, infraestructura, planeación urbana, concesiones, justicia ambiental, ética colectiva y futuro del agua.',
-    tags: ['Agua', 'Derecho', 'Recurso', 'Bien común', 'Responsabilidad'],
-    route: '/cafe-filosofico/2026/10/19/agua',
-    image: `${import.meta.env.BASE_URL}images/cafe-filosofico/agua/poster-original.svg`,
-    imageMode: 'poster',
-    badge: 'MEMORIA PUBLICADA',
-    actionLabel: 'Explorar memoria',
-    galleryMode: 'strip',
-    photos: cafeAguaPhotos.map((photo) =>
-      `${import.meta.env.BASE_URL}images/cafe-filosofico/agua/sesion-04/${photo.file}`
-    ),
+    number: '04',
+    title: 'Dialogar',
+    copy: 'Encontrarnos en la diferencia para pensar en común.',
+    mark: '↔',
   },
-
-
-
-  {
-    edition: 'EDICIÓN 05',
-    date: '03 NOV 2026',
-    title: 'Redes sociales',
-    description:
-      'Memoria del diálogo sobre identidad construida, reconocimiento cuantificado, persistencia digital, algoritmos, economía de la atención, virtualidad, responsabilidad e inteligencia artificial.',
-    tags: ['Redes sociales', 'Identidad', 'Atención', 'Algoritmos', 'Virtualidad', 'Responsabilidad'],
-    route: '/cafe-filosofico/2026/11/03/redes-sociales',
-    image: `${import.meta.env.BASE_URL}images/cafe-filosofico/redes-sociales/poster-oficial.png`,
-    imageMode: 'poster',
-    badge: 'MEMORIA PUBLICADA',
-    actionLabel: 'Explorar memoria',
-  },
-
-  {
-    edition: 'EDICIÓN 06',
-    date: '17 NOV 2026',
-    title: 'Inteligencia Artificial',
-    description:
-      '¿Cómo afecta la IA a la identidad humana? Una convocatoria para discutir si es un riesgo existencial o una herramienta y qué significa que pueda salirse de control.',
-    tags: ['Inteligencia artificial', 'Identidad humana', 'Riesgo', 'Herramienta', 'Control'],
-    route: '/cafe-filosofico/2026/11/17/inteligencia-artificial',
-    image: inteligenciaArtificialArchiveCover,
-    imageMode: 'poster',
-    badge: 'PRÓXIMO ENCUENTRO',
-    actionLabel: 'Ver convocatoria',
-  },
-
 ]
 
+const evidence = [
+  {
+    src: 'images/cafe-filosofico/gale01.JPG',
+    label: 'Edición 01',
+    caption: 'Conversación abierta · septiembre 2026',
+  },
+  {
+    src: 'images/cafe-filosofico/meritocracia/session-02/01.jpg',
+    label: 'Edición 02',
+    caption: 'Meritocracia · memoria del encuentro',
+  },
+  {
+    src: 'images/cafe-filosofico/agua/sesion-04/IMG_1846.jpg',
+    label: 'Edición 04',
+    caption: 'Agua · diálogo y comunidad',
+  },
+  {
+    src: 'images/cafe-filosofico/redes-sociales/sesion-05/02.webp',
+    label: 'Edición 05',
+    caption: 'Redes sociales · evidencia de sesión',
+  },
+]
+
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  })
+}
+
 export default function CafeFilosofico() {
-  const heroImage = `${import.meta.env.BASE_URL}images/cafe-filosofico/cafe-hero.png`
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
+  const [query, setQuery] = useState('')
+  const cardTrackRef = useRef<HTMLDivElement>(null)
+  const heroCollageRef = useRef<HTMLElement>(null)
+
+  const base = import.meta.env.BASE_URL
+  const published = cafeEvents.filter((event) => event.status === 'publicado')
+  const editionCount = cafeEvents.length
+  const nextEvent = cafeEvents.find((event) => event.status === 'proximo')
+
+  const searchResults = useMemo(() => {
+    const needle = query.trim().toLocaleLowerCase('es')
+    if (!needle) return cafeEvents
+
+    return cafeEvents.filter((event) =>
+      [
+        event.title,
+        event.shortTitle,
+        event.question,
+        event.deck,
+        ...event.themes,
+      ]
+        .join(' ')
+        .toLocaleLowerCase('es')
+        .includes(needle)
+    )
+  }, [query])
+
+  const heroBust = `${base}images/cafe-filosofico/meritocracia/aristotle-bust.png`
+  const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=='
+  const heroBooks = `${base}images/cafe-filosofico/meritocracia/books-stack.png`
+  const heroCoffee = `${base}images/cafe-filosofico/meritocracia/coffee-cup.png`
+
+  useEffect(() => {
+    const closeOverlays = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setMenuOpen(false)
+      setSearchOpen(false)
+      setResourcesOpen(false)
+    }
+
+    window.addEventListener('keydown', closeOverlays)
+    return () => window.removeEventListener('keydown', closeOverlays)
+  }, [])
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>('.cafe-home [data-reveal]')
+    )
+
+    if (reducedMotion.matches) {
+      nodes.forEach((node) => node.classList.add('is-visible'))
+      return
+    }
+
+    nodes.forEach((node) => node.classList.add('is-reveal-ready'))
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -7% 0px' }
+    )
+
+    nodes.forEach((node) => observer.observe(node))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const collage = heroCollageRef.current
+    if (!collage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const move = (event: PointerEvent) => {
+      const rect = collage.getBoundingClientRect()
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 14
+      collage.style.setProperty('--parallax-x', `${x.toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y', `${y.toFixed(2)}px`)
+      collage.style.setProperty('--parallax-x-soft', `${(x * 0.45).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y-soft', `${(y * 0.45).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-x-back', `${(-x * 0.28).toFixed(2)}px`)
+      collage.style.setProperty('--parallax-y-back', `${(-y * 0.28).toFixed(2)}px`)
+    }
+
+    const reset = () => {
+      collage.style.setProperty('--parallax-x', '0px')
+      collage.style.setProperty('--parallax-y', '0px')
+      collage.style.setProperty('--parallax-x-soft', '0px')
+      collage.style.setProperty('--parallax-y-soft', '0px')
+      collage.style.setProperty('--parallax-x-back', '0px')
+      collage.style.setProperty('--parallax-y-back', '0px')
+    }
+
+    collage.addEventListener('pointermove', move)
+    collage.addEventListener('pointerleave', reset)
+
+    return () => {
+      collage.removeEventListener('pointermove', move)
+      collage.removeEventListener('pointerleave', reset)
+    }
+  }, [])
+
+  const goToSection = (id: string) => {
+    setMenuOpen(false)
+    setSearchOpen(false)
+    setResourcesOpen(false)
+    scrollToSection(id)
+  }
+
+  const scrollCards = (direction: -1 | 1) => {
+    const track = cardTrackRef.current
+    if (!track) return
+
+    track.scrollBy({
+      left: direction * Math.max(280, track.clientWidth * 0.72),
+      behavior: 'smooth',
+    })
+  }
 
   return (
-    <main className="cafe-public">
-      <section className="cafe-public-hero">
-        <div className="cafe-public-hero-copy">
-          <p className="cafe-public-kicker">
-            <span>DIÁLOGO</span>
-            <i />
-            <span>ARGUMENTOS</span>
-            <i />
-            <span>COMUNIDAD</span>
-          </p>
+    <main className="cafe-home" id="inicio">
+      <div className="cafe-home-grain" aria-hidden="true" />
 
+      <header className="cafe-nav-shell">
+        <nav className="cafe-nav" aria-label="Navegación principal del Café Filosófico">
+          <Link to="/cafe-filosofico" className="cafe-brand" aria-label="Café Filosófico · inicio">
+            <span className="cafe-brand-cup" aria-hidden="true">
+              <i />
+            </span>
+            <span>
+              <strong>CAFÉ</strong>
+              <strong>FILOSÓFICO</strong>
+            </span>
+          </Link>
+
+          <div id="cafe-nav-links" className={`cafe-nav-links ${menuOpen ? 'is-open' : ''}`}>
+            <button type="button" onClick={() => goToSection('inicio')}>Inicio</button>
+            <button type="button" onClick={() => goToSection('cafes')}>Cafés</button>
+            <button type="button" onClick={() => goToSection('archivo')}>Archivo</button>
+            <button type="button" onClick={() => goToSection('metodo')}>El proyecto</button>
+            <div className="cafe-nav-resource-menu">
+              <button
+                type="button"
+                aria-expanded={resourcesOpen}
+                aria-controls="cafe-resource-dropdown"
+                onClick={() => setResourcesOpen((value) => !value)}
+              >
+                Recursos <span className="cafe-nav-chevron" aria-hidden="true">⌄</span>
+              </button>
+              {resourcesOpen && (
+                <div id="cafe-resource-dropdown" className="cafe-nav-resource-dropdown">
+                  <button type="button" onClick={() => goToSection('archivo')}>
+                    <span>01</span> Memorias
+                  </button>
+                  <Link
+                    to="/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d"
+                    onClick={() => {
+                      setResourcesOpen(false)
+                      setMenuOpen(false)
+                    }}
+                  >
+                    <span>02</span> Sistemas 2D
+                  </Link>
+                  {nextEvent && (
+                    <Link
+                      to={nextEvent.route}
+                      onClick={() => {
+                        setResourcesOpen(false)
+                        setMenuOpen(false)
+                      }}
+                    >
+                      <span>03</span> Preguntas
+                    </Link>
+                  )}
+                  <button type="button" onClick={() => goToSection('recursos')}>
+                    <span>→</span> Ver todos
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="cafe-nav-actions">
+            <button
+              type="button"
+              className="cafe-search-trigger"
+              aria-label="Buscar conversaciones"
+              aria-expanded={searchOpen}
+              aria-controls="cafe-search-panel"
+              onClick={() => {
+                setMenuOpen(false)
+                setResourcesOpen(false)
+                setSearchOpen((value) => !value)
+              }}
+            >
+              <span aria-hidden="true">⌕</span>
+            </button>
+
+            {nextEvent && (
+              <Link className="cafe-nav-next" to={nextEvent.route}>
+                Próximo Café <span aria-hidden="true">→</span>
+              </Link>
+            )}
+
+            <button
+              type="button"
+              className="cafe-menu-trigger"
+              aria-label="Abrir navegación"
+              aria-expanded={menuOpen}
+              aria-controls="cafe-nav-links"
+              onClick={() => {
+                setSearchOpen(false)
+                setResourcesOpen(false)
+                setMenuOpen((value) => !value)
+              }}
+            >
+              <span />
+              <span />
+            </button>
+          </div>
+        </nav>
+
+        {searchOpen && (
+          <div id="cafe-search-panel" className="cafe-search-panel" role="search" aria-label="Buscar en el archivo del Café Filosófico">
+            <div className="cafe-search-paper">
+              <label htmlFor="cafe-search">Buscar en las conversaciones</label>
+              <div className="cafe-search-field">
+                <input
+                  id="cafe-search"
+                  autoFocus
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Tema, pregunta o concepto…"
+                />
+                <button
+                  type="button"
+                  aria-label="Cerrar búsqueda"
+                  onClick={() => {
+                    setSearchOpen(false)
+                    setQuery('')
+                  }}
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className="cafe-search-results" aria-live="polite">
+                {searchResults.length ? (
+                  searchResults.map((event) => (
+                    <Link
+                      to={event.route}
+                      key={event.id}
+                      onClick={() => setSearchOpen(false)}
+                    >
+                      <span>{String(event.edition).padStart(2, '0')}</span>
+                      <strong>{event.shortTitle}</strong>
+                      <small>{event.displayDate}</small>
+                    </Link>
+                  ))
+                ) : (
+                  <p>No encontramos una conversación con ese término.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </header>
+
+      <section className="cafe-hero">
+        <div className="cafe-hero-copy">
+          <p className="cafe-overline">DIÁLOGO · PREGUNTA · ARGUMENTO · COMUNIDAD</p>
           <h1>
             <span>Café</span>
             <span>Filosófico</span>
           </h1>
-
-          <div className="cafe-public-rule" />
-
-          <p className="cafe-public-intro">
-            Un espacio para pensar juntos, formular preguntas y conservar el hilo de cada
-            conversación.
+          <p className="cafe-hero-deck">
+            Pensar juntos cambia la manera<br />
+            de mirar <em>lo cotidiano.</em>
+          </p>
+          <p className="cafe-hero-intro">
+            Un espacio universitario para preguntar, escuchar, disentir y construir
+            pensamiento en común.
           </p>
 
-          <button
-            type="button"
-            className="cafe-public-scroll"
-            onClick={() =>
-              document.getElementById('cafe-sesiones')?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-              })
-            }
-          >
-            Ver sesiones
-            <span aria-hidden="true">↓</span>
-          </button>
+          <div className="cafe-hero-actions">
+            <button type="button" className="cafe-button cafe-button-primary" onClick={() => goToSection('cafes')}>
+              Explorar los cafés <span aria-hidden="true">→</span>
+            </button>
+            <button type="button" className="cafe-button cafe-button-paper" onClick={() => goToSection('metodo')}>
+              Conocer el proyecto <span aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <div className="cafe-hero-index" aria-label={`${editionCount} ediciones registradas`}>
+            <span>01</span>
+            <i />
+            <span>{String(editionCount).padStart(2, '0')}</span>
+            <b aria-hidden="true">● ○ ○</b>
+          </div>
         </div>
 
-        <figure className="cafe-public-hero-visual">
-          <img
-            src={heroImage}
-            alt="Café, libros y una escultura clásica en una composición editorial."
-          />
+        <figure className="cafe-hero-collage" ref={heroCollageRef}>
+          <span className="cafe-collage-sun" aria-hidden="true" />
+          <span className="cafe-collage-paper cafe-collage-paper-a" aria-hidden="true" />
+          <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
+          <span className="cafe-collage-paper cafe-collage-paper-c" aria-hidden="true" />
 
-          <div className="cafe-public-hero-caption">
-            <span>CAFÉ FILOSÓFICO</span>
-            <p>Un archivo de conversaciones que permanecen abiertas.</p>
+          <picture>
+            <source media="(max-width: 720px)" srcSet={transparentPixel} />
+            <img
+              className="cafe-collage-bust"
+              src={heroBust}
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              fetchPriority="low"
+            />
+          </picture>
+          <img className="cafe-collage-books" src={heroBooks} alt="" aria-hidden="true" decoding="async" />
+          <img className="cafe-collage-coffee" src={heroCoffee} alt="" aria-hidden="true" decoding="async" />
+
+          <div className="cafe-collage-building" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
           </div>
 
-          <span className="cafe-public-hero-orbit" aria-hidden="true" />
-          <span className="cafe-public-hero-index" aria-hidden="true">
-            CF
-          </span>
+          <div className="cafe-collage-note" aria-hidden="true">
+            <span>filosofía</span>
+            <i />
+          </div>
+
+          <div className="cafe-collage-orbit" aria-hidden="true" />
+          <div className="cafe-collage-strokes" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
+
+          <figcaption className="cafe-collage-caption">
+            <span>CUCSH · UdeG</span>
+            Un archivo vivo de conversaciones que permanecen abiertas.
+          </figcaption>
         </figure>
+
+        <div className="cafe-torn-edge" aria-hidden="true" />
       </section>
 
-      <section className="cafe-public-sessions" id="cafe-sesiones">
-        <header className="cafe-public-section-head">
+      <section className="cafe-conversations cafe-section" id="cafes">
+        <header className="cafe-section-heading" data-reveal>
           <div>
-            <span>ARCHIVO</span>
-            <h2>Sesiones</h2>
+            <p>CONVERSACIONES QUE HEMOS ABIERTO</p>
+            <h2>Cafés que han sucedido</h2>
           </div>
-          <p>
-            Cada encuentro queda abierto para volver a sus argumentos, preguntas y
-            problemas.
-          </p>
+          <div className="cafe-section-aside">
+            <p className="cafe-section-lead">
+              Temas contemporáneos, preguntas filosóficas y un diálogo interdisciplinario
+              que sigue creciendo.
+            </p>
+            <div className="cafe-card-controls" aria-label="Navegar cafés">
+              <button type="button" onClick={() => scrollCards(-1)} aria-label="Ver cafés anteriores">←</button>
+              <button type="button" onClick={() => scrollCards(1)} aria-label="Ver cafés siguientes">→</button>
+            </div>
+          </div>
         </header>
 
-        <div className="cafe-public-session-list">
-          {sessions.map((session, index) => (
-            <article className="cafe-public-session-card" key={session.route}>
-              <button
-                type="button"
-                className={`cafe-public-session-image ${session.imageMode === 'poster' ? 'is-poster' : ''}`}
-                onClick={() => { window.location.hash = `#${session.route}` }}
-                aria-label={`Abrir ${session.title}`}
-              >
-                <img src={session.image} alt="" />
-                <span className="cafe-public-session-image-number" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              </button>
-
-              <div className="cafe-public-session-copy">
-                {session.badge && (
-                  <span className="cafe-public-session-badge">{session.badge}</span>
+        <div
+          className="cafe-card-track"
+          ref={cardTrackRef}
+          role="region"
+          aria-label="Archivo horizontal de cafés publicados"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft') {
+              event.preventDefault()
+              scrollCards(-1)
+            }
+            if (event.key === 'ArrowRight') {
+              event.preventDefault()
+              scrollCards(1)
+            }
+          }}
+        >
+          {published.map((event) => (
+            <article className="cafe-event-card" key={event.id} data-reveal>
+              <Link to={event.route} className="cafe-event-poster">
+                <span className="cafe-poster-tape" aria-hidden="true" />
+                <img
+                  src={`${base}${event.poster}`}
+                  alt={event.posterAlt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                {event.assetKind === 'archivo' && (
+                  <span className="cafe-archive-asset">PIEZA DE ARCHIVO</span>
                 )}
+              </Link>
 
-                <div className="cafe-public-session-meta">
-                  <span>{session.edition}</span>
-                  <i />
-                  <span>{session.date}</span>
-                </div>
-
-                <h3>{session.title}</h3>
-                <p>{session.description}</p>
-
-                <div className="cafe-public-tags" aria-label="Temas de la sesión">
-                  {session.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
-
-                <div
-                  className={`cafe-public-session-gallery ${session.galleryMode === 'strip' ? 'is-strip' : ''}`}
-                  aria-label={`Galería del encuentro · ${session.date}`}
-                >
-                  {session.photos?.map((photo, photoIndex) => (
-                    <figure
-                      key={photo}
-                      className={`cafe-public-session-photo cafe-public-session-photo-${photoIndex + 1}`}
-                    >
-                      <img
-                        src={photo}
-                        alt={`Fotografía ${photoIndex + 1} del encuentro · ${session.date}.`}
-                        loading="lazy"
-                      />
-                      <figcaption>
-                        <span>{String(photoIndex + 1).padStart(2, '0')}</span>
-                        <p>Encuentro · {session.date}</p>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  className="cafe-public-open"
-                  onClick={() => { window.location.hash = `#${session.route}` }}
-                >
-                  {session.actionLabel || 'Abrir sesión'}
-                  <span aria-hidden="true">↗</span>
-                </button>
+              <div className="cafe-event-meta">
+                <span>{String(event.edition).padStart(2, '0')} / {String(editionCount).padStart(2, '0')}</span>
+                <span>{event.displayDate}</span>
               </div>
+              <h3>{event.shortTitle}</h3>
+              <p>{event.question}</p>
+              <Link to={event.route} className="cafe-circle-link" aria-label={`Abrir ${event.shortTitle}`}>
+                →
+              </Link>
             </article>
           ))}
         </div>
       </section>
 
-      <footer className="cafe-public-footer">
-        <span>CAFÉ FILOSÓFICO</span>
+      <section className="cafe-manifesto" id="metodo">
+        <div className="cafe-manifesto-tear cafe-manifesto-tear-top" aria-hidden="true" />
+        <div className="cafe-manifesto-copy" data-reveal>
+          <p className="cafe-manifesto-quote">
+            NO ES UNA CONFERENCIA.<br />
+            NO ES UN DEBATE PARA GANAR.<br />
+            <strong>ES UN LUGAR PARA<br />PENSAR CON OTROS.</strong>
+          </p>
+          <span className="cafe-hand-arrow" aria-hidden="true">↗</span>
+        </div>
+
+        <div className="cafe-method-grid" aria-label="Método del Café Filosófico">
+          {method.map((item) => (
+            <article key={item.title} data-reveal>
+              <span className="cafe-method-mark" aria-hidden="true">{item.mark}</span>
+              <small>{item.number}</small>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="cafe-manifesto-tear cafe-manifesto-tear-bottom" aria-hidden="true" />
+      </section>
+
+      <section className="cafe-numbers cafe-section" aria-labelledby="cafe-numbers-title">
+        <div className="cafe-numbers-title" data-reveal>
+          <p>UNA COMUNIDAD QUE CRECE CON SUS CONVERSACIONES</p>
+          <h2 id="cafe-numbers-title">El Café<br />en números</h2>
+        </div>
+        <div className="cafe-stat-grid">
+          <article data-reveal>
+            <strong>{String(published.length).padStart(2, '0')}</strong>
+            <span>cafés realizados</span>
+          </article>
+          <article data-reveal>
+            <strong>{String(editionCount).padStart(2, '0')}</strong>
+            <span>ediciones documentadas</span>
+          </article>
+          <article data-reveal>
+            <strong>{String(method.length).padStart(2, '0')}</strong>
+            <span>pilares del método</span>
+          </article>
+          <article data-reveal>
+            <strong>01</strong>
+            <span>comunidad abierta</span>
+          </article>
+        </div>
+      </section>
+
+      {nextEvent && (
+        <section className="cafe-next" aria-labelledby="cafe-next-title">
+          <span className="cafe-next-tear cafe-next-tear-top" aria-hidden="true" />
+          <div className="cafe-next-poster-wrap" data-reveal>
+            <span className="cafe-next-paper-back" aria-hidden="true" />
+            <span className="cafe-next-tape" aria-hidden="true" />
+            <img
+              src={`${base}${nextEvent.poster}`}
+              alt={nextEvent.posterAlt}
+              className="cafe-next-poster"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div className="cafe-next-copy" data-reveal>
+            <p>PRÓXIMA CONVERSACIÓN · EDICIÓN {String(nextEvent.edition).padStart(2, '0')}</p>
+            <h2 id="cafe-next-title">{nextEvent.shortTitle}</h2>
+            <blockquote>{nextEvent.question}</blockquote>
+
+            <div className="cafe-next-facts">
+              <span><small>CUÁNDO</small>{nextEvent.displayDate}</span>
+              <span><small>HORA</small>{nextEvent.time}</span>
+              <span><small>DÓNDE</small>{nextEvent.location}</span>
+            </div>
+
+            <Link to={nextEvent.route} className="cafe-button cafe-button-light">
+              Ver el próximo Café <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <span className="cafe-next-scribble" aria-hidden="true">↝</span>
+        </section>
+      )}
+
+      <section className="cafe-archive cafe-section" id="archivo">
+        <header className="cafe-section-heading cafe-archive-heading" data-reveal>
+          <div>
+            <p>ARCHIVO · MEMORIA · EVIDENCIA</p>
+            <h2>Lo que queda<br />después de conversar</h2>
+          </div>
+          <p className="cafe-section-lead">
+            Pósters, fotografías, memorias y sistemas conceptuales conservan el hilo de
+            cada encuentro sin convertir una discusión abierta en una doctrina única.
+          </p>
+        </header>
+
+        <div className="cafe-evidence-grid">
+          {evidence.map((item, index) => (
+            <figure className={`cafe-evidence cafe-evidence-${index + 1}`} key={item.src} data-reveal>
+              <div className="cafe-evidence-photo">
+                <img src={`${base}${item.src}`} alt={item.caption} loading="lazy" decoding="async" />
+              </div>
+              <figcaption>
+                <span>{item.label}</span>
+                <p>{item.caption}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="cafe-archive-note">
+          <span aria-hidden="true">φ</span>
+          <p>
+            Cada memoria distingue entre material preparatorio, diálogo celebrado,
+            reconstrucción editorial y verificación externa.
+          </p>
+          <button type="button" onClick={() => goToSection('cafes')}>
+            Explorar el archivo <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+
+      <section className="cafe-resources cafe-section" id="recursos" aria-labelledby="cafe-resources-title">
+        <header className="cafe-section-heading cafe-resources-heading" data-reveal>
+          <div>
+            <p>RECURSOS PARA VOLVER A LA CONVERSACIÓN</p>
+            <h2 id="cafe-resources-title">Leer, mapear,<br />volver a preguntar</h2>
+          </div>
+          <p className="cafe-section-lead">
+            El archivo no termina en una fotografía: cada edición conserva herramientas para
+            reconstruir problemas, argumentos y rutas de lectura.
+          </p>
+        </header>
+
+        <div className="cafe-resource-grid">
+          <article data-reveal>
+            <span className="cafe-resource-index">01</span>
+            <p className="cafe-resource-mark" aria-hidden="true">¶</p>
+            <h3>Memorias de sesión</h3>
+            <p>Reconstrucciones editoriales del diálogo, con fronteras claras entre preparación, intervención y verificación.</p>
+            <button type="button" onClick={() => goToSection('cafes')}>
+              Explorar memorias <span aria-hidden="true">→</span>
+            </button>
+          </article>
+
+          <article data-reveal>
+            <span className="cafe-resource-index">02</span>
+            <p className="cafe-resource-mark" aria-hidden="true">⌁</p>
+            <h3>Sistemas 2D</h3>
+            <p>Mapas conceptuales interactivos para estudiar relaciones, tensiones y recorridos argumentales.</p>
+            <Link to="/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d">
+              Abrir un sistema 2D <span aria-hidden="true">→</span>
+            </Link>
+          </article>
+
+          <article data-reveal>
+            <span className="cafe-resource-index">03</span>
+            <p className="cafe-resource-mark" aria-hidden="true">?</p>
+            <h3>Preguntas detonadoras</h3>
+            <p>Las preguntas que abren cada sesión permanecen disponibles para preparar la siguiente conversación.</p>
+            {nextEvent ? (
+              <Link to={nextEvent.route}>
+                Ver próximas preguntas <span aria-hidden="true">→</span>
+              </Link>
+            ) : (
+              <button type="button" onClick={() => goToSection('cafes')}>
+                Revisar el archivo <span aria-hidden="true">→</span>
+              </button>
+            )}
+          </article>
+        </div>
+      </section>
+
+      <footer className="cafe-footer">
+        <div>
+          <span className="cafe-brand-cup cafe-brand-cup-light" aria-hidden="true"><i /></span>
+          <p><strong>CAFÉ FILOSÓFICO</strong><br />CUCSH · UdeG</p>
+        </div>
+        <p>Espacio de pensamiento libre, diálogo y comunidad universitaria.</p>
         <span>GUADALAJARA · MMXXVI</span>
       </footer>
     </main>
