@@ -173,6 +173,10 @@ try {
   await evaluate("window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
   await until("!document.querySelector('#cafe-search')", 'search close on Escape')
 
+  await evaluate("const track=document.querySelector('.cafe-card-track'); track.scrollLeft=0; track.focus(); track.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}))")
+  await until("document.querySelector('.cafe-card-track').scrollLeft>0", 'keyboard archive navigation')
+  console.log('OK keyboard archive navigation')
+
   await evaluate("document.querySelector('.cafe-next')?.scrollIntoView({block:'center'})")
   await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
   await wait(250)
