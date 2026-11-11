@@ -17,7 +17,8 @@ jobs:
       - run: npm run build
       - run: node tests/cafe-home-browser-smoke.mjs
       - run: node tests/cafe-inteligencia-artificial-browser-smoke.mjs
-      - run: node tests/cafe-agua-browser-smoke.mjs
+      - name: Smoke Agua (retry once for Chromium profile cleanup flake)
+        run: node tests/cafe-agua-browser-smoke.mjs || (sleep 1 && node tests/cafe-agua-browser-smoke.mjs)
       - run: node tests/cafe-redes-sociales-browser-smoke.mjs
       - name: Upload home visual review
         if: always()
