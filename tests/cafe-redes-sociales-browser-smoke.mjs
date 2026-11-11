@@ -60,7 +60,7 @@ try{
   for(const [w,h] of [[390,844],[768,1024],[1024,768],[1440,900]]){
     await send('Emulation.setDeviceMetricsOverride',{width:w,height:h,deviceScaleFactor:2,mobile:w<769})
     await send('Page.navigate',{url})
-    await until("document.querySelectorAll('.rs-question-card').length === 3 && !!document.querySelector('.rs-phone') && document.querySelectorAll('.rsm-chapter').length === 8 && document.querySelectorAll('.redes2d-routes button').length === 5 && document.querySelectorAll('.redes2d-evidence img').length === 2",'page at '+w)
+    await until("document.querySelectorAll('.rs-question-card').length === 3 && !!document.querySelector('.rs-phone') && document.querySelectorAll('.rsm-chapter').length === 8 && document.querySelectorAll('.redes2d-routes button').length === 5 && document.querySelectorAll('.redes2d-evidence img').length === 1",'page at '+w)
     await evaluate("document.querySelector('.redes2d-evidence')?.scrollIntoView({block:'center'})")
     try {
       await until("[...document.querySelectorAll('.redes2d-evidence img')].every(img=>img.complete&&img.naturalWidth>0)",'evidence images at '+w)
@@ -74,7 +74,21 @@ try{
     assert.equal(data.selected,1)
     assert.equal(data.memory,8)
     assert.equal(data.routes,5)
-    assert.equal(data.evidence,2)
+    assert.equal(data.evidence,1)
+    // A JPEG can have a valid header while containing a solid gray corrupted region.
+    // Require genuine raster variation in the lower half of the displayed evidence.
+    const imageDetail=await evaluate(`(() => {
+      const img=document.querySelector('.redes2d-evidence img')
+      const canvas=document.createElement('canvas')
+      canvas.width=48;canvas.height=36
+      const ctx=canvas.getContext('2d',{willReadFrequently:true})
+      ctx.drawImage(img,0,0,48,36)
+      const rgba=ctx.getImageData(0,18,48,18).data
+      const colors=new Set()
+      for(let i=0;i<rgba.length;i+=4) colors.add([rgba[i]>>4,rgba[i+1]>>4,rgba[i+2]>>4].join(':'))
+      return {colors:colors.size,width:img.naturalWidth,height:img.naturalHeight}
+    })()`)
+    assert.ok(imageDetail.colors>25,'Evidence lower half looks like a gray placeholder: '+JSON.stringify(imageDetail))
     assert.ok(data.heading.includes('Redes')&&data.footer)
     console.log('OK redes sociales',w,h)
   }
@@ -97,7 +111,7 @@ try{
   const systemData=await evaluate("({hash:location.hash,inner:innerWidth,scroll:document.documentElement.scrollWidth,evidence:document.querySelectorAll('.redes2d-evidence img').length,selected:document.querySelectorAll('.redes2d-node.is-selected').length})")
   assert.equal(systemData.hash,'#/cafe-filosofico/2026/11/03/redes-sociales/sistema-2d')
   assert.ok(systemData.scroll<=systemData.inner+3,'Horizontal overflow in standalone 2D: '+JSON.stringify(systemData))
-  assert.equal(systemData.evidence,2)
+  assert.equal(systemData.evidence,1)
   assert.equal(systemData.selected,1)
   console.log('OK standalone 2D route, inspector, evidence and stable HashRouter')
 }finally{
