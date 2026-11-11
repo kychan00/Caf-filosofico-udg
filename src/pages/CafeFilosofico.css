@@ -39,10 +39,8 @@ body {
   background:
     radial-gradient(circle at 12% 5%, rgba(255, 255, 255, .68), transparent 26rem),
     radial-gradient(circle at 82% 31%, rgba(184, 77, 43, .045), transparent 30rem),
-    linear-gradient(90deg, rgba(92, 70, 41, .018) 1px, transparent 1px),
-    linear-gradient(rgba(92, 70, 41, .014) 1px, transparent 1px),
+    radial-gradient(ellipse at 35% 64%, rgba(118, 91, 55, .026), transparent 34rem),
     var(--cafe-paper);
-  background-size: auto, auto, 4px 4px, 4px 4px, auto;
   font-family: var(--cafe-sans);
 }
 
@@ -52,12 +50,15 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .32;
+  opacity: .24;
+  mix-blend-mode: multiply;
   background:
-    radial-gradient(ellipse at 20% 14%, rgba(94, 75, 49, .07) 0 1px, transparent 1.7px),
-    radial-gradient(ellipse at 78% 68%, rgba(94, 75, 49, .055) 0 1px, transparent 1.8px),
-    radial-gradient(ellipse at 44% 87%, rgba(255, 255, 255, .55) 0 1px, transparent 1.8px);
-  background-size: 19px 23px, 31px 27px, 25px 29px;
+    repeating-linear-gradient(11deg, rgba(108, 82, 52, .045) 0 1px, transparent 1px 17px),
+    repeating-linear-gradient(97deg, rgba(108, 82, 52, .025) 0 1px, transparent 1px 31px),
+    radial-gradient(ellipse at 20% 14%, rgba(94, 75, 49, .09) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 78% 68%, rgba(94, 75, 49, .065) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 44% 87%, rgba(255, 255, 255, .48) 0 1px, transparent 2px);
+  background-size: auto, auto, 27px 33px, 41px 37px, 35px 43px;
 }
 
 .cafe-home-grain {
@@ -65,7 +66,7 @@ body {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: .11;
+  opacity: .085;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.42'/%3E%3C/svg%3E");
 }
