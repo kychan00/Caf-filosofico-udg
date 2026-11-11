@@ -293,7 +293,7 @@ export default function CafeFilosofico() {
       </header>
 
       <section className="cafe-hero">
-        <div className="cafe-hero-copy" data-reveal>
+        <div className="cafe-hero-copy">
           <p className="cafe-overline">DIÁLOGO · PREGUNTA · ARGUMENTO · COMUNIDAD</p>
           <h1>
             <span>Café</span>
@@ -325,7 +325,7 @@ export default function CafeFilosofico() {
           </div>
         </div>
 
-        <figure className="cafe-hero-collage" ref={heroCollageRef} data-reveal>
+        <figure className="cafe-hero-collage" ref={heroCollageRef}>
           <span className="cafe-collage-sun" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-a" aria-hidden="true" />
           <span className="cafe-collage-paper cafe-collage-paper-b" aria-hidden="true" />
