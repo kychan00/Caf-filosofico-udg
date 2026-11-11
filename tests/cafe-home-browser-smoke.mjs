@@ -177,6 +177,8 @@ try {
   await until("document.querySelector('.cafe-card-track').scrollLeft>0", 'keyboard archive navigation')
   console.log('OK keyboard archive navigation')
 
+  await evaluate("document.querySelector('.cafe-card-track').scrollLeft=0")
+
   for (const [selector, name] of [
     ['#cafes', 'cafes-mobile-390x844'],
     ['#metodo', 'metodo-mobile-390x844'],
@@ -189,6 +191,12 @@ try {
     if (selector === '#cafes') {
       await until("[...document.querySelectorAll('.cafe-event-poster img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight}).every(img=>img.complete&&img.naturalWidth>0)", 'visible mobile cafe posters')
     }
+
+    const mobileSticky = await evaluate("(()=>{const nav=document.querySelector('.cafe-nav-shell'); const section=document.querySelector('" + selector + "'); const nr=nav.getBoundingClientRect(); const sr=section.getBoundingClientRect(); return {position:getComputedStyle(nav).position,top:nr.top,height:nr.height,sectionTop:sr.top}})()")
+    assert.equal(mobileSticky.position, 'sticky', 'Mobile navigation must stay sticky')
+    assert.ok(Math.abs(mobileSticky.top) <= 3, 'Mobile sticky navigation should remain at viewport top: ' + JSON.stringify(mobileSticky))
+    assert.ok(mobileSticky.sectionTop >= mobileSticky.height - 4, 'Mobile anchor should remain visible below sticky navigation: ' + JSON.stringify(mobileSticky))
+
     if (selector === '.cafe-next') {
       await until("document.querySelector('.cafe-next-poster')?.complete && document.querySelector('.cafe-next-poster')?.naturalWidth>0", 'next poster lazy load')
     }
@@ -198,6 +206,14 @@ try {
     await wait(550)
     await capture(name)
   }
+
+  await evaluate("window.scrollTo({top:0,behavior:'auto'}); document.querySelector('.cafe-menu-trigger')?.click()")
+  await until("document.querySelector('.cafe-nav-links').classList.contains('is-open')", 'mobile menu reopen for visual review')
+  await evaluate("document.querySelector('.cafe-nav-resource-menu > button')?.click()")
+  await until("!!document.querySelector('#cafe-resource-dropdown')", 'mobile resources dropdown visual review')
+  await wait(250)
+  await capture('resources-menu-mobile-390x844')
+  await evaluate("window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}))")
 
   await send('Emulation.setDeviceMetricsOverride', {
     width: 1440,
