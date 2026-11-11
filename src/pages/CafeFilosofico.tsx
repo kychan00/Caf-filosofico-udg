@@ -436,7 +436,23 @@ export default function CafeFilosofico() {
           </div>
         </header>
 
-        <div className="cafe-card-track" ref={cardTrackRef}>
+        <div
+          className="cafe-card-track"
+          ref={cardTrackRef}
+          role="region"
+          aria-label="Archivo horizontal de cafés publicados"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft') {
+              event.preventDefault()
+              scrollCards(-1)
+            }
+            if (event.key === 'ArrowRight') {
+              event.preventDefault()
+              scrollCards(1)
+            }
+          }}
+        >
           {published.map((event) => (
             <article className="cafe-event-card" key={event.id} data-reveal>
               <Link to={event.route} className="cafe-event-poster">
