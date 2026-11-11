@@ -29,7 +29,7 @@
 .cafe-home {
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
   color: var(--cafe-ink);
   background:
     radial-gradient(circle at 12% 5%, rgba(255, 255, 255, .68), transparent 26rem),
@@ -89,6 +89,12 @@
 .cafe-footer {
   position: relative;
   z-index: 2;
+}
+
+.cafe-section,
+.cafe-manifesto,
+.cafe-next {
+  scroll-margin-top: 96px;
 }
 
 /* NAVIGATION */
