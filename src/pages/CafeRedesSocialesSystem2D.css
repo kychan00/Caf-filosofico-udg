@@ -462,6 +462,11 @@
   border:1px solid var(--r2-line);
   background:var(--r2-paper);
 }
+.redes2d-evidence-grid figure:only-child{
+  grid-column:1/-1;
+  width:min(100%,960px);
+  justify-self:center;
+}
 .redes2d-evidence img{
   display:block;
   width:100%;
