@@ -97,7 +97,7 @@ export default function CafeMercadotecniaEvent() {
         <figure className="marketing-poster">
           <div className="marketing-poster-tape" aria-hidden="true" />
           <img
-            src={`${ASSET}/poster-original.jpg`}
+            src={`${ASSET}/poster-mercadotecnia-eleccion.webp`}
             alt="Cartel del Café Filosófico interdisciplinario sobre mercadotecnia"
           />
           <figcaption>

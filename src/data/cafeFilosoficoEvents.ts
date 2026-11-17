@@ -88,7 +88,7 @@ export const cafeEvents: CafeEvent[] = [
     route: '/cafe-filosofico/2026/10/05/mercadotecnia',
     status: 'publicado',
     themes: ['mercadotecnia', 'persuasión', 'manipulación', 'consumo', 'libertad'],
-    poster: 'images/cafe-filosofico/mercadotecnia/poster-original.jpg',
+    poster: 'images/cafe-filosofico/mercadotecnia/poster-mercadotecnia-eleccion.webp',
     posterAlt: 'Cartel original de la edición 03 del Café Filosófico sobre mercadotecnia.',
   },
   {
