@@ -44,10 +44,10 @@ export const cafeEvents: CafeEvent[] = [
       'naturaleza',
       'valor',
     ],
-    poster: 'images/cafe-filosofico/session-01-thumb.png',
+    poster: 'images/cafe-filosofico/capitalismo/poster-capitalismo-apocalipsis-2026.webp',
     posterAlt:
-      'Pieza editorial de archivo de la primera sesión del Café Filosófico sobre capitalismo y fin del mundo.',
-    assetKind: 'archivo',
+      'Cartel actualizado de la primera edición del Café Filosófico sobre el fin del mundo y el capitalismo.',
+    assetKind: 'poster',
   },
   {
     id: 'cafe-2026-09-22-meritocracia',
