@@ -70,8 +70,8 @@ export const cafeEvents: CafeEvent[] = [
       'individuo',
       'estructura',
     ],
-    poster: 'images/cafe-filosofico/meritocracia/poster-original.jpg',
-    posterAlt: 'Cartel original de la edición 02 del Café Filosófico sobre meritocracia.',
+    poster: 'images/cafe-filosofico/meritocracia/poster-meritocracia-escalera-2026.webp',
+    posterAlt: 'Cartel actualizado de la edición 02 del Café Filosófico sobre meritocracia.',
   },
   {
     id: 'cafe-2026-10-05-mercadotecnia',

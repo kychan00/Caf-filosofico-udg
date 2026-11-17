@@ -26,7 +26,7 @@ function gitBlobSha(path) {
 
 test('las páginas históricas conservan su contenido y estilos salvo cambios documentados de cartel', () => {
   for (const [path, sha] of expected) {
-    if (path === 'src/pages/CafeMercadotecniaEvent.tsx' || path === 'src/pages/CafeAguaEvent.tsx') continue
+    if (path === 'src/pages/CafeMercadotecniaEvent.tsx' || path === 'src/pages/CafeAguaEvent.tsx' || path === 'src/pages/CafeMeritocraciaEvent.tsx') continue
     assert.equal(
       gitBlobSha(path),
       sha,
@@ -69,6 +69,18 @@ test('Agua conserva el contenido de su página histórica salvo el cartel y sus 
   const header = Buffer.from('blob ' + content.length + String.fromCharCode(0))
   const sha = createHash('sha1').update(header).update(content).digest('hex')
   assert.equal(sha, expected.get(path), 'Se cambió otro contenido histórico en Agua')
+})
+
+test('Meritocracia mantiene su página histórica salvo la referencia exacta al cartel actualizado', () => {
+  const path = 'src/pages/CafeMeritocraciaEvent.tsx'
+  const nuevo = 'poster-meritocracia-escalera-2026.webp'
+  const anterior = 'poster-original.jpg'
+  const source = readFileSync(new URL('../' + path, import.meta.url), 'utf8')
+  assert.equal(source.split(nuevo).length - 1, 1, 'El nuevo cartel debe aparecer una única vez')
+  const content = Buffer.from(source.replace(nuevo, anterior), 'utf8')
+  const header = Buffer.from('blob ' + content.length + String.fromCharCode(0))
+  const sha = createHash('sha1').update(header).update(content).digest('hex')
+  assert.equal(sha, expected.get(path), 'Se modificó otro contenido histórico en Meritocracia')
 })
 
 test('el CSS de la home no introduce selectores globales que contaminen páginas históricas', () => {

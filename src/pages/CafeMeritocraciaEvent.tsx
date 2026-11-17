@@ -144,7 +144,7 @@ export default function CafeMeritocraciaEvent() {
         <div className="merit-event-intro">
           <figure>
             <img
-              src={`${ASSET}/poster-original.jpg`}
+              src={`${ASSET}/poster-meritocracia-escalera-2026.webp`}
               alt="Cartel del Café Filosófico interdisciplinario sobre la meritocracia"
             />
           </figure>
