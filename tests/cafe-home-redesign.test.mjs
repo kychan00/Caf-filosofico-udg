@@ -15,6 +15,7 @@ test('la portada usa una sola fuente de datos y conserva los carteles documental
   assert.ok(home.includes('nextEvent.poster'))
 
   for (const poster of [
+    'capitalismo/poster-capitalismo-apocalipsis-2026.webp',
     'meritocracia/poster-meritocracia-escalera-2026.webp',
     'mercadotecnia/poster-mercadotecnia-eleccion.webp',
     'agua/poster-hablemos-2026.webp',

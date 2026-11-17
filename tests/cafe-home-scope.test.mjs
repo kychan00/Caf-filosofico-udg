@@ -26,7 +26,7 @@ function gitBlobSha(path) {
 
 test('las páginas históricas conservan su contenido y estilos salvo cambios documentados de cartel', () => {
   for (const [path, sha] of expected) {
-    if (path === 'src/pages/CafeMercadotecniaEvent.tsx' || path === 'src/pages/CafeAguaEvent.tsx' || path === 'src/pages/CafeMeritocraciaEvent.tsx') continue
+    if (path === 'src/pages/CafeCapitalismoEvent.tsx' || path === 'src/pages/CafeMercadotecniaEvent.tsx' || path === 'src/pages/CafeAguaEvent.tsx' || path === 'src/pages/CafeMeritocraciaEvent.tsx') continue
     assert.equal(
       gitBlobSha(path),
       sha,
@@ -81,6 +81,24 @@ test('Meritocracia mantiene su página histórica salvo la referencia exacta al 
   const header = Buffer.from('blob ' + content.length + String.fromCharCode(0))
   const sha = createHash('sha1').update(header).update(content).digest('hex')
   assert.equal(sha, expected.get(path), 'Se modificó otro contenido histórico en Meritocracia')
+})
+
+test('Capitalismo conserva íntegramente su memoria, salvo el cartel de apertura y su descripción', () => {
+  const path = 'src/pages/CafeCapitalismoEvent.tsx'
+  let source = readFileSync(new URL('../' + path, import.meta.url), 'utf8')
+  const cambios = [
+    ['images/cafe-filosofico/capitalismo/poster-capitalismo-apocalipsis-2026.webp', 'images/cafe-filosofico/01.png'],
+    ['Cartel actualizado del Café Filosófico 01: el fin del mundo y el fin del capitalismo.', 'Ilustración editorial sobre el mundo, crecimiento económico y la dificultad de imaginar un sistema posterior al capitalismo.'],
+    ['<p>Cartel del Café 01 · 7 septiembre de 2026</p>', '<p>Fin del mundo / fin del capitalismo</p>'],
+  ]
+  for (const [nuevo, anterior] of cambios) {
+    assert.equal(source.split(nuevo).length - 1, 1, 'Cambio de cartel no único: ' + nuevo)
+    source = source.replace(nuevo, anterior)
+  }
+  const content = Buffer.from(source, 'utf8')
+  const header = Buffer.from('blob ' + content.length + String.fromCharCode(0))
+  const sha = createHash('sha1').update(header).update(content).digest('hex')
+  assert.equal(sha, expected.get(path), 'Se alteró otro contenido histórico de la edición de Capitalismo')
 })
 
 test('el CSS de la home no introduce selectores globales que contaminen páginas históricas', () => {

@@ -110,7 +110,7 @@ const questions = [
 ]
 
 export default function CafeCapitalismoEvent() {
-  const image01 = `${import.meta.env.BASE_URL}images/cafe-filosofico/01.png`
+  const image01 = `${import.meta.env.BASE_URL}images/cafe-filosofico/capitalismo/poster-capitalismo-apocalipsis-2026.webp`
   const image02 = `${import.meta.env.BASE_URL}images/cafe-filosofico/02.png`
   const image03 = `${import.meta.env.BASE_URL}images/cafe-filosofico/03.png`
   const image04 = `${import.meta.env.BASE_URL}images/cafe-filosofico/04.png`
@@ -223,12 +223,12 @@ export default function CafeCapitalismoEvent() {
           <div className="cafe-paper-opening-image-mat">
             <img
               src={image01}
-              alt="Ilustración editorial sobre el mundo, crecimiento económico y la dificultad de imaginar un sistema posterior al capitalismo."
+              alt="Cartel actualizado del Café Filosófico 01: el fin del mundo y el fin del capitalismo."
             />
           </div>
           <figcaption>
             <span>01</span>
-            <p>Fin del mundo / fin del capitalismo</p>
+            <p>Cartel del Café 01 · 7 septiembre de 2026</p>
           </figcaption>
         </figure>
 
