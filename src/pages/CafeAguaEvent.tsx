@@ -70,8 +70,8 @@ export default function CafeAguaEvent() {
 
         <figure className="water-edition-poster">
           <div className="water-edition-tape" aria-hidden="true" />
-          <img src={ASSET + '/poster-original.svg'} alt="Cartel original de Hablemos sobre el agua, edición 04 del Café Filosófico" />
-          <figcaption>EL CARTEL ORIGINAL · EDICIÓN 04</figcaption>
+          <img src={ASSET + '/poster-hablemos-2026.webp'} alt="Cartel actualizado de Hablemos sobre el agua, edición 04 del Café Filosófico" />
+          <figcaption>EL CARTEL ACTUALIZADO · EDICIÓN 04</figcaption>
         </figure>
       </header>
 

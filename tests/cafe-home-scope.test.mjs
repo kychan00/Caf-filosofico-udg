@@ -24,9 +24,9 @@ function gitBlobSha(path) {
   return createHash('sha1').update(header).update(buffer).digest('hex')
 }
 
-test('las páginas históricas conservan su contenido y sus estilos salvo la referencia del cartel', () => {
+test('las páginas históricas conservan su contenido y estilos salvo cambios documentados de cartel', () => {
   for (const [path, sha] of expected) {
-    if (path === 'src/pages/CafeMercadotecniaEvent.tsx') continue
+    if (path === 'src/pages/CafeMercadotecniaEvent.tsx' || path === 'src/pages/CafeAguaEvent.tsx') continue
     assert.equal(
       gitBlobSha(path),
       sha,
@@ -51,6 +51,24 @@ test('Mercadotecnia conserva su página histórica salvo la referencia exacta al
     expected.get(path),
     'Se modificó contenido histórico de Mercadotecnia distinto a la referencia del cartel',
   )
+})
+
+test('Agua conserva el contenido de su página histórica salvo el cartel y sus etiquetas', () => {
+  const path = 'src/pages/CafeAguaEvent.tsx'
+  let source = readFileSync(new URL('../' + path, import.meta.url), 'utf8')
+  const cambios = [
+    ['poster-hablemos-2026.webp', 'poster-original.svg'],
+    ['Cartel actualizado de Hablemos sobre el agua, edición 04 del Café Filosófico', 'Cartel original de Hablemos sobre el agua, edición 04 del Café Filosófico'],
+    ['EL CARTEL ACTUALIZADO · EDICIÓN 04', 'EL CARTEL ORIGINAL · EDICIÓN 04'],
+  ]
+  for (const [nuevo, anterior] of cambios) {
+    assert.equal(source.split(nuevo).length - 1, 1, 'La sustitución del cartel de Agua debe ser única: ' + nuevo)
+    source = source.replace(nuevo, anterior)
+  }
+  const content = Buffer.from(source, 'utf8')
+  const header = Buffer.from('blob ' + content.length + String.fromCharCode(0))
+  const sha = createHash('sha1').update(header).update(content).digest('hex')
+  assert.equal(sha, expected.get(path), 'Se cambió otro contenido histórico en Agua')
 })
 
 test('el CSS de la home no introduce selectores globales que contaminen páginas históricas', () => {

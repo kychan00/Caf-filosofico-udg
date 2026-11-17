@@ -106,8 +106,8 @@ export const cafeEvents: CafeEvent[] = [
     route: '/cafe-filosofico/2026/10/19/agua',
     status: 'publicado',
     themes: ['agua', 'derecho', 'recurso', 'bien común', 'responsabilidad'],
-    poster: 'images/cafe-filosofico/agua/poster-original.svg',
-    posterAlt: 'Cartel original de la edición 04 del Café Filosófico sobre el agua.',
+    poster: 'images/cafe-filosofico/agua/poster-hablemos-2026.webp',
+    posterAlt: 'Cartel actualizado de la edición 04 del Café Filosófico sobre el agua.',
   },
   {
     id: 'cafe-2026-11-03-redes-sociales',
