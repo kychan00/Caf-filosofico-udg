@@ -24,7 +24,7 @@ function gitBlobSha(path) {
   return createHash('sha1').update(header).update(buffer).digest('hex')
 }
 
-test('las seis páginas históricas y sus estilos permanecen idénticos a main', () => {
+test('las páginas históricas conservan su contenido y sus estilos salvo la referencia del cartel', () => {
   for (const [path, sha] of expected) {
     if (path === 'src/pages/CafeMercadotecniaEvent.tsx') continue
     assert.equal(
@@ -44,7 +44,7 @@ test('Mercadotecnia conserva su página histórica salvo la referencia exacta al
   assert.equal(source.split(nuevo).length - 1, 1, 'El nuevo cartel debe aparecer exactamente una vez')
 
   const original = Buffer.from(source.replace(nuevo, anterior), 'utf8')
-  const header = Buffer.from('blob ' + original.length + '\\0')
+  const header = Buffer.from('blob ' + original.length + String.fromCharCode(0))
   const actual = createHash('sha1').update(header).update(original).digest('hex')
   assert.equal(
     actual,
