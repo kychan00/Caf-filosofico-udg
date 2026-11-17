@@ -16,7 +16,7 @@ test('la portada usa una sola fuente de datos y conserva los carteles documental
 
   for (const poster of [
     'meritocracia/poster-original.jpg',
-    'mercadotecnia/poster-original.jpg',
+    'mercadotecnia/poster-mercadotecnia-eleccion.webp',
     'agua/poster-original.svg',
     'redes-sociales/poster-oficial.png',
     'inteligencia-artificial/poster-oficial.png',
