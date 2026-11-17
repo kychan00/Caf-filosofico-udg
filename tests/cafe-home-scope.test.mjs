@@ -26,12 +26,31 @@ function gitBlobSha(path) {
 
 test('las seis páginas históricas y sus estilos permanecen idénticos a main', () => {
   for (const [path, sha] of expected) {
+    if (path === 'src/pages/CafeMercadotecniaEvent.tsx') continue
     assert.equal(
       gitBlobSha(path),
       sha,
-      path + ' cambió dentro de un PR cuyo alcance debe limitarse a la página principal',
+      path + ' cambió fuera del único reemplazo permitido del cartel',
     )
   }
+})
+
+test('Mercadotecnia conserva su página histórica salvo la referencia exacta al nuevo cartel', () => {
+  const path = 'src/pages/CafeMercadotecniaEvent.tsx'
+  const source = readFileSync(new URL('../' + path, import.meta.url), 'utf8')
+  const nuevo = 'poster-mercadotecnia-eleccion.webp'
+  const anterior = 'poster-original.jpg'
+
+  assert.equal(source.split(nuevo).length - 1, 1, 'El nuevo cartel debe aparecer exactamente una vez')
+
+  const original = Buffer.from(source.replace(nuevo, anterior), 'utf8')
+  const header = Buffer.from('blob ' + original.length + '\\0')
+  const actual = createHash('sha1').update(header).update(original).digest('hex')
+  assert.equal(
+    actual,
+    expected.get(path),
+    'Se modificó contenido histórico de Mercadotecnia distinto a la referencia del cartel',
+  )
 })
 
 test('el CSS de la home no introduce selectores globales que contaminen páginas históricas', () => {
