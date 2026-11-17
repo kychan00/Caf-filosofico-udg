@@ -15,7 +15,7 @@ test('la portada usa una sola fuente de datos y conserva los carteles documental
   assert.ok(home.includes('nextEvent.poster'))
 
   for (const poster of [
-    'meritocracia/poster-original.jpg',
+    'meritocracia/poster-meritocracia-escalera-2026.webp',
     'mercadotecnia/poster-mercadotecnia-eleccion.webp',
     'agua/poster-hablemos-2026.webp',
     'redes-sociales/poster-oficial.png',
